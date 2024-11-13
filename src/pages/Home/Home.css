@@ -1,0 +1,20 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+.inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  margin-bottom: 30px;
+  background: #ccc;
+  font-size: 30px;
+  font-weight: 600;
+}
+.container {
+  width: 1170px;
+  padding: 0;
+}
