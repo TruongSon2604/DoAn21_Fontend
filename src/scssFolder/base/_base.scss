@@ -1,0 +1,38 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+// :root {
+//   --text-color: #1a162e;
+//   --icon-color: #1a162e;
+// }
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: Gordida, sans-serif;
+  color: var(--text-color);
+}
+a {
+  text-decoration: none;
+  color: transparent;
+}
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.icon {
+  color: var(--icon-color) !important;
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+  font-family: inherit;
+}
+

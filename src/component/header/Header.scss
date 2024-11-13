@@ -1,0 +1,147 @@
+@use "../../scssFolder/base/_mixin" as minxinF;
+
+%flexItemsCenter {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  background: var(--header-bg-color);
+  padding: 30px;
+  @include minxinF.breakpoint(lg) {
+    padding: 20px 0;
+  }
+  @include minxinF.breakpoint(sm) {
+    padding: 16px 0;
+  }
+}
+.top-bar {
+  display: flex;
+  align-items: center;
+
+  &__more {
+    display: none;
+    @include minxinF.breakpoint(lg) {
+      display: block;
+      margin-right: 8px;
+    }
+  }
+  &__more--icon {
+    font-size: 30px;
+    @include minxinF.breakpoint(lg) {
+      font-size: 25px;
+    }
+  }
+}
+
+.logo {
+  @extend %flexItemsCenter;
+  column-gap: 14px;
+  @include minxinF.breakpoint(lg) {
+    gap: 10px;
+    margin-left: 39px;
+  }
+
+  &__img {
+    @include minxinF.breakpoint(lg) {
+      width: 24px;
+    }
+  }
+
+  @include minxinF.breakpoint(lg) {
+    column-gap: 10px;
+  }
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 145.455%;
+    color: var(--text-color);
+    @include minxinF.breakpoint(lg) {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.navbar {
+  margin-left: 144px;
+  @include minxinF.breakpoint(xl) {
+    margin-left: 50px;
+  }
+
+  @include minxinF.breakpoint(lg) {
+    display: none;
+  }
+
+  &_dropdown {
+    font-size: 20px;
+  }
+  &__list {
+    @extend %flexItemsCenter;
+    gap: 30px;
+  }
+  &__link {
+    @extend %flexItemsCenter;
+    justify-content: center;
+
+    gap: 6px;
+
+    font-family: Gordita;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 146.667%;
+    color: var(--text-color);
+  }
+}
+.top-act {
+  @extend %flexItemsCenter;
+
+  &__icon--single {
+    @include minxinF.breakpoint(lg) {
+      display: none;
+    }
+  }
+
+  gap: 20px;
+  margin-left: auto;
+  &__group {
+    display: flex;
+    align-items: center;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    background: var(--top-act-group-bg-color);
+    box-shadow: 0px 20px 60px 10px var(--top-act-group-shadow);
+    @include minxinF.breakpoint(md) {
+      display: none;
+    }
+  }
+  &__btn {
+    @extend %flexItemsCenter;
+    justify-content: center;
+
+    gap: 10px;
+    padding: 13px 20px;
+    cursor: pointer;
+  }
+  &__icon--single &__btn {
+    width: 100%;
+    padding: 13px;
+  }
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 146.667%;
+  }
+  &__separate {
+    width: 1px;
+    height: 30px;
+    background: var(--top-act-group-separate);
+  }
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: block;
+    cursor: pointer;
+  }
+}
