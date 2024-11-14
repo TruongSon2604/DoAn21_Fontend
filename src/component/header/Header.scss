@@ -16,9 +16,12 @@
   }
 }
 .top-bar {
+  position: relative;
   display: flex;
   align-items: center;
-
+  @include minxinF.breakpoint(lg) {
+    justify-content: space-between;
+  }
   &__more {
     display: none;
     @include minxinF.breakpoint(lg) {
@@ -41,6 +44,9 @@
     gap: 10px;
     margin-left: 39px;
   }
+  @include minxinF.breakpoint(sm) {
+    margin: 0;
+  }
 
   &__img {
     @include minxinF.breakpoint(lg) {
@@ -62,7 +68,7 @@
   }
 }
 
-.navbar {
+.nav {
   margin-left: 144px;
   @include minxinF.breakpoint(xl) {
     margin-left: 50px;
@@ -71,20 +77,22 @@
   @include minxinF.breakpoint(lg) {
     display: none;
   }
-
+  &_item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+  }
   &_dropdown {
     font-size: 20px;
   }
   &__list {
     @extend %flexItemsCenter;
-    gap: 30px;
   }
   &__link {
     @extend %flexItemsCenter;
     justify-content: center;
-
+    height: 50px;
     gap: 6px;
-
+    padding: 0 15px;
     font-family: Gordita;
     font-size: 1.5rem;
     font-weight: 500;
@@ -103,6 +111,9 @@
 
   gap: 20px;
   margin-left: auto;
+  @include minxinF.breakpoint(sm) {
+    margin-left: 0;
+  }
   &__group {
     display: flex;
     align-items: center;
@@ -143,5 +154,54 @@
     border-radius: 8px;
     display: block;
     cursor: pointer;
+  }
+}
+// .dropdown {
+//   position: absolute;
+//   padding-top: 54px;
+//   left: 0;
+//   right: 0;
+
+//   &__inner {
+//     padding: 30px;
+//     border-radius: 20px;
+//     background: var(--drop-down-bg-color);
+//     box-shadow: 0px 40px 90px 20px var(--drop-down-shadow-color);
+//     position: relative;
+//     &::before {
+//       content: url("../../assets/Polygon.png");
+//       position: absolute;
+//       top: -13px;
+//       left: 304px;
+//       display: inline-block;
+//     }
+//   }
+// }
+.dropdown {
+  position: absolute;
+  padding-top: 54px;
+  left: 0;
+
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in;
+  &__inner {
+    padding: 30px;
+    height: min(582px, 100vh - 132px);
+
+    border-radius: 20px;
+    background: var(--drop-down-bg-color);
+    box-shadow: 0px 40px 90px 20px var(--drop-down-shadow-color);
+    position: relative;
+
+    &::before {
+      content: url("../../assets/Polygon.png");
+      position: absolute;
+      top: -11px;
+      left: var(--arrow-position, 50%);
+      transform: translateX(-80%);
+      display: inline-block;
+      filter: var(--drop-down-arrow-color);
+    }
   }
 }

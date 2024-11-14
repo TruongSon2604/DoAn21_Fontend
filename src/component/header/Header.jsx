@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
 import "./Header.scss";
@@ -8,13 +8,35 @@ import { FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { FaBars } from "react-icons/fa6";
-//
-// import "../../scssFolder/base/_mixin.scss";
 
 function Header() {
+  const [arrowPosition, setArrowPosition] = useState(0);
+  const [marginLeft, setmarginLeft] = useState(120);
+  const getMargin = () => {
+    const container = document.querySelector(".container");
+    if (container) {
+      const style = window.getComputedStyle(container);
+      const marginLeftValue = parseInt(style.marginLeft, 10);
+      if (isNaN(marginLeftValue)) {
+        console.error("Invalid marginLeft value");
+      } else {
+        console.log("Margin left:", marginLeftValue);
+        setmarginLeft(marginLeftValue);
+      }
+    } else {
+      console.error("Container element not found");
+    }
+  };
+
+  window.addEventListener("resize", getMargin);
+  const handleMouseEnter = (event) => {
+    const rect = event.target.getBoundingClientRect();
+    console.log(rect.left + rect.width / 2 - (marginLeft + 30));
+    setArrowPosition(rect.left + rect.width / 2 - (marginLeft + 30));
+  };
   return (
     <header id="header" className="header">
-      <div className="container">
+      <div className="container abc">
         <div className="top-bar">
           {/* bar */}
           <div className="top-bar__more">
@@ -29,25 +51,67 @@ function Header() {
           </Link>
 
           {/* navbar */}
-          <nav className="navbar">
-            <ul className="navbar__list">
-              <li>
-                <a href="" className="navbar__link">
+          <nav className="nav">
+            <ul className="nav__list">
+              <li className="nav_item" onMouseEnter={handleMouseEnter}>
+                <Link href="" className="nav__link">
                   Departments
-                  <RiArrowDropDownLine className="navbar_dropdown" />
-                </a>
+                  <RiArrowDropDownLine className="nav_dropdown" />
+                </Link>
+                <div
+                  className="dropdown"
+                  style={{
+                    "--arrow-position": `${arrowPosition}px`,
+                  }}
+                >
+                  <div className="dropdown__inner">
+                    Lorem1 ipsum dolor sit amet consectetur adipisicing elit.
+                    Consequatur perferendis animi doloremque laudantium, illo
+                    excepturi tempora, ad, voluptatibus hic quis placeat culpa
+                    explicabo nostrum aspernatur reprehenderit ipsa ex
+                    perspiciatis? Asperiores?
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="" className="navbar__link">
+              <li className="nav_item" onMouseEnter={handleMouseEnter}>
+                <Link href="" className="nav__link">
                   Grocery
                   <RiArrowDropDownLine className="navbar_dropdown" />
-                </a>
+                </Link>
+                <div
+                  className="dropdown"
+                  style={{
+                    "--arrow-position": `${arrowPosition}px`,
+                  }}
+                >
+                  <div className="dropdown__inner">
+                    Lorem2 ipsum dolor sit amet consectetur adipisicing elit.
+                    Consequatur perferendis animi doloremque laudantium, illo
+                    excepturi tempora, ad, voluptatibus hic quis placeat culpa
+                    explicabo nostrum aspernatur reprehenderit ipsa ex
+                    perspiciatis? Asperiores?
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="" className="navbar__link">
+              <li className="nav_item" onMouseEnter={handleMouseEnter}>
+                <Link href="" className="nav__link">
                   Beauty
-                  <RiArrowDropDownLine className="navbar_dropdown" />
-                </a>
+                  <RiArrowDropDownLine className="nav_dropdown" />
+                </Link>
+                <div
+                  className="dropdown"
+                  style={{
+                    "--arrow-position": `${arrowPosition}px`,
+                  }}
+                >
+                  <div className="dropdown__inner">
+                    Lorem3 ipsum dolor sit amet consectetur adipisicing elit.
+                    Consequatur perferendis animi doloremque laudantium, illo
+                    excepturi tempora, ad, voluptatibus hic quis placeat culpa
+                    explicabo nostrum aspernatur reprehenderit ipsa ex
+                    perspiciatis? Asperiores?
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>

@@ -1,8 +1,16 @@
+@use "../base/mixin" as mixin;
 html {
   --text-color: #1a162e;
   --icon-color: #1a162e;
+  --body-bg: #f6f6f6;
   --header-bg-color: #eee;
   --top-act-group-bg-color: #fff;
   --top-act-group-shadow: rgba(237, 237, 246, 0.2);
   --top-act-group-separate: #ededf6;
+  @include mixin.breakpoint(lg) {
+    --header-bg-color: #fff;
+  }
+
+  --drop-down-bg-color: #fff;
+  --drop-down-shadow-color: rgba(200, 200, 200, 0.4);
 }
