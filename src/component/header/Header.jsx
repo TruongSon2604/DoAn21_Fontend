@@ -65,11 +65,383 @@ function Header() {
                   }}
                 >
                   <div className="dropdown__inner">
-                    Lorem1 ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequatur perferendis animi doloremque laudantium, illo
-                    excepturi tempora, ad, voluptatibus hic quis placeat culpa
-                    explicabo nostrum aspernatur reprehenderit ipsa ex
-                    perspiciatis? Asperiores?
+                    <div className="top-menu">
+                      <div className="top-menu__main">
+                        {/* menu column 1 */}
+                        <div className="menu-column">
+                          <div className="menu-column__icon">
+                            <img
+                              src={assets.iconCate1}
+                              class="menu-column__icon-1"
+                              alt=""
+                            />
+                            <img
+                              src={assets.iconCate2}
+                              class="menu-column__icon-2"
+                              alt=""
+                            />
+                          </div>
+                          <div className="menu-column__content">
+                            <h2 className="menu-column__heading">
+                              All Departments
+                            </h2>
+                            <ul className="menu-column__list">
+                              <li className="menu-column__item">
+                                <a href="" className="menu-column__link">
+                                  Savings & Featured Shops
+                                </a>
+                                {/* submenu */}
+                                <div className="sub-menu">
+                                  {/* submenu column1 */}
+                                  <div className="sub-menu__column">
+                                    <div className="menu-column">
+                                      <div className="menu-column__icon">
+                                        <img
+                                          src={assets.RectanglePurple}
+                                          class="menu-column__icon-1"
+                                          alt=""
+                                        />
+                                        <img
+                                          src={assets.iconCate2}
+                                          class="menu-column__icon-2"
+                                          alt=""
+                                        />
+                                      </div>
+                                      <div className="menu-column__content">
+                                        <h2 className="menu-column__heading">
+                                          TV & Video
+                                        </h2>
+                                        <ul className="menu-column__list">
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Shop all TVs
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              TVs by Size
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Smart TVs
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Savings & Featured Shops
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div className="menu-column">
+                                      <div className="menu-column__icon">
+                                        <img
+                                          src={assets.RectanglePurple}
+                                          class="menu-column__icon-1"
+                                          alt=""
+                                        />
+                                        <img
+                                          src={assets.iconCate2}
+                                          class="menu-column__icon-2"
+                                          alt=""
+                                        />
+                                      </div>
+                                      <div className="menu-column__content">
+                                        <h2 className="menu-column__heading">
+                                          TV & Video
+                                        </h2>
+                                        <ul className="menu-column__list">
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Shop all TVs
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              TVs by Size
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Smart TVs
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Savings & Featured Shops
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  {/* submenu column2 */}
+                                  <div className="sub-menu__column">
+                                    <div className="menu-column">
+                                      <div className="menu-column__icon">
+                                        <img
+                                          src={assets.RectanglePurple}
+                                          class="menu-column__icon-1"
+                                          alt=""
+                                        />
+                                        <img
+                                          src={assets.iconCate2}
+                                          class="menu-column__icon-2"
+                                          alt=""
+                                        />
+                                      </div>
+                                      <div className="menu-column__content">
+                                        <h2 className="menu-column__heading">
+                                          TV & Video
+                                        </h2>
+                                        <ul className="menu-column__list">
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Shop all TVs
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              TVs by Size
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Smart TVs
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Savings & Featured Shops
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div className="menu-column">
+                                      <div className="menu-column__icon">
+                                        <img
+                                          src={assets.RectanglePurple}
+                                          class="menu-column__icon-1"
+                                          alt=""
+                                        />
+                                        <img
+                                          src={assets.iconCate2}
+                                          class="menu-column__icon-2"
+                                          alt=""
+                                        />
+                                      </div>
+                                      <div className="menu-column__content">
+                                        <h2 className="menu-column__heading">
+                                          TV & Video
+                                        </h2>
+                                        <ul className="menu-column__list">
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Shop all TVs
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              TVs by Size
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Smart TVs
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Savings & Featured Shops
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  {/* submenu colum3 */}
+
+                                  <div className="sub-menu__column">
+                                    <div className="menu-column">
+                                      <div className="menu-column__icon">
+                                        <img
+                                          src={assets.RectanglePurple}
+                                          class="menu-column__icon-1"
+                                          alt=""
+                                        />
+                                        <img
+                                          src={assets.iconCate2}
+                                          class="menu-column__icon-2"
+                                          alt=""
+                                        />
+                                      </div>
+                                      <div className="menu-column__content">
+                                        <h2 className="menu-column__heading">
+                                          TV & Video
+                                        </h2>
+                                        <ul className="menu-column__list">
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Shop all TVs
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              TVs by Size
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Smart TVs
+                                            </a>
+                                          </li>
+                                          <li className="menu-column__item">
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Savings & Featured Shops
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div className="menu-column">
+                                      <div className="menu-column__icon">
+                                        <img
+                                          src={assets.RectanglePurple}
+                                          class="menu-column__icon-1"
+                                          alt=""
+                                        />
+                                        <img
+                                          src={assets.iconCate2}
+                                          class="menu-column__icon-2"
+                                          alt=""
+                                        />
+                                      </div>
+                                      <div className="menu-column__content">
+                                        <h2 className="menu-column__heading">
+                                          TV & Video
+                                        </h2>
+                                        <ul className="menu-column__list">
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Shop all TVs
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              TVs by Size
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Smart TVs
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a
+                                              href=""
+                                              className="menu-column__link"
+                                            >
+                                              Savings & Featured Shops
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li className="menu-column__item">
+                                <a href="" className="menu-column__link">
+                                  Electronics
+                                </a>
+                              </li>
+                              <li className="menu-column__item">
+                                <a href="" className="menu-column__link">
+                                  Clothing, Shoes & Accessories
+                                </a>
+                              </li>
+                              <li>
+                                <a href="" className="menu-column__link">
+                                  Savings & Featured Shops
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
