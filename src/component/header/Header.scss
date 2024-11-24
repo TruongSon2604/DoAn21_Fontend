@@ -257,6 +257,7 @@
   //   left: -100px;
   // }
 
+  // display: block;
   transition: opacity 0.2s ease-in;
   &__inner {
     --inner-max-heigh: min(582px, 100vh - 132px);
