@@ -77,13 +77,13 @@
 .nav {
   margin-left: 144px;
   // background-color: var(--drop-down-bg-color);
-  
+
   @include minxinF.breakpoint(xl) {
     margin-left: 50px;
   }
 
   @include minxinF.breakpoint(lg) {
-    background-color:var(--drop-down-bg-color) !important ;
+    background-color: var(--drop-down-bg-color) !important ;
     display: block;
     position: fixed;
     inset: 0 50% 0 0;

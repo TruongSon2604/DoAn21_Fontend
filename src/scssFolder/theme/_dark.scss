@@ -1,3 +1,4 @@
+@use "../base/mixin" as mixin;
 html.dark {
   --text-color: #ffffff;
   --icon-color: #ffffff;
@@ -15,4 +16,11 @@ html.dark {
   --header-shadow-color: rgba(237, 237, 246, 0.2);
   --menu-column-icon-color: brightness(0) saturate(100%) invert(98%) sepia(1%)
     saturate(311%) hue-rotate(201deg) brightness(100%) contrast(98%);
+
+  //cate item
+  --cate-item-bg: #171c28;
+  --cate-item-thumb-bg: #292e39;
+  --cate-item-title-color: #fff;
+  @include mixin.breakpoint(sm) {
+  }
 }

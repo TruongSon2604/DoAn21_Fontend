@@ -8,7 +8,8 @@ import Buy from "./Buy.png";
 import iconCate1 from "./iconCate1.jpg";
 import iconCate2 from "./iconCate2.png";
 import RectanglePurple from "./RectanglePurple.png";
-
+import cate2 from "./cate2.png";
+import cate1 from "./category1.png";
 import slide from "./slide.png";
 export const assets = {
   icon,
@@ -22,4 +23,6 @@ export const assets = {
   iconCate2,
   RectanglePurple,
   slide,
+  cate1,
+  cate2,
 };
