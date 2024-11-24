@@ -1,0 +1,78 @@
+@use "../../scssFolder/base/_mixin" as minxinF;
+.slideshow {
+  position: relative;
+  margin: 40px 0;
+  &__inner {
+    display: flex;
+    overflow: hidden;
+  }
+  &__item {
+    flex-shrink: 0;
+    // width: 100%;
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    padding-top: 34%;
+    // @include minxinF.breakpoint(md) {
+    //   padding-top: 40%;
+      
+    // }
+  }
+  &__img {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  &__page {
+    position: absolute;
+    bottom: 15%;
+    left: 5.2%;
+    align-items: center;
+    display: flex;
+    column-gap: 24px;
+  }
+  &__num {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 144.44%;
+    color: #fff;
+  }
+  &__slider {
+    position: relative;
+    display: inline-block;
+    background: white;
+    height: 4px;
+    width: 184px;
+    flex-shrink: 0;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      top: 50%;
+      translate: 0 -50%;
+      left: 0;
+      display: inline-block;
+      translate: -90% -50%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      top: 50%;
+      translate: 0 -50%;
+      right: 0;
+      display: inline-block;
+      translate: 90% -50%;
+    }
+  }
+}

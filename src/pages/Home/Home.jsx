@@ -6,11 +6,14 @@ import Footer from "../../component/footer/Footer";
 
 import "../../scssFolder/base/_base.scss";
 import "../../scssFolder/base/_reset.scss";
+import SlideShow from "../../component/SlideShow/SlideShow";
 const Home = () => {
   return (
     <>
       <Header />
-      <div className="container">Content Home</div>
+      <div className="container">
+        <SlideShow />
+      </div>
       <Footer />
     </>
   );
