@@ -1,0 +1,187 @@
+@use "../../scssFolder/base/_mixin" as minxinF;
+.home__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 40px;
+}
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 36px;
+  color: var(--filter-btn-color);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 142.857%;
+  background: var(--filter-bg-color);
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.product-card {
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--product-card-bg);
+  box-shadow: 0px 20px 60px 10px var(--product-card-shadow);
+  &__thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  &__img-wrap {
+    width: 100%;
+    height: 284px;
+    position: relative;
+  }
+  &__title {
+    margin-top: 15px;
+    font-weight: 700 !important;
+  }
+  &__title,
+  &__price,
+  &__score {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  &__branch {
+    margin: 16px 0;
+    color: #9e9da8;
+    font-size: 1.5rem;
+    line-height: 144.667%;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+  &__star {
+    margin-left: auto;
+    margin-right: 7px;
+    background-color: red !important;
+  }
+}
+.like-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // box-shadow: 0px 20px 60px var(--like-btn-shadow);
+  background-color: var(--btn-like-bg);
+  box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.row-browse-product {
+  @include minxinF.breakpoint(sm) {
+    padding: 0 20px;
+  }
+  @include minxinF.breakpoint(xl) {
+    // --bs-gutter-x: 2rem;
+  }
+}
+// filter form
+.home__row {
+  position: relative;
+}
+.filter {
+  display: none;
+  position: absolute;
+  left: 48%;
+  right: 0;
+  // height: 352px;
+  border-radius: 20px;
+  background-color: var(--filter-bg);
+  padding: 31px 30px;
+  z-index: 999;
+  top: 60px;
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    // justify-content: space-between;
+    @include minxinF.breakpoint(lg) {
+      flex-direction: column;
+    }
+  }
+  &__col {
+    width: 49%;
+    @include minxinF.breakpoint(lg) {
+      width: 100%;
+    }
+  }
+  &__heading {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145.455%; /* 145.455% */
+  }
+  &__row {
+    margin-top: 30px;
+    margin-bottom: 18px;
+  }
+  &__form-label {
+    display: block;
+  }
+  &__range {
+    margin: 20px 0;
+  }
+  &__ip {
+    width: 20%;
+    margin-left: 10px;
+    border-radius: 5px;
+    outline: none;
+  }
+  &__line {
+    width: 2px;
+    height: inherit;
+    background-color: var(--filter-line);
+    margin-left: -50px;
+  }
+
+  // right
+  &__history {
+    display: flex;
+    gap: 15px;
+
+    span {
+      background-color: var(--span-filter);
+      display: inline-block;
+      padding: 12px 6px;
+      border-radius: 6px;
+      color: #9e9da8;
+    }
+  }
+  &__brand {
+    margin: 20px 0;
+    width: 100%;
+    height: 25px;
+    padding: 10px 16px;
+    border-radius: 5px;
+  }
+  &__action {
+    width: 100%;
+  }
+  &__cancel {
+    display: inline-block;
+    margin-right: 15px;
+  }
+  &__show {
+    display: inline-block;
+    line-height: 20px;
+    background-color: orange;
+    padding: 9px 10px;
+    border-radius: 6px;
+  }
+  &__cover {
+    width: 180px;
+    margin-left: auto;
+  }
+}
+input#vol {
+  width: 80%;
+}

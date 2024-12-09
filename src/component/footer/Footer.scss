@@ -1,0 +1,53 @@
+.footer {
+  padding: 50px 0px;
+  margin-top: 50px;
+  background-color: var(--footer-bg);
+  &__logo {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    h2 {
+      font-weight: 700;
+      font-size: 20px;
+    }
+  }
+  &__description {
+    font-size: 15px;
+    margin-top: 20px;
+    // width: 350px;
+  }
+  &__span {
+    margin-top: 25px;
+    display: block;
+  }
+  &__info {
+    margin-top: 15px;
+  }
+  &__input {
+    height: 35px;
+    outline: white;
+    background: var(--footer-bg);
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+  &__btn {
+    background-color: orange;
+    padding: 10px 15px;
+    margin-left: 25px;
+    border-radius: 5px;
+  }
+  &__heading {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  &_shoplist {
+    margin-top: 25px;
+    li a {
+      font-size: 15px;
+      margin-bottom: 5px;
+      padding-bottom: 8px;
+      display: inline-block;
+      color: #9e9da8;
+    }
+  }
+}

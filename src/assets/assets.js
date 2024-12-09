@@ -11,6 +11,10 @@ import RectanglePurple from "./RectanglePurple.png";
 import cate2 from "./cate2.png";
 import cate1 from "./category1.png";
 import slide from "./slide.png";
+import filter from "./Filter.png";
+import Star from "./Star.png";
+import product_home from "./product_home.png";
+import product2_home from "./product2_home.png";
 export const assets = {
   icon,
   iconDown,
@@ -25,4 +29,8 @@ export const assets = {
   slide,
   cate1,
   cate2,
+  filter,
+  Star,
+  product_home,
+  product2_home,
 };

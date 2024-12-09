@@ -21,6 +21,24 @@ html.dark {
   --cate-item-bg: #171c28;
   --cate-item-thumb-bg: #292e39;
   --cate-item-title-color: #fff;
+
+  //filter
+  --filter-btn-color: #6c6c72;
+  --filter-bg-color: #fff;
+  --filter-line: #fff;
+  //
+  --product-card-bg: #171c28;
+  --product-card-shadow: rgba(237, 237, 246, 0.2);
+  //like btn
+  // --btn-like-bg: #292E39;
+
+  // background div filter
+  --filter-bg: #292e39;
+  --span-filter: #171c28;
+
   @include mixin.breakpoint(sm) {
   }
+
+  //footer background
+  --footer-bg: #171c28;
 }

@@ -19,8 +19,21 @@ html {
   //cate item
   --cate-item-bg: #eee;
   --cate-item-thumb-bg: #fff;
-  --cate-item-title-color:#000;
+  --cate-item-title-color: #000;
   @include mixin.breakpoint(sm) {
     --cate-item-bg: #fff;
   }
+  //filter
+  --filter-btn-color: #6c6c72;
+  --filter-bg-color: #fff;
+  --filter-line:rgb(140, 135, 135);
+  //
+  --product-card-bg: #fff;
+  --product-card-shadow: rgba(237, 237, 246, 0.2);
+  //like btn
+  --btn-like-bg: #fff;
+
+  // background div filter
+  --filter-bg:#c6c5c5;
+  --span-filter:#fff;
 }

@@ -8,6 +8,7 @@ import "../../scssFolder/base/_base.scss";
 import "../../scssFolder/base/_reset.scss";
 import SlideShow from "../../component/SlideShow/SlideShow";
 import BrowseCategory from "../../component/BrowseCategory/BrowseCategory";
+import BrowseProduct from "../../component/BrowseProduct/BrowseProduct";
 const Home = () => {
   return (
     <>
@@ -15,7 +16,9 @@ const Home = () => {
       <div className="container">
         <SlideShow />
         {/* Browse Category  */}
-     <BrowseCategory/>
+        <BrowseCategory />
+        {/* Browse Product  */}
+        <BrowseProduct />
       </div>
       <Footer />
     </>
