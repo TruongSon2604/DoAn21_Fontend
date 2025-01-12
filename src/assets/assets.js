@@ -13,8 +13,14 @@ import cate1 from "./category1.png";
 import slide from "./slide.png";
 import filter from "./Filter.png";
 import Star from "./Star.png";
+import Star1 from "./Star1.png";
 import product_home from "./product_home.png";
 import product2_home from "./product2_home.png";
+import Heart_pink from "./Heart_pink.png";
+import LoginLeft from "./LoginLeft.png";
+import Message from "./Message.png";
+import Lock from "./Lock.png";
+import iconGoogle from "./iconGoogle.png";
 export const assets = {
   icon,
   iconDown,
@@ -33,4 +39,10 @@ export const assets = {
   Star,
   product_home,
   product2_home,
+  Heart_pink,
+  Star1,
+  LoginLeft,
+  Message,
+  Lock,
+  iconGoogle
 };

@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BrowseProduct.scss";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
+import { FaFilter } from "react-icons/fa";
 function BrowseProduct() {
+  const [isActive, setIsActive] = useState(false);
+  const [isHeart, setIsHeart] = useState(false);
+  const handleClick = () => {
+    setIsActive((prevState) => !prevState);
+  };
+  const heartClick = () => {
+    setIsHeart((value) => !value);
+  };
+
   return (
     <section className="home__container">
       <div className="home__row">
         <h2 className="home__heading">Total LavAzza 1320</h2>
         <div className="filter-wrap">
-          <button className="filter-btn">
+          <button className="filter-btn" onClick={handleClick}>
             Filter
             <img src={assets.filter} alt="" className="filter-btn__icon" />
           </button>
-          <div className="filter">
+          <div className={`filter ${isActive ? "active" : ""}`}>
             <div className="container filter_container">
-              <h3 className="filter__heading">Filter</h3>
+              <h3 className="filter__heading">
+                Filter <FaFilter />
+              </h3>
               <form action="" className="filter__form">
                 <div className="filter__row">
                   {/* col1 */}
@@ -71,8 +83,12 @@ function BrowseProduct() {
                   alt=""
                 />
               </a>
-              <button className="like-btn">
-                <img src={assets.iconHeart} alt="" className="like-btn__icon" />
+              <button className="like-btn" onClick={heartClick}>
+                <img
+                  src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                  alt=""
+                  className="like-btn__icon"
+                />
               </button>
             </div>
             <a href="">
@@ -83,7 +99,7 @@ function BrowseProduct() {
             <p className="product-card__branch">Lavazza</p>
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
-              <img src={assets.Star} alt="" className="product-card__star" />
+              <img src={assets.Star1} alt="" className="product-card__star" />
               <span className="product-card__score">4.3</span>
             </div>
           </article>
@@ -110,7 +126,7 @@ function BrowseProduct() {
             <p className="product-card__branch">Lavazza</p>
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
-              <img src={assets.Star} alt="" className="product-card__star" />
+              <img src={assets.Star1} alt="" className="product-card__star" />
               <span className="product-card__score">4.3</span>
             </div>
           </article>
@@ -137,7 +153,7 @@ function BrowseProduct() {
             <p className="product-card__branch">Lavazza</p>
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
-              <img src={assets.Star} alt="" className="product-card__star" />
+              <img src={assets.Star1} alt="" className="product-card__star" />
               <span className="product-card__score">4.3</span>
             </div>
           </article>
@@ -164,7 +180,7 @@ function BrowseProduct() {
             <p className="product-card__branch">Lavazza</p>
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
-              <img src={assets.Star} alt="" className="product-card__star" />
+              <img src={assets.Star1} alt="" className="product-card__star" />
               <span className="product-card__score">4.3</span>
             </div>
           </article>
@@ -191,7 +207,7 @@ function BrowseProduct() {
             <p className="product-card__branch">Lavazza</p>
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
-              <img src={assets.Star} alt="" className="product-card__star" />
+              <img src={assets.Star1} alt="" className="product-card__star" />
               <span className="product-card__score">4.3</span>
             </div>
           </article>
@@ -218,7 +234,7 @@ function BrowseProduct() {
             <p className="product-card__branch">Lavazza</p>
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
-              <img src={assets.Star} alt="" className="product-card__star" />
+              <img src={assets.Star1} alt="" className="product-card__star" />
               <span className="product-card__score">4.3</span>
             </div>
           </article>
@@ -245,7 +261,7 @@ function BrowseProduct() {
             <p className="product-card__branch">Lavazza</p>
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
-              <img src={assets.Star} alt="" className="product-card__star" />
+              <img src={assets.Star1} alt="" className="product-card__star" />
               <span className="product-card__score">4.3</span>
             </div>
           </article>
@@ -272,7 +288,7 @@ function BrowseProduct() {
             <p className="product-card__branch">Lavazza</p>
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
-              <img src={assets.Star} alt="" className="product-card__star" />
+              <img src={assets.Star1} alt="" className="product-card__star" />
               <span className="product-card__score">4.3</span>
             </div>
           </article>

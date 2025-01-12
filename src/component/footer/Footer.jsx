@@ -7,7 +7,7 @@ function Footer() {
     <div className="footer">
       <div className="container footer_container">
         <div className="row">
-          <div className="col-lg-4 col-md-7">
+          <div className="col-lg-4 col-md-12 col-sm-12 item-1 col-12">
             <div className="footer__logo">
               <img src={assets.icon} alt="" />
               <h2>Grocerymart</h2>
@@ -30,7 +30,7 @@ function Footer() {
               <button className="footer__btn">SEND</button>
             </div>
           </div>
-          <div className="col-lg-2 col-md-3">
+          <div className="col-lg-2 col-md-3 col-sm-6 item-2 col-6">
             <h3 className="footer__heading">SHOP</h3>
             <ul className="footer_shoplist">
               <li>
@@ -50,7 +50,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-lg-2 col-md-2">
+          <div className="col-lg-2 col-md-3 col-sm-6 item-3 col-6">
             <h3 className="footer__heading">Support</h3>
             <ul className="footer_shoplist">
               <li>
@@ -60,8 +60,8 @@ function Footer() {
                 <Link>Order status</Link>
               </li>
             </ul>
-          </div>{" "}
-          <div className="col-lg-2 col-md-4">
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-6 item-4 col-6">
             <h3 className="footer__heading">COMPANY</h3>
             <ul className="footer_shoplist">
               <li>
@@ -83,8 +83,8 @@ function Footer() {
                 <Link>Affiliates</Link>
               </li>
             </ul>
-          </div>{" "}
-          <div className="col-lg-2 col-md-4">
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-6 item-5 col-6">
             <h3 className="footer__heading">CONTACT</h3>
             <ul className="footer_shoplist">
               <li>

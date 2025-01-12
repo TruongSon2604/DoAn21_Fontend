@@ -1,3 +1,4 @@
+@use "../../scssFolder/base/_mixin" as minxinF;
 .footer {
   padding: 50px 0px;
   margin-top: 50px;
@@ -8,7 +9,7 @@
     align-items: center;
     h2 {
       font-weight: 700;
-      font-size: 20px;
+      font-size: 2rem;
     }
   }
   &__description {
@@ -22,6 +23,11 @@
   }
   &__info {
     margin-top: 15px;
+    @include minxinF.breakpoint(sm) {
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+    }
   }
   &__input {
     height: 35px;
@@ -37,7 +43,7 @@
     border-radius: 5px;
   }
   &__heading {
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: 700;
   }
   &_shoplist {
@@ -49,5 +55,19 @@
       display: inline-block;
       color: #9e9da8;
     }
+  }
+}
+.item-1 {
+  @include minxinF.breakpoint(lg) {
+    margin-bottom: 35px;
+  }
+}
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  @include minxinF.breakpoint(lg) {
+    // transform: translateX(20%);
+    margin-top: 25px;
   }
 }

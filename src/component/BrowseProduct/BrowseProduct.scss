@@ -59,7 +59,6 @@
   &__star {
     margin-left: auto;
     margin-right: 7px;
-    background-color: red !important;
   }
 }
 .like-btn {
@@ -75,6 +74,7 @@
   // box-shadow: 0px 20px 60px var(--like-btn-shadow);
   background-color: var(--btn-like-bg);
   box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.2);
+
 }
 
 .row-browse-product {
@@ -88,6 +88,9 @@
 // filter form
 .home__row {
   position: relative;
+}
+.filter.active {
+  display: block;
 }
 .filter {
   display: none;
@@ -112,6 +115,7 @@
     width: 49%;
     @include minxinF.breakpoint(lg) {
       width: 100%;
+      margin-top: 20px;
     }
   }
   &__heading {
@@ -122,13 +126,16 @@
   }
   &__row {
     margin-top: 30px;
+    @include minxinF.breakpoint(lg) {
+      margin-top: 0px;
+    }
     margin-bottom: 18px;
   }
   &__form-label {
     display: block;
   }
   &__range {
-    margin: 20px 0;
+    margin: 10px 0;
   }
   &__ip {
     width: 20%;
@@ -138,22 +145,38 @@
   }
   &__line {
     width: 2px;
-    height: inherit;
     background-color: var(--filter-line);
     margin-left: -50px;
+    @include minxinF.breakpoint(lg) {
+      height: 2px;
+      width: 50%;
+      z-index: 1;
+      // background: red;
+      transform: translateX(50%);
+      margin-top: 20px;
+    }
   }
 
   // right
   &__history {
+    width: 100%;
     display: flex;
     gap: 15px;
-
+    justify-content: space-between;
+    @include minxinF.breakpoint(xl) {
+      gap: 5px;
+      font-size: 13px;
+    }
+   
     span {
       background-color: var(--span-filter);
       display: inline-block;
       padding: 12px 6px;
       border-radius: 6px;
       color: #9e9da8;
+      @include minxinF.breakpoint(lg) {
+        padding: 12px 15px;
+      }
     }
   }
   &__brand {
@@ -184,4 +207,9 @@
 }
 input#vol {
   width: 80%;
+}
+.filter__form-label {
+  display: block;
+  font-family: cursive;
+  font-size: larger;
 }

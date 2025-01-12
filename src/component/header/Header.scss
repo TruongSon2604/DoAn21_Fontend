@@ -370,3 +370,21 @@
 div.menu-column {
   margin-bottom: 30px;
 }
+
+// btn login
+.top-act__login {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.top-act__login button {
+  height: 100%;
+  padding: 5px 2rem;
+  // font-weight: 700;
+  color: var(--text-color);
+  font-size: 15px;
+}
+.top-act__login a {
+  display: inline-block;
+  height: 100%;
+}
