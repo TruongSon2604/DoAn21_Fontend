@@ -9,6 +9,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { FaBars } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa";
+
 function Header() {
   const [arrowPosition, setArrowPosition] = useState(0);
   const [marginLeft, setmarginLeft] = useState(120);
@@ -40,7 +41,7 @@ function Header() {
     setArrowPosition(rect.left + rect.width / 2 - (marginLeft + 30));
   };
   return (
-    <header id="header" className="header">
+        <header id="header" className="header">
       <div className="container abc">
         <div className="top-bar">
           {/* bar */}
@@ -76,12 +77,12 @@ function Header() {
                           <div className="menu-column__icon">
                             <img
                               src={assets.iconCate1}
-                              class="menu-column__icon-1"
+                              className="menu-column__icon-1"
                               alt=""
                             />
                             <img
                               src={assets.iconCate2}
-                              class="menu-column__icon-2"
+                              className="menu-column__icon-2"
                               alt=""
                             />
                           </div>
@@ -102,12 +103,12 @@ function Header() {
                                       <div className="menu-column__icon">
                                         <img
                                           src={assets.RectanglePurple}
-                                          class="menu-column__icon-1"
+                                          className="menu-column__icon-1"
                                           alt=""
                                         />
                                         <img
                                           src={assets.iconCate2}
-                                          class="menu-column__icon-2"
+                                          className="menu-column__icon-2"
                                           alt=""
                                         />
                                       </div>
@@ -155,12 +156,12 @@ function Header() {
                                       <div className="menu-column__icon">
                                         <img
                                           src={assets.RectanglePurple}
-                                          class="menu-column__icon-1"
+                                          className="menu-column__icon-1"
                                           alt=""
                                         />
                                         <img
                                           src={assets.iconCate2}
-                                          class="menu-column__icon-2"
+                                          className="menu-column__icon-2"
                                           alt=""
                                         />
                                       </div>
@@ -211,12 +212,12 @@ function Header() {
                                       <div className="menu-column__icon">
                                         <img
                                           src={assets.RectanglePurple}
-                                          class="menu-column__icon-1"
+                                          className="menu-column__icon-1"
                                           alt=""
                                         />
                                         <img
                                           src={assets.iconCate2}
-                                          class="menu-column__icon-2"
+                                          className="menu-column__icon-2"
                                           alt=""
                                         />
                                       </div>
@@ -264,12 +265,12 @@ function Header() {
                                       <div className="menu-column__icon">
                                         <img
                                           src={assets.RectanglePurple}
-                                          class="menu-column__icon-1"
+                                          className="menu-column__icon-1"
                                           alt=""
                                         />
                                         <img
                                           src={assets.iconCate2}
-                                          class="menu-column__icon-2"
+                                          className="menu-column__icon-2"
                                           alt=""
                                         />
                                       </div>
@@ -321,12 +322,12 @@ function Header() {
                                       <div className="menu-column__icon">
                                         <img
                                           src={assets.RectanglePurple}
-                                          class="menu-column__icon-1"
+                                          className="menu-column__icon-1"
                                           alt=""
                                         />
                                         <img
                                           src={assets.iconCate2}
-                                          class="menu-column__icon-2"
+                                          className="menu-column__icon-2"
                                           alt=""
                                         />
                                       </div>
@@ -374,12 +375,12 @@ function Header() {
                                       <div className="menu-column__icon">
                                         <img
                                           src={assets.RectanglePurple}
-                                          class="menu-column__icon-1"
+                                          className="menu-column__icon-1"
                                           alt=""
                                         />
                                         <img
                                           src={assets.iconCate2}
-                                          class="menu-column__icon-2"
+                                          className="menu-column__icon-2"
                                           alt=""
                                         />
                                       </div>
@@ -463,7 +464,7 @@ function Header() {
                 </div>
               </li>
               <li className="nav_item" onMouseEnter={handleMouseEnter}>
-                <Link href="" className="nav__link">
+                <Link to="/grocery/test" className="nav__link">
                   Grocery
                   <RiArrowDropDownLine className="navbar_dropdown" />
                 </Link>
@@ -483,7 +484,7 @@ function Header() {
                 </div>
               </li>
               <li className="nav_item" onMouseEnter={handleMouseEnter}>
-                <Link href="" className="nav__link">
+                <Link to="/grocery" className="nav__link">
                   Beauty
                   <RiArrowDropDownLine className="nav_dropdown" />
                 </Link>

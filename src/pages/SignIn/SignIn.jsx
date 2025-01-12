@@ -41,7 +41,7 @@ function SignIn() {
                 <input type="checkbox" name="" className="form__checkbox-input" id="" />
                 <label htmlFor="" className="form__checkbox--label">Set as default card</label>
               </label>
-              <a href="" className="auth__link">Recovery Password</a>
+              <Link to="/forgot-password" className="auth__link">Recovery Password</Link>
             </div>
   
             <div className="form__group auth__btn--group">

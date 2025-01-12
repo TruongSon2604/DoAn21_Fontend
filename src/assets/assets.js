@@ -21,6 +21,7 @@ import LoginLeft from "./LoginLeft.png";
 import Message from "./Message.png";
 import Lock from "./Lock.png";
 import iconGoogle from "./iconGoogle.png";
+import forgot_password from "./forgot_password.png";
 export const assets = {
   icon,
   iconDown,
@@ -44,5 +45,6 @@ export const assets = {
   LoginLeft,
   Message,
   Lock,
-  iconGoogle
+  iconGoogle,
+  forgot_password
 };
