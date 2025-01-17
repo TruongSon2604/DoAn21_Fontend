@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <Header />
       <div className="container">
-      <Breadcrumbs/>
+      {/* <Breadcrumbs/> */}
         <SlideShow />
         {/* Browse Category  */}
         <BrowseCategory />

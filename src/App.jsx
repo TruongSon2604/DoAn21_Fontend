@@ -15,6 +15,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import ForgotPassword from "./pages/ResetPassword/ForgotPassword";
 import CreatePassword from "./pages/ResetPassword/CreatePassword";
 import Grocery from "./pages/Grocery/Grocery";
+import PreviewProduct from "./pages/PreviewProduct/PreviewProduct";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/create-password" element={<CreatePassword />} />
+          <Route path="/preview-product" element={<PreviewProduct />} />
         </Routes>
       </div>
     </>

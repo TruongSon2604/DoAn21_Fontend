@@ -22,6 +22,9 @@ import Message from "./Message.png";
 import Lock from "./Lock.png";
 import iconGoogle from "./iconGoogle.png";
 import forgot_password from "./forgot_password.png";
+import ItemCafe1 from "./ItemCafe1.png";
+import ItemCafe2 from "./ItemCafe2.png";
+import user from "./userSon.png";
 export const assets = {
   icon,
   iconDown,
@@ -46,5 +49,8 @@ export const assets = {
   Message,
   Lock,
   iconGoogle,
-  forgot_password
+  forgot_password,
+  ItemCafe1,
+  ItemCafe2,
+  user
 };
