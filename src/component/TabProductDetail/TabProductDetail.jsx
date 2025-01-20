@@ -2,20 +2,35 @@ import React, { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import './TabProductDetail.scss';
 import { assets } from '../../assets/assets';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function TabProductDetail() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true
+  };
+
   const [isHeart, setIsHeart] = useState(false);
   const heartClick = () => {
     setIsHeart((value) => !value);
   };
 
-  const [activeKey, setActiveKey] = useState('link-2');
+  const [activeKey, setActiveKey] = useState('link-1');
 
   const renderContent = () => {
     switch (activeKey) {
       case 'link-1':
         return <div>
          <div className="row row-browse-product" style={{ rowGap: "30px" }}>
+         <Slider {...settings}>
                 <div className="col-lg-4 col-md-6 col-xl-3">
                   <article className="product-card">
                     <div className="product-card__img-wrap">
@@ -36,9 +51,13 @@ function TabProductDetail() {
                     </div>
                     <a href="">
                       <h3 className="product-card__title">
-                        Coffee Beans - Espresso Arabica and Robusta Beans
+                        Coffee Beans - Espresso Arabica and Robusta Beans 11
                       </h3>
                     </a>
+                    <div className="product-card__status">
+                      <p className="product-card__weigh">Weigh:500g</p>
+                      <p className="product-card__stock">Stock:199</p>
+                    </div>
                     <p className="product-card__branch">Lavazza</p>
                     <div className="product-card__row">
                       <span className="product-card__price">$47.00</span>
@@ -48,7 +67,7 @@ function TabProductDetail() {
                   </article>
                 </div>
                 <div className="col-lg-4 col-md-6 col-xl-3">
-                  <article className="product-card">
+                <article className="product-card">
                     <div className="product-card__img-wrap">
                       <a href="">
                         <img
@@ -57,15 +76,23 @@ function TabProductDetail() {
                           alt=""
                         />
                       </a>
-                      <button className="like-btn">
-                        <img src={assets.iconHeart} alt="" className="like-btn__icon" />
+                      <button className="like-btn" onClick={heartClick}>
+                        <img
+                          src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                          alt=""
+                          className="like-btn__icon"
+                        />
                       </button>
                     </div>
                     <a href="">
                       <h3 className="product-card__title">
-                        Coffee Beans - Espresso Arabica and Robusta Beans
+                        Coffee Beans - Espresso Arabica and Robusta Beans 11
                       </h3>
                     </a>
+                    <div className="product-card__status">
+                      <p className="product-card__weigh">Weigh:500g</p>
+                      <p className="product-card__stock">Stock:199</p>
+                    </div>
                     <p className="product-card__branch">Lavazza</p>
                     <div className="product-card__row">
                       <span className="product-card__price">$47.00</span>
@@ -75,7 +102,7 @@ function TabProductDetail() {
                   </article>
                 </div>
                 <div className="col-lg-4 col-md-6 col-xl-3">
-                  <article className="product-card">
+                <article className="product-card">
                     <div className="product-card__img-wrap">
                       <a href="">
                         <img
@@ -84,15 +111,23 @@ function TabProductDetail() {
                           alt=""
                         />
                       </a>
-                      <button className="like-btn">
-                        <img src={assets.iconHeart} alt="" className="like-btn__icon" />
+                      <button className="like-btn" onClick={heartClick}>
+                        <img
+                          src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                          alt=""
+                          className="like-btn__icon"
+                        />
                       </button>
                     </div>
                     <a href="">
                       <h3 className="product-card__title">
-                        Coffee Beans - Espresso Arabica and Robusta Beans
+                        Coffee Beans - Espresso Arabica and Robusta Beans 11
                       </h3>
                     </a>
+                    <div className="product-card__status">
+                      <p className="product-card__weigh">Weigh:500g</p>
+                      <p className="product-card__stock">Stock:199</p>
+                    </div>
                     <p className="product-card__branch">Lavazza</p>
                     <div className="product-card__row">
                       <span className="product-card__price">$47.00</span>
@@ -102,7 +137,7 @@ function TabProductDetail() {
                   </article>
                 </div>
                 <div className="col-lg-4 col-md-6 col-xl-3">
-                  <article className="product-card">
+                <article className="product-card">
                     <div className="product-card__img-wrap">
                       <a href="">
                         <img
@@ -111,15 +146,23 @@ function TabProductDetail() {
                           alt=""
                         />
                       </a>
-                      <button className="like-btn">
-                        <img src={assets.iconHeart} alt="" className="like-btn__icon" />
+                      <button className="like-btn" onClick={heartClick}>
+                        <img
+                          src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                          alt=""
+                          className="like-btn__icon"
+                        />
                       </button>
                     </div>
                     <a href="">
                       <h3 className="product-card__title">
-                        Coffee Beans - Espresso Arabica and Robusta Beans
+                        Coffee Beans - Espresso Arabica and Robusta Beans 11
                       </h3>
                     </a>
+                    <div className="product-card__status">
+                      <p className="product-card__weigh">Weigh:500g</p>
+                      <p className="product-card__stock">Stock:199</p>
+                    </div>
                     <p className="product-card__branch">Lavazza</p>
                     <div className="product-card__row">
                       <span className="product-card__price">$47.00</span>
@@ -128,6 +171,7 @@ function TabProductDetail() {
                     </div>
                   </article>
                 </div>
+          </Slider>
         </div>
       </div>;
       case 'link-2':
@@ -230,13 +274,12 @@ function TabProductDetail() {
           {/* <Nav.Item>
             <Nav.Link className='nav_product-item' eventKey="link-1">Description</Nav.Link>
           </Nav.Item> */}
+           <Nav.Item>
+            <Nav.Link className='nav_product-item' eventKey="link-1">Feature</Nav.Link>
+          </Nav.Item>
           <Nav.Item>
             <Nav.Link className='nav_product-item' eventKey="link-2">Reviews</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link className='nav_product-item' eventKey="link-1">Feature</Nav.Link>
-          </Nav.Item>
-        
         </Nav>
         {renderContent()}
     </>

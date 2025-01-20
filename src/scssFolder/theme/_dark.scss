@@ -36,9 +36,6 @@ html.dark {
   --filter-bg: #292e39;
   --span-filter: #171c28;
 
-  @include mixin.breakpoint(sm) {
-  }
-
   //footer background
   --footer-bg: #171c28;
 

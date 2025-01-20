@@ -25,6 +25,9 @@ import forgot_password from "./forgot_password.png";
 import ItemCafe1 from "./ItemCafe1.png";
 import ItemCafe2 from "./ItemCafe2.png";
 import user from "./userSon.png";
+import carousel1 from "./carousel1.jpeg";
+import carousel2 from "./carousel2.jpeg";
+import carousel3 from "./carousel3.jpeg";
 export const assets = {
   icon,
   iconDown,
@@ -52,5 +55,8 @@ export const assets = {
   forgot_password,
   ItemCafe1,
   ItemCafe2,
-  user
+  user,
+  carousel1,
+  carousel2,
+  carousel3
 };

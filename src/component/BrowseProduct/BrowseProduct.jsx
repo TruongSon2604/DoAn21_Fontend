@@ -74,15 +74,16 @@ function BrowseProduct() {
       </div>
       <div className="row row-browse-product" style={{ rowGap: "30px" }}>
         <div className="col-lg-4 col-md-6 col-xl-3">
+          <Link to="/preview-product">
           <article className="product-card">
             <div className="product-card__img-wrap">
-              <a href="">
+              <Link to="/preview-product">
                 <img
                   src={assets.product2_home}
                   className="product-card__thumb"
                   alt=""
                 />
-              </a>
+              </Link>
               <button className="like-btn" onClick={heartClick}>
                 <img
                   src={isHeart ? assets.Heart_pink : assets.iconHeart}
@@ -96,7 +97,187 @@ function BrowseProduct() {
                 Coffee Beans - Espresso Arabica and Robusta Beans
               </h3>
             </a>
-            <p className="product-card__branch">Lavazza</p>
+            <div className="product-card__status">
+              <p className="product-card__weigh">Weigh:500g</p>
+              <p className="product-card__stock">Stock:199</p>
+            </div>
+            <p className="product-card__branch">Lavazza</p>      
+            <div className="product-card__row">
+              <span className="product-card__price">$47.00</span>
+              <img src={assets.Star1} alt="" className="product-card__star" />
+              <span className="product-card__score">4.3</span>
+            </div>
+          </article>
+          </Link>
+        </div>
+        <div className="col-lg-4 col-md-6 col-xl-3">
+        <article className="product-card">
+            <div className="product-card__img-wrap">
+              <Link to="/preview-product">
+                <img
+                  src={assets.product2_home}
+                  className="product-card__thumb"
+                  alt=""
+                />
+              </Link>
+              <button className="like-btn" onClick={heartClick}>
+                <img
+                  src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                  alt=""
+                  className="like-btn__icon"
+                />
+              </button>
+            </div>
+            <a href="">
+              <h3 className="product-card__title">
+                Coffee Beans - Espresso Arabica and Robusta Beans
+              </h3>
+            </a>
+            <div className="product-card__status">
+              <p className="product-card__weigh">Weigh:500g</p>
+              <p className="product-card__stock">Stock:199</p>
+            </div>
+            <p className="product-card__branch">Lavazza</p>      
+            <div className="product-card__row">
+              <span className="product-card__price">$47.00</span>
+              <img src={assets.Star1} alt="" className="product-card__star" />
+              <span className="product-card__score">4.3</span>
+            </div>
+          </article>
+        </div>
+        <div className="col-lg-4 col-md-6 col-xl-3">
+        <article className="product-card">
+            <div className="product-card__img-wrap">
+              <Link to="/preview-product">
+                <img
+                  src={assets.product2_home}
+                  className="product-card__thumb"
+                  alt=""
+                />
+              </Link>
+              <button className="like-btn" onClick={heartClick}>
+                <img
+                  src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                  alt=""
+                  className="like-btn__icon"
+                />
+              </button>
+            </div>
+            <a href="">
+              <h3 className="product-card__title">
+                Coffee Beans - Espresso Arabica and Robusta Beans
+              </h3>
+            </a>
+            <div className="product-card__status">
+              <p className="product-card__weigh">Weigh:500g</p>
+              <p className="product-card__stock">Stock:199</p>
+            </div>
+            <p className="product-card__branch">Lavazza</p>      
+            <div className="product-card__row">
+              <span className="product-card__price">$47.00</span>
+              <img src={assets.Star1} alt="" className="product-card__star" />
+              <span className="product-card__score">4.3</span>
+            </div>
+          </article>
+        </div>
+        <div className="col-lg-4 col-md-6 col-xl-3">
+        <article className="product-card">
+            <div className="product-card__img-wrap">
+              <Link to="/preview-product">
+                <img
+                  src={assets.product2_home}
+                  className="product-card__thumb"
+                  alt=""
+                />
+              </Link>
+              <button className="like-btn" onClick={heartClick}>
+                <img
+                  src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                  alt=""
+                  className="like-btn__icon"
+                />
+              </button>
+            </div>
+            <a href="">
+              <h3 className="product-card__title">
+                Coffee Beans - Espresso Arabica and Robusta Beans
+              </h3>
+            </a>
+            <div className="product-card__status">
+              <p className="product-card__weigh">Weigh:500g</p>
+              <p className="product-card__stock">Stock:199</p>
+            </div>
+            <p className="product-card__branch">Lavazza</p>      
+            <div className="product-card__row">
+              <span className="product-card__price">$47.00</span>
+              <img src={assets.Star1} alt="" className="product-card__star" />
+              <span className="product-card__score">4.3</span>
+            </div>
+          </article>
+        </div>
+        <div className="col-lg-4 col-md-6 col-xl-3">
+        <article className="product-card">
+            <div className="product-card__img-wrap">
+              <Link to="/preview-product">
+                <img
+                  src={assets.product2_home}
+                  className="product-card__thumb"
+                  alt=""
+                />
+              </Link>
+              <button className="like-btn" onClick={heartClick}>
+                <img
+                  src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                  alt=""
+                  className="like-btn__icon"
+                />
+              </button>
+            </div>
+            <a href="">
+              <h3 className="product-card__title">
+                Coffee Beans - Espresso Arabica and Robusta Beans
+              </h3>
+            </a>
+            <div className="product-card__status">
+              <p className="product-card__weigh">Weigh:500g</p>
+              <p className="product-card__stock">Stock:199</p>
+            </div>
+            <p className="product-card__branch">Lavazza</p>      
+            <div className="product-card__row">
+              <span className="product-card__price">$47.00</span>
+              <img src={assets.Star1} alt="" className="product-card__star" />
+              <span className="product-card__score">4.3</span>
+            </div>
+          </article>
+        </div>
+        <div className="col-lg-4 col-md-6 col-xl-3">
+        <article className="product-card">
+            <div className="product-card__img-wrap">
+              <Link to="/preview-product">
+                <img
+                  src={assets.product2_home}
+                  className="product-card__thumb"
+                  alt=""
+                />
+              </Link>
+              <button className="like-btn" onClick={heartClick}>
+                <img
+                  src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                  alt=""
+                  className="like-btn__icon"
+                />
+              </button>
+            </div>
+            <a href="">
+              <h3 className="product-card__title">
+                Coffee Beans - Espresso Arabica and Robusta Beans
+              </h3>
+            </a>
+            <div className="product-card__status">
+              <p className="product-card__weigh">Weigh:500g</p>
+              <p className="product-card__stock">Stock:199</p>
+            </div>
+            <p className="product-card__branch">Lavazza</p>      
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
               <img src={assets.Star1} alt="" className="product-card__star" />
@@ -107,15 +288,19 @@ function BrowseProduct() {
         <div className="col-lg-4 col-md-6 col-xl-3">
           <article className="product-card">
             <div className="product-card__img-wrap">
-              <a href="">
+              <Link to="/preview-product">
                 <img
                   src={assets.product2_home}
                   className="product-card__thumb"
                   alt=""
                 />
-              </a>
-              <button className="like-btn">
-                <img src={assets.iconHeart} alt="" className="like-btn__icon" />
+              </Link>
+              <button className="like-btn" onClick={heartClick}>
+                <img
+                  src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                  alt=""
+                  className="like-btn__icon"
+                />
               </button>
             </div>
             <a href="">
@@ -123,7 +308,11 @@ function BrowseProduct() {
                 Coffee Beans - Espresso Arabica and Robusta Beans
               </h3>
             </a>
-            <p className="product-card__branch">Lavazza</p>
+            <div className="product-card__status">
+              <p className="product-card__weigh">Weigh:500g</p>
+              <p className="product-card__stock">Stock:199</p>
+            </div>
+            <p className="product-card__branch">Lavazza</p>      
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
               <img src={assets.Star1} alt="" className="product-card__star" />
@@ -132,17 +321,21 @@ function BrowseProduct() {
           </article>
         </div>
         <div className="col-lg-4 col-md-6 col-xl-3">
-          <article className="product-card">
+        <article className="product-card">
             <div className="product-card__img-wrap">
-              <a href="">
+              <Link to="/preview-product">
                 <img
                   src={assets.product2_home}
                   className="product-card__thumb"
                   alt=""
                 />
-              </a>
-              <button className="like-btn">
-                <img src={assets.iconHeart} alt="" className="like-btn__icon" />
+              </Link>
+              <button className="like-btn" onClick={heartClick}>
+                <img
+                  src={isHeart ? assets.Heart_pink : assets.iconHeart}
+                  alt=""
+                  className="like-btn__icon"
+                />
               </button>
             </div>
             <a href="">
@@ -150,142 +343,11 @@ function BrowseProduct() {
                 Coffee Beans - Espresso Arabica and Robusta Beans
               </h3>
             </a>
-            <p className="product-card__branch">Lavazza</p>
-            <div className="product-card__row">
-              <span className="product-card__price">$47.00</span>
-              <img src={assets.Star1} alt="" className="product-card__star" />
-              <span className="product-card__score">4.3</span>
+            <div className="product-card__status">
+              <p className="product-card__weigh">Weigh:500g</p>
+              <p className="product-card__stock">Stock:199</p>
             </div>
-          </article>
-        </div>
-        <div className="col-lg-4 col-md-6 col-xl-3">
-          <article className="product-card">
-            <div className="product-card__img-wrap">
-              <a href="">
-                <img
-                  src={assets.product2_home}
-                  className="product-card__thumb"
-                  alt=""
-                />
-              </a>
-              <button className="like-btn">
-                <img src={assets.iconHeart} alt="" className="like-btn__icon" />
-              </button>
-            </div>
-            <a href="">
-              <h3 className="product-card__title">
-                Coffee Beans - Espresso Arabica and Robusta Beans
-              </h3>
-            </a>
-            <p className="product-card__branch">Lavazza</p>
-            <div className="product-card__row">
-              <span className="product-card__price">$47.00</span>
-              <img src={assets.Star1} alt="" className="product-card__star" />
-              <span className="product-card__score">4.3</span>
-            </div>
-          </article>
-        </div>
-        <div className="col-lg-4 col-md-6 col-xl-3">
-          <article className="product-card">
-            <div className="product-card__img-wrap">
-              <a href="">
-                <img
-                  src={assets.product2_home}
-                  className="product-card__thumb"
-                  alt=""
-                />
-              </a>
-              <button className="like-btn">
-                <img src={assets.iconHeart} alt="" className="like-btn__icon" />
-              </button>
-            </div>
-            <a href="">
-              <h3 className="product-card__title">
-                Coffee Beans - Espresso Arabica and Robusta Beans
-              </h3>
-            </a>
-            <p className="product-card__branch">Lavazza</p>
-            <div className="product-card__row">
-              <span className="product-card__price">$47.00</span>
-              <img src={assets.Star1} alt="" className="product-card__star" />
-              <span className="product-card__score">4.3</span>
-            </div>
-          </article>
-        </div>
-        <div className="col-lg-4 col-md-6 col-xl-3">
-          <article className="product-card">
-            <div className="product-card__img-wrap">
-              <a href="">
-                <img
-                  src={assets.product2_home}
-                  className="product-card__thumb"
-                  alt=""
-                />
-              </a>
-              <button className="like-btn">
-                <img src={assets.iconHeart} alt="" className="like-btn__icon" />
-              </button>
-            </div>
-            <a href="">
-              <h3 className="product-card__title">
-                Coffee Beans - Espresso Arabica and Robusta Beans
-              </h3>
-            </a>
-            <p className="product-card__branch">Lavazza</p>
-            <div className="product-card__row">
-              <span className="product-card__price">$47.00</span>
-              <img src={assets.Star1} alt="" className="product-card__star" />
-              <span className="product-card__score">4.3</span>
-            </div>
-          </article>
-        </div>
-        <div className="col-lg-4 col-md-6 col-xl-3">
-          <article className="product-card">
-            <div className="product-card__img-wrap">
-              <a href="">
-                <img
-                  src={assets.product2_home}
-                  className="product-card__thumb"
-                  alt=""
-                />
-              </a>
-              <button className="like-btn">
-                <img src={assets.iconHeart} alt="" className="like-btn__icon" />
-              </button>
-            </div>
-            <a href="">
-              <h3 className="product-card__title">
-                Coffee Beans - Espresso Arabica and Robusta Beans
-              </h3>
-            </a>
-            <p className="product-card__branch">Lavazza</p>
-            <div className="product-card__row">
-              <span className="product-card__price">$47.00</span>
-              <img src={assets.Star1} alt="" className="product-card__star" />
-              <span className="product-card__score">4.3</span>
-            </div>
-          </article>
-        </div>
-        <div className="col-lg-4 col-md-6 col-xl-3">
-          <article className="product-card">
-            <div className="product-card__img-wrap">
-              <a href="">
-                <img
-                  src={assets.product2_home}
-                  className="product-card__thumb"
-                  alt=""
-                />
-              </a>
-              <button className="like-btn">
-                <img src={assets.iconHeart} alt="" className="like-btn__icon" />
-              </button>
-            </div>
-            <a href="">
-              <h3 className="product-card__title">
-                Coffee Beans - Espresso Arabica and Robusta Beans
-              </h3>
-            </a>
-            <p className="product-card__branch">Lavazza</p>
+            <p className="product-card__branch">Lavazza</p>      
             <div className="product-card__row">
               <span className="product-card__price">$47.00</span>
               <img src={assets.Star1} alt="" className="product-card__star" />

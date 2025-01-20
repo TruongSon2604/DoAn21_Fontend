@@ -7,10 +7,6 @@ html {
   --top-act-group-bg-color: #fff;
   --top-act-group-shadow: rgba(237, 237, 246, 0.2);
   --top-act-group-separate: #ededf6;
-  @include mixin.breakpoint(lg) {
-    --header-bg-color: #fff;
-  }
-
   --drop-down-bg-color: #fff;
   --drop-down-shadow-color: rgba(200, 200, 200, 0.4);
   --top-menu-border-color: #d2d1d6;
@@ -20,34 +16,39 @@ html {
   --cate-item-bg: #eee;
   --cate-item-thumb-bg: #fff;
   --cate-item-title-color: #000;
+
+    //filter
+    --filter-btn-color: #6c6c72;
+    --filter-bg-color: #fff;
+    --filter-line:rgb(140, 135, 135);
+    //
+    --product-card-bg: #fff;
+    --product-card-shadow: rgba(237, 237, 246, 0.2);
+    //like btn
+    --btn-like-bg: #fff;
+  
+    // background div filter
+    --filter-bg:#c6c5c5;
+    --span-filter:#fff;
+  
+    //signup
+    --right-bg:#fff;
+    //
+    --bg-breadscrum:#fff;
+    --bg-breadscrum-shadow:#f6f6f6;
+    ---bread-color:#9e9da8;
+    --footer-bg:#eee;
+  
+    //bg-product-detail
+    --bg-product-detail:#ffffff;
+  
+    //product detail
+    --color-heading: #53382c;
+    
   @include mixin.breakpoint(sm) {
     --cate-item-bg: #fff;
   }
-  //filter
-  --filter-btn-color: #6c6c72;
-  --filter-bg-color: #fff;
-  --filter-line:rgb(140, 135, 135);
-  //
-  --product-card-bg: #fff;
-  --product-card-shadow: rgba(237, 237, 246, 0.2);
-  //like btn
-  --btn-like-bg: #fff;
-
-  // background div filter
-  --filter-bg:#c6c5c5;
-  --span-filter:#fff;
-
-  //signup
-  --right-bg:#fff;
-  //
-  --bg-breadscrum:#fff;
-  --bg-breadscrum-shadow:#f6f6f6;
-  ---bread-color:#9e9da8;
-  --footer-bg:#eee;
-
-  //bg-product-detail
-  --bg-product-detail:#ffffff;
-
-  //product detail
-  --color-heading: #53382c;
+  @include mixin.breakpoint(lg) {
+    --header-bg-color: #fff;
+  }
 }

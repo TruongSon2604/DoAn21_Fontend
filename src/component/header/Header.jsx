@@ -513,7 +513,7 @@ function Header() {
                 <FaSearch className="top-act__icon" />
               </button>
             </div>
-            {/* <div className="top-act__group">
+            <div className="top-act__group">
               <button className="top-act__btn">
                 <FaHeart className="top-act__icon" />
                 <span className="top-act__title">03</span>
@@ -526,15 +526,15 @@ function Header() {
             </div>
             <div className="top-act__user">
               <img src={assets.avatar} alt="" className="top-act__avatar" />
-            </div> */}
-            <div className="top-act__login">
+            </div>
+            {/* <div className="top-act__login">
               <Link to="/sign-in">
                 <button className="btn btn-text">Sign in</button>
               </Link>
               <Link to="/sign-up">
                 <button className="btn btn-warning">Sign Up</button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

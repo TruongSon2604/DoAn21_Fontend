@@ -16,15 +16,15 @@
         flex-shrink: 0;
     }
     &__item img{
+        display: flex;
+        align-items: center;
+        object-fit: contain;
         width: 92%;
         @include minxinF.breakpoint(lg)
         {
             width: 82%;
             margin-left: 5rem;
         }
-        display: flex;
-        align-items: center;
-        object-fit: contain;
     }
     &__thumbs{
         display: flex;
@@ -54,12 +54,11 @@
 }
 
 .prod-info{
+    padding: 60px;
     @include minxinF.breakpoint(xxl)
     {
         padding: 20px;
     }
-
-    padding: 60px;
     &__heading{
         font-size: 2.6rem;
         font-weight: 700;
