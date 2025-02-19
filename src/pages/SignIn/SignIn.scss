@@ -141,3 +141,19 @@
         
     }
 }
+.messagelogin{
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 15px;
+    text-align: center;
+    &-success{
+        border: 1px solid #cc6f27;
+        background: rgba(240, 29, 29, 0.5);
+    }
+}
+.messagelogin.displaynone{
+    display: none;
+}

@@ -29,6 +29,7 @@
   align-items: center;
   @include minxinF.breakpoint(lg) {
     justify-content: space-between;
+    // justify-content: space-around;
     align-items: center;
   }
   &__more {
@@ -189,6 +190,7 @@
 }
 .top-act {
   @extend %flexItemsCenter;
+  // flex: 1;
 
   &__icon--single {
     @include minxinF.breakpoint(lg) {
@@ -203,6 +205,7 @@
   }
   &__group {
     display: flex;
+    flex: 1;
     align-items: center;
     min-width: 50px;
     height: 50px;
@@ -391,3 +394,102 @@ div.menu-column {
   display: inline-block;
   height: 100%;
 }
+
+
+/* Header.scss */
+
+.top-act__user {
+  position: relative;
+  display: inline-block;
+}
+
+.top-act__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.top-act__avatar:hover {
+  opacity: 0.8;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  position: absolute;
+  top: 50px;  /* Position it below the avatar */
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-item svg {
+  margin-right: 8px;
+}
+//
+/* From Uiverse.io by alexruix */ 
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  width: 250px;
+ }
+ 
+ .input {
+  width: 100%;
+  // width: 250px;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #bcbcbe;
+  color: #0d0c22;
+  transition: .3s ease;
+  display: inline-block;
+ }
+ 
+ .input::placeholder {
+  color: #404041;
+ }
+ 
+ .input:focus, input:hover {
+  outline: none;
+  border-color: rgba(234,76,137,0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+ }
+ 
+ .icon {
+  position: absolute;
+  left: 1rem;
+  fill: #69699e;
+  width: 1.5rem;
+  height: 1.5rem;
+ }
+ 
+ 

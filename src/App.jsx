@@ -16,6 +16,9 @@ import ForgotPassword from "./pages/ResetPassword/ForgotPassword";
 import CreatePassword from "./pages/ResetPassword/CreatePassword";
 import Grocery from "./pages/Grocery/Grocery";
 import PreviewProduct from "./pages/PreviewProduct/PreviewProduct";
+import AuthCallback from "./pages/AuthCallback";
+import Cart from "./pages/Cart/Cart";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
   return (
@@ -25,10 +28,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/grocery" element={<Grocery />} />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/create-password" element={<CreatePassword />} />
           <Route path="/preview-product" element={<PreviewProduct />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/check-out" element={<Checkout />} />
         </Routes>
       </div>
     </>

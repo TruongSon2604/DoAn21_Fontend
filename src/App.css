@@ -1,0 +1,23 @@
+
+/* Làm thanh cuộn nhỏ */
+::-webkit-scrollbar {
+    width: 6px; /* Độ rộng thanh cuộn dọc */
+    height: 6px; /* Độ rộng thanh cuộn ngang */
+}
+
+/* Màu nền thanh cuộn */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+}
+
+/* Thanh cuộn chính */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+
+/* Hover vào thanh cuộn */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

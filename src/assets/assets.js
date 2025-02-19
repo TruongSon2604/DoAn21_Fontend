@@ -28,6 +28,12 @@ import user from "./userSon.png";
 import carousel1 from "./carousel1.jpeg";
 import carousel2 from "./carousel2.jpeg";
 import carousel3 from "./carousel3.jpeg";
+import Minus from "./Minus.png";
+import Plus from "./Plus.png";
+import save from "./save.png";
+import Delete from "./Delete.png";
+import gift from "./gift.png";
+import arrowleft from "./arrowleft.png";
 export const assets = {
   icon,
   iconDown,
@@ -58,5 +64,11 @@ export const assets = {
   user,
   carousel1,
   carousel2,
-  carousel3
+  carousel3,
+  Minus,
+  Plus,
+  save,
+  Delete,
+  gift,
+  arrowleft
 };
