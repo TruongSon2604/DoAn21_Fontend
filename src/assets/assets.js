@@ -34,6 +34,8 @@ import save from "./save.png";
 import Delete from "./Delete.png";
 import gift from "./gift.png";
 import arrowleft from "./arrowleft.png";
+import profile_backround from "./profile_backround.png";
+import IconPrimary from "./IconPrimary.png";
 export const assets = {
   icon,
   iconDown,
@@ -70,5 +72,7 @@ export const assets = {
   save,
   Delete,
   gift,
-  arrowleft
+  arrowleft,
+  profile_backround,
+  IconPrimary
 };

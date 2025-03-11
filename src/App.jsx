@@ -19,6 +19,12 @@ import PreviewProduct from "./pages/PreviewProduct/PreviewProduct";
 import AuthCallback from "./pages/AuthCallback";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
+import Favourite from "./pages/Favourite/Favourite";
+import Profile from "./pages/Profile/Profile";
+import { IndexAdmin } from "./pages/Admin/IndexAdmin";
+import { AdminProduct } from "./pages/Admin/AdminProduct";
+import { AdminCategory } from "./pages/Admin/pageAdmin/AdminCategory";
+import { AdminOrder } from "./pages/Admin/pageAdmin/AdminOrder";
 
 function App() {
   return (
@@ -32,9 +38,16 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/create-password" element={<CreatePassword />} />
-          <Route path="/preview-product" element={<PreviewProduct />} />
+          <Route path="/preview-product/:id" element={<PreviewProduct />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/check-out" element={<Checkout />} />
+          <Route path="/favourite" element={<Favourite />} />
+          <Route path="/profile" element={<Profile />} />
+          {/* /admin/ */}
+          <Route path="/admin" element={<IndexAdmin />}/>
+          <Route path="/admin/product" element={<AdminProduct />}/>
+          <Route path="/admin/category" element={<AdminCategory />}/>
+          <Route path="/admin/order" element={<AdminOrder />}/>
         </Routes>
       </div>
     </>

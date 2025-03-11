@@ -10,6 +10,8 @@ import TabProductDetail from "../../component/TabProductDetail/TabProductDetail"
 import ScrollToTop from "../../component/ScrollToTop/ScrollToTop";
 // import ModalPreview from "../../component/Modal/ModalPreview";
 
+
+
 const PreviewProduct = () => {
   return (
     <>

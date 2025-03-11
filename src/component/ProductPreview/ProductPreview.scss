@@ -215,3 +215,44 @@
     border-radius: 0 .375em .375em 0;
   }
   
+
+  .prod-info__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+  }
+  
+  .prod-info__quantity-btn {
+    background-color: #f1f1f1; /* Màu nền của nút */
+    border: 1px solid #ccc; /* Đường viền xung quanh nút */
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .prod-info__quantity-btn:hover {
+    background-color: #ff8a00; /* Màu nền khi hover */
+    color: #fff;
+    transform: scale(1.1); /* Phóng to nút khi hover */
+  }
+  
+  .prod-info__quantity-value {
+    font-size: 18px;
+    font-weight: bold;
+    width: 40px; /* Chiều rộng cố định cho số lượng */
+    text-align: center;
+  }
+  
+  .prod-info__quantity-btn:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+  
+  .prod-info__quantity-btn:active {
+    background-color: #ff6a00; /* Màu nền khi nhấn */
+  }
+  

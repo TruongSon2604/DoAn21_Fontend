@@ -492,4 +492,34 @@ div.menu-column {
   height: 1.5rem;
  }
  
- 
+ //
+ .top-act__btn2 {
+  position: relative; /* Để badge nằm đúng vị trí */
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.top-act__icon2 {
+  font-size: 24px; /* Kích thước icon */
+  color: #333; /* Màu icon */
+}
+
+.top-act__title2 {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red; /* Màu nền badge */
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

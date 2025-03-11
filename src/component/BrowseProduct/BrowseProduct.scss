@@ -28,7 +28,7 @@
   &__thumb {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover !important;
   }
   &__img-wrap {
     width: 100%;
@@ -38,6 +38,7 @@
   &__title {
     margin-top: 15px;
     font-weight: 700 !important;
+    height: 50px;
   }
   &__title,
   &__price,
@@ -222,4 +223,9 @@ input#vol {
   display: block;
   font-family: cursive;
   font-size: larger;
+}
+.paginate_product{
+display: flex;
+justify-content: center;
+align-items: center;
 }
