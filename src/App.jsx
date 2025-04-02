@@ -25,6 +25,18 @@ import { IndexAdmin } from "./pages/Admin/IndexAdmin";
 import { AdminProduct } from "./pages/Admin/AdminProduct";
 import { AdminCategory } from "./pages/Admin/pageAdmin/AdminCategory";
 import { AdminOrder } from "./pages/Admin/pageAdmin/AdminOrder";
+import { AdminCoupon } from "./pages/Admin/pageAdmin/AdminCoupon";
+import NotFound from "./pages/NotFound";
+import FeatureProduct from "./pages/FeatureProduct/FeatureProduct";
+import Voucher from "./pages/Voucher/Voucher";
+import ListVoucher from "./pages/Profile/ListVoucher";
+import NewsPage from "./pages/News/NewsPage";
+import NewsPageDetails from "./pages/News/NewsPageDetails";
+import { AdminPost } from "./pages/Admin/pageAdmin/AdminPost";
+// import Dashboard from "./pages/Admin/pageAdmin/AdminDashboard";
+import AdminDashboard from "./pages/Admin/pageAdmin/AdminDashboard";
+import { Dashboard } from "@mui/icons-material";
+// import { Voucher } from "./pages/Voucher/Voucher";
 
 function App() {
   return (
@@ -43,11 +55,20 @@ function App() {
           <Route path="/check-out" element={<Checkout />} />
           <Route path="/favourite" element={<Favourite />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/featureProduct" element={<FeatureProduct />} />
+          <Route path="/voucher" element={<Voucher />} />
+          <Route path="/list-voucher" element={<ListVoucher />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:id" element={<NewsPageDetails />} />
           {/* /admin/ */}
-          <Route path="/admin" element={<IndexAdmin />}/>
-          <Route path="/admin/product" element={<AdminProduct />}/>
-          <Route path="/admin/category" element={<AdminCategory />}/>
-          <Route path="/admin/order" element={<AdminOrder />}/>
+          <Route path="/admin" element={<IndexAdmin />} />
+          <Route path="/admin/product" element={<AdminProduct />} />
+          <Route path="/admin/category" element={<AdminCategory />} />
+          <Route path="/admin/order" element={<AdminOrder />} />
+          <Route path="/admin/coupon" element={<AdminCoupon />} />
+          <Route path="/admin/post" element={<AdminPost />} />
+          {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>

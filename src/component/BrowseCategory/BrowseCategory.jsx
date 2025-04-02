@@ -11,12 +11,7 @@ const BrowseCategory = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      if (!token) {
-        console.error("Không có token");
-        return;
-      }
-
-      const response = await apiGet("/categories", token);
+      const response = await apiGet("/categories");
       if (response.success) {
         // console.log("Danh mục:", response.data.data.data);
         setCategories(response.data.data);

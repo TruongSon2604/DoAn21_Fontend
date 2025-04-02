@@ -16,6 +16,7 @@ import { apiGetWithToken } from "../../Service/apiService";
 import { Button } from "react-bootstrap";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModalBuyedUser from "../../component/Modal/ModalBuyedUser";
+import ModalCancelOrder from "../../component/Modal/ModalCancelOrder";
 
 function Profile() {
   const [orders, setOrders] = useState([]);
@@ -36,7 +37,7 @@ function Profile() {
   }, []);
   const columns = [
     { field: "id", headerName: "ID", width: 70, flex: 1 },
-    { field: "order_number", headerName: "Order Number", width: 250, flex: 3 },
+    { field: "created_at", headerName: "Order Created", width: 250, flex: 3 },
     {
       field: "status",
       headerName: "Status Order",
@@ -56,9 +57,17 @@ function Profile() {
             styles.color = "black";
             styles.backgroundColor = "yellow";
             break;
-          case "paid":
+          case "in_progress":
+            styles.color = "black";
+            styles.backgroundColor = "orange";
+            break;
+          case "completed":
             styles.color = "white";
             styles.backgroundColor = "green";
+            break;
+          case "canceled":
+            styles.color = "white";
+            styles.backgroundColor = "red";
             break;
           default:
             styles.color = "black";
@@ -111,20 +120,24 @@ function Profile() {
     },
     {
       field: "actions",
-      headerName: "Actions",
+      headerName: "View",
       width: 150,
       flex: 2,
       sortable: false,
       renderCell: (params) => {
         return (
-          <ModalBuyedUser id={params.row.id} />
-          // <Button
-          //   className="success"
-          //   onClick={() => handleViewDetails(params.row)}
-          // >
-          //   Xem chi tiết
-          // </Button>
+          <ModalBuyedUser id={params.row.id} created_at={params.row.ngaydat} />
         );
+      },
+    },
+    {
+      field: "cancel",
+      headerName: "Cancel Order",
+      width: 150,
+      flex: 2,
+      sortable: false,
+      renderCell: (params) => {
+        return <ModalCancelOrder id={params.row.id} />;
       },
     },
   ];
@@ -163,8 +176,11 @@ function Profile() {
                       </Link>
                     </li>
                     <li>
-                      <Link className="profile__menu-linkk">
-                        <FaAddressCard /> Addresses
+                      <Link
+                        className="profile__menu-linkk"
+                        to={"/list-voucher"}
+                      >
+                        <FaAddressCard /> List voucher
                       </Link>
                     </li>
                     <li>
@@ -272,116 +288,6 @@ function Profile() {
                       />
                     </Paper>
                   </div>
-                </div>
-
-                <h2 className="profile__info-heading">List Buyed</h2>
-                <p className="profile__info-desc">2 items - Primary</p>
-                <div className="profile__info-listItem">
-                  <article className="cart-item profile-item">
-                    <Link to="">
-                      <img
-                        src={assets.ItemCafe1}
-                        alt=""
-                        className="cart-item__thumb profile__info-thumb"
-                      />
-                    </Link>
-                    <div className="cart-item__content">
-                      <div className="cart-item__content-left profile__info-content-left">
-                        <h3 className="cart-item__title">
-                          <Link to="">
-                            Coffee Beans - Espresso Arabica and Robusta Beans
-                          </Link>
-                        </h3>
-                        <p className="cart-item__price-wrap">
-                          $47.00 |{" "}
-                          <span className="cart-item__status">In stock</span>
-                        </p>
-                        <button className="btn btn-warning addtocart">
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-
-                  {/* cart item  */}
-                  <article className="cart-item profile-item">
-                    <Link to="">
-                      <img
-                        src={assets.ItemCafe1}
-                        alt=""
-                        className="cart-item__thumb profile__info-thumb"
-                      />
-                    </Link>
-                    <div className="cart-item__content">
-                      <div className="cart-item__content-left profile__info-content-left">
-                        <h3 className="cart-item__title">
-                          <Link to="">
-                            Coffee Beans - Espresso Arabica and Robusta Beans
-                          </Link>
-                        </h3>
-                        <p className="cart-item__price-wrap">
-                          $47.00 |{" "}
-                          <span className="cart-item__status">In stock</span>
-                        </p>
-                        <button className="btn btn-warning addtocart">
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-
-                  {/* cart item  */}
-                  <article className="cart-item profile-item">
-                    <Link to="">
-                      <img
-                        src={assets.ItemCafe1}
-                        alt=""
-                        className="cart-item__thumb profile__info-thumb"
-                      />
-                    </Link>
-                    <div className="cart-item__content">
-                      <div className="cart-item__content-left profile__info-content-left">
-                        <h3 className="cart-item__title">
-                          <Link to="">
-                            Coffee Beans - Espresso Arabica and Robusta Beans
-                          </Link>
-                        </h3>
-                        <p className="cart-item__price-wrap">
-                          $47.00 |{" "}
-                          <span className="cart-item__status">In stock</span>
-                        </p>
-                        <button className="btn btn-warning addtocart">
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-
-                  <article className="cart-item profile-item">
-                    <Link to="">
-                      <img
-                        src={assets.ItemCafe1}
-                        alt=""
-                        className="cart-item__thumb profile__info-thumb"
-                      />
-                    </Link>
-                    <div className="cart-item__content">
-                      <div className="cart-item__content-left profile__info-content-left">
-                        <h3 className="cart-item__title">
-                          <Link to="">
-                            Coffee Beans - Espresso Arabica and Robusta Beans
-                          </Link>
-                        </h3>
-                        <p className="cart-item__price-wrap">
-                          $47.00 |{" "}
-                          <span className="cart-item__status">In stock</span>
-                        </p>
-                        <button className="btn btn-warning addtocart">
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </article>
                 </div>
               </div>
             </div>

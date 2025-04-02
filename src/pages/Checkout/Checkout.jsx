@@ -60,13 +60,18 @@ function Checkout() {
 
   const handleCouponChange = (e) => {
     const selectedId = Number(e.target.value);
-
-    const discount22 =
-      coupon.find((cp) => cp.id === selectedId)?.coupon.discount_value || 0;
-    const coupon22 = (total * discount22) / 100;
+    const selectedCoupon = coupon.find((cp) => cp.coupon_id === selectedId);
+    const discountValue = selectedCoupon ? selectedCoupon.discount_value : 0;
+    const discountType = selectedCoupon ? selectedCoupon.discount_type : 0;
+    let coupon22 = 0;
+    if (discountType === "percentage") {
+      coupon22 = (total * discountValue) / 100;
+    } else {
+      coupon22 = discountValue;
+    }
     setCoupon2(coupon22);
+    // alert(selectedId);
     setSelectedCouponId(selectedId);
-    alert(coupon22);
   };
 
   useEffect(() => {
@@ -79,8 +84,10 @@ function Checkout() {
 
     const getCoupon = async () => {
       const response = await apiGetWithToken("/getUserWithCoupon", token);
+      // console.log("respon", response.data.data);
       if (response.success) {
         setCoupon(response.data.data);
+        console.log("day la coupon", coupon);
       }
     };
 
@@ -106,9 +113,9 @@ function Checkout() {
   const handleCheckout = async () => {
     const selectedAddress =
       address.find((ad) => ad.id === selectedAddressId) || null;
-    const selectedCoupon = coupon.find(
-      (cp) => Number(cp.id) === selectedCouponId
-    );
+    // const selectedCoupon = coupon.find(
+    //   (cp) => Number(cp.id) === selectedCouponId
+    // );
 
     if (selectedAddress == null) {
       Swal.fire({
@@ -120,7 +127,7 @@ function Checkout() {
 
     const requestData = {
       address_id: selectedAddress ? selectedAddress.id : null,
-      coupon_id: selectedCoupon ? selectedCoupon.id : null,
+      coupon_id: selectedCouponId ? selectedCouponId : null,
       cartItems: ListProduct.map((product) => ({
         product_id: product.id,
         quantity: product.quantity,
@@ -129,14 +136,17 @@ function Checkout() {
 
     try {
       if (selectedValue === "value-1") {
+        console.log("id coupon", requestData.coupon_id);
         const response = await apiPostWithToken(
           "/createOrder",
           requestData,
           token
         );
         if (response.success) {
-          console.log(response);
-          alert("Đặt hàng thành công!");
+          Swal.fire({
+            title: "Đặt hàng thành công!",
+            icon: "success",
+          });
           navigate("/profile");
         } else {
           alert("Đặt hàng thất bại!");
@@ -293,8 +303,8 @@ function Checkout() {
                   <option value="">Chọn mã giảm giá</option>
                   {coupon &&
                     coupon.map((cp) => (
-                      <option key={cp.id} value={cp.id}>
-                        {cp.coupon.code}
+                      <option key={cp.id} value={cp.coupon_id}>
+                        {cp.code}
                       </option>
                     ))}
                 </select>
@@ -382,19 +392,30 @@ function Checkout() {
 
                 <div className="cart-info__row">
                   <span>Price (Total)</span>
-                  <span className="cart-info__number">{total} VNĐ</span>
+                  <span className="cart-info__number">
+                    {" "}
+                    {new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(total)}
+                  </span>
                 </div>
 
                 <div className="cart-info__row">
                   <span>Coupon Discount</span>
                   <span className="cart-info__number">
-                    {coupon2 === 0 ? "0" : `- ${coupon2}`} VNĐ
+                    {coupon2 === 0
+                      ? "0"
+                      : `- ${new Intl.NumberFormat("vi-VN", {
+                          style: "currency",
+                          currency: "VND",
+                        }).format(coupon2)}`}
                   </span>
                 </div>
 
                 <div className="cart-info__row">
                   <span>Shipping</span>
-                  <span className="cart-info__number">25000 VNĐ</span>
+                  <span className="cart-info__number">25.000 đ</span>
                 </div>
 
                 <div className="cart-info__seperate"></div>

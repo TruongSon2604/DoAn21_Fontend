@@ -1,0 +1,37 @@
+.news-detail {
+  &__tittle {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #53382c !important;
+    text-transform: uppercase;
+    padding-right: 20%;
+    display: block;
+  }
+  &__date {
+    font-size: 13px;
+    line-height: 21px;
+    color: #888888;
+    margin-bottom: 10px;
+  }
+
+  &__img{
+    width: 80%;
+    margin: 20px auto;
+    object-fit: cover;
+
+    // margin: 20px 0px;
+  }
+  &__desc{
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  &__tags{
+    background: #b1b1b2;
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-top: 70px;
+    color:#53382c ;
+  }
+}

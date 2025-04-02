@@ -1,0 +1,58 @@
+$background-color: #F4F6F7;
+
+.admin-container {
+    display: flex;
+    height: 100vh;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: $background-color;
+    padding: 20px;
+}
+
+.dashboard {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    margin-top: 15px;
+}
+
+.admin-container {
+    display: flex;
+    font-family: "Arial", sans-serif;
+  
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+  
+    .dashboard {
+      h1 {
+        font-size: 28px; // Tăng kích thước tiêu đề
+        font-weight: bold;
+      }
+  
+      p {
+        font-size: 18px; // Tăng kích thước đoạn mô tả
+      }
+  
+      .MuiDataGrid-root {
+        font-size: 16px; // Tăng font chữ trong DataGrid
+      }
+  
+      .MuiDataGrid-columnHeaderTitle {
+        font-size: 18px !important; // Chữ trong tiêu đề cột lớn hơn
+        font-weight: bold;
+      }
+  
+      .MuiDataGrid-cell {
+        font-size: 16px !important; // Kích thước chữ trong ô dữ liệu
+      }
+    }
+  }
+  

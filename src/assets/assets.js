@@ -36,6 +36,10 @@ import gift from "./gift.png";
 import arrowleft from "./arrowleft.png";
 import profile_backround from "./profile_backround.png";
 import IconPrimary from "./IconPrimary.png";
+import voucher from "./voucher.jpg";
+import news1 from "./new1.png";
+import social_news from "./social_news.jpg"
+
 export const assets = {
   icon,
   iconDown,
@@ -74,5 +78,8 @@ export const assets = {
   gift,
   arrowleft,
   profile_backround,
-  IconPrimary
+  IconPrimary,
+  voucher,
+  news1,
+  social_news,
 };

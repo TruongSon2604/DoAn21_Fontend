@@ -219,9 +219,10 @@
   .prod-info__quantity {
     display: flex;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     gap: 10px;
     font-size: 16px;
+    margin-top: 15px;
   }
   
   .prod-info__quantity-btn {
@@ -245,6 +246,10 @@
     font-weight: bold;
     width: 40px; /* Chiều rộng cố định cho số lượng */
     text-align: center;
+    padding: 5px;
+    background-color: rgb(119, 90, 54);
+    border-radius: 20px;
+    color: white;
   }
   
   .prod-info__quantity-btn:disabled {

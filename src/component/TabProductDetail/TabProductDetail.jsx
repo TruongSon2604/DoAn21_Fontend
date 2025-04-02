@@ -5,10 +5,22 @@ import { assets } from "../../assets/assets";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { apiGet } from "../../Service/apiService";
+import { apiGet, apiPost, apiPostWithToken } from "../../Service/apiService";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import ReactRating from "react-rating";
+import { FaStar } from "react-icons/fa";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function TabProductDetail() {
+  const { id } = useParams();
+  const [message, setMessage] = useState("");
+  const [newCommentId, setNewCommentId] = useState(null);
+
+  // const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
+  const [rating, setRating] = useState(3);
+  const [start, setStart] = useState(5);
   var settings = {
     dots: true,
     infinite: true,
@@ -20,10 +32,22 @@ function TabProductDetail() {
     pauseOnHover: true,
   };
 
+  var settings2 = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+  };
+
   const [isHeart, setIsHeart] = useState(false);
   const heartClick = () => {
     setIsHeart((value) => !value);
   };
+  const [comments, setComments] = useState([]);
 
   const [activeKey, setActiveKey] = useState("link-1");
 
@@ -31,6 +55,60 @@ function TabProductDetail() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
+
+  const getCommentsByProductId = async () => {
+    console.log("idparam:", id);
+    const response = await apiGet(`/getCommentByProductId/${id}`);
+    if (response.success) {
+      console.log("comments:", response.data.data.data);
+      setComments(response.data.data.data);
+    } else {
+      console.error("Lỗi lấy binh luan:", response.message);
+    }
+  };
+
+  const sendMessage = async () => {
+    try {
+      const token = localStorage.getItem("access_token");
+      const user = JSON.parse(localStorage.getItem("user"));
+      const userId = user?.id || null;
+
+      const dt = {
+        user_id: userId,
+        product_id: id,
+        content: message,
+        rating: start,
+      };
+
+      const response = await apiPostWithToken(`/comment`, dt, token);
+
+      if (response.success) {
+        alert(response.data.data.id);
+        // console.log("day 1222 comment:", response.data.data.id);
+        setNewCommentId(response.data.data.id);
+        // alert(n)
+
+        Swal.fire({
+          title: "Bạn đã đánh giá sản phẩm thành công!",
+          icon: "success",
+        });
+        getCommentsByProductId();
+      } else if (response.status === 422) {
+        if (response.error.errors?.product_id) {
+          Swal.fire({
+            title: "Bạn chưa mua sản phẩm này nền chưa thể đánh giá!",
+            icon: "warning",
+          });
+        }
+      } else {
+        alert(`Comment product ${id} failed: ${response.message}`);
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await apiGet("/getProductLimit");
@@ -45,6 +123,7 @@ function TabProductDetail() {
     };
 
     fetchProducts();
+    getCommentsByProductId();
   }, []);
 
   const renderContent = () => {
@@ -63,7 +142,6 @@ function TabProductDetail() {
                       <Link to={`/preview-product/${product.id}`}>
                         <article className="product-card">
                           <div className="product-card__img-wrap">
-                          
                             <img
                               src={`${API_URL_LOCAL}/${product.image}`}
                               className="product-card__thumb"
@@ -91,7 +169,10 @@ function TabProductDetail() {
                           <p className="product-card__branch">Lavazza</p>
                           <div className="product-card__row">
                             <span className="product-card__price">
-                              {product.discounted_price} VNĐ
+                              {new Intl.NumberFormat("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              }).format(product.discounted_price)}
                             </span>
                             <img
                               src={assets.Star1}
@@ -104,124 +185,6 @@ function TabProductDetail() {
                       </Link>
                     </div>
                   ))}
-
-                {/* <div className="col-lg-4 col-md-6 col-xl-3">
-                  <article className="product-card">
-                    <div className="product-card__img-wrap">
-                      <a href="">
-                        <img
-                          src={assets.product2_home}
-                          className="product-card__thumb"
-                          alt=""
-                        />
-                      </a>
-                      <button className="like-btn" onClick={heartClick}>
-                        <img
-                          src={isHeart ? assets.Heart_pink : assets.iconHeart}
-                          alt=""
-                          className="like-btn__icon"
-                        />
-                      </button>
-                    </div>
-                    <a href="">
-                      <h3 className="product-card__title">
-                        Coffee Beans - Espresso Arabica and Robusta Beans 11
-                      </h3>
-                    </a>
-                    <div className="product-card__status">
-                      <p className="product-card__weigh">Weigh:500g</p>
-                      <p className="product-card__stock">Stock:199</p>
-                    </div>
-                    <p className="product-card__branch">Lavazza</p>
-                    <div className="product-card__row">
-                      <span className="product-card__price">$47.00</span>
-                      <img
-                        src={assets.Star1}
-                        alt=""
-                        className="product-card__star"
-                      />
-                      <span className="product-card__score">4.3</span>
-                    </div>
-                  </article>
-                </div>
-                <div className="col-lg-4 col-md-6 col-xl-3">
-                  <article className="product-card">
-                    <div className="product-card__img-wrap">
-                      <a href="">
-                        <img
-                          src={assets.product2_home}
-                          className="product-card__thumb"
-                          alt=""
-                        />
-                      </a>
-                      <button className="like-btn" onClick={heartClick}>
-                        <img
-                          src={isHeart ? assets.Heart_pink : assets.iconHeart}
-                          alt=""
-                          className="like-btn__icon"
-                        />
-                      </button>
-                    </div>
-                    <a href="">
-                      <h3 className="product-card__title">
-                        Coffee Beans - Espresso Arabica and Robusta Beans 11
-                      </h3>
-                    </a>
-                    <div className="product-card__status">
-                      <p className="product-card__weigh">Weigh:500g</p>
-                      <p className="product-card__stock">Stock:199</p>
-                    </div>
-                    <p className="product-card__branch">Lavazza</p>
-                    <div className="product-card__row">
-                      <span className="product-card__price">$47.00</span>
-                      <img
-                        src={assets.Star1}
-                        alt=""
-                        className="product-card__star"
-                      />
-                      <span className="product-card__score">4.3</span>
-                    </div>
-                  </article>
-                </div>
-                <div className="col-lg-4 col-md-6 col-xl-3">
-                  <article className="product-card">
-                    <div className="product-card__img-wrap">
-                      <a href="">
-                        <img
-                          src={assets.product2_home}
-                          className="product-card__thumb"
-                          alt=""
-                        />
-                      </a>
-                      <button className="like-btn" onClick={heartClick}>
-                        <img
-                          src={isHeart ? assets.Heart_pink : assets.iconHeart}
-                          alt=""
-                          className="like-btn__icon"
-                        />
-                      </button>
-                    </div>
-                    <a href="">
-                      <h3 className="product-card__title">
-                        Coffee Beans - Espresso Arabica and Robusta Beans 11
-                      </h3>
-                    </a>
-                    <div className="product-card__status">
-                      <p className="product-card__weigh">Weigh:500g</p>
-                      <p className="product-card__stock">Stock:199</p>
-                    </div>
-                    <p className="product-card__branch">Lavazza</p>
-                    <div className="product-card__row">
-                      <span className="product-card__price">$47.00</span>
-                      <img
-                        src={assets.Star1}
-                        alt=""
-                        className="product-card__star"
-                      />
-                      <span className="product-card__score">4.3</span>
-                    </div>
-                  </article>
-                </div> */}
               </Slider>
             </div>
           </div>
@@ -233,104 +196,84 @@ function TabProductDetail() {
               What our customers are saying
             </h2>
             <div className="row">
-              <div className="col-xl-4">
-                <div className="review-card">
-                  <div className="review-card__content">
-                    <img
-                      src={assets.user}
-                      alt=""
-                      className="review-card__avatar"
-                    />
-                    <div className="review-card__info">
-                      <h4 className="review-card__title">Jakir Hussen</h4>
-                      <p className="review-card__desc">
-                        Great product, I love this Coffee Beans{" "}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="review-card__rating">
-                    <div className="rating">
-                      <input type="radio" id="star5" name="rating" value="5" />
-                      <label htmlFor="star5"></label>
-                      <input type="radio" id="star4" name="rating" value="4" />
-                      <label htmlFor="star4"></label>
-                      <input type="radio" id="star3" name="rating" value="3" />
-                      <label htmlFor="star3"></label>
-                      <input type="radio" id="star2" name="rating" value="2" />
-                      <label htmlFor="star2"></label>
-                      <input type="radio" id="star1" name="rating" value="1" />
-                      <label htmlFor="star1"></label>
-                    </div>
-                    <span>(3.5) Review</span>
-                  </div>
-                </div>
-              </div>
+              {comments.length > 0 ? (
+                <Slider {...settings2}>
+                  {comments.map((comment) => (
+                    <div className="col-xl-4" key={comment.id}>
+                      <div className="review-card">
+                        <div className="review-card__content">
+                          <img
+                            src={
+                              comment.user.image.startsWith("http")
+                                ? comment.user.image
+                                : `${API_URL_LOCAL}/${comment.user.image}`
+                            }
+                            alt=""
+                            className="review-card__avatar"
+                          />
+                          <div className="review-card__info">
+                            <h4 className="review-card__title">
+                              {comment.user.name}
+                            </h4>
+                            <p className="review-card__desc">
+                              {comment.content}
+                            </p>
+                            {comment.id == newCommentId && (
+                              <span className="new-comment-label">
+                                Comment mới
+                              </span>
+                            )}
+                          </div>
+                        </div>
 
-              <div className="col-xl-4">
-                <div className="review-card">
-                  <div className="review-card__content">
-                    <img
-                      src={assets.user}
-                      alt=""
-                      className="review-card__avatar"
-                    />
-                    <div className="review-card__info">
-                      <h4 className="review-card__title">Jakir Hussen</h4>
-                      <p className="review-card__desc">
-                        Great product, I love this Coffee Beans{" "}
-                      </p>
+                        <div className="review-card__rating">
+                          <div className="rating">
+                            <ReactRating
+                              initialRating={comment.rating} // Giá trị đánh giá ban đầu
+                              emptySymbol={<FaStar color="#ccc" />} // Màu sắc của sao chưa chọn
+                              fullSymbol={<FaStar color="#ffd700" />} // Màu sắc của sao đã chọn
+                              fractions={2} // Cho phép hiển thị số thập phân
+                              onChange={(value) => setRating(value)} // Cập nhật giá trị khi người dùng chọn
+                            />
+                          </div>
+                          <span>({comment.rating}) Review</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="review-card__rating">
-                    <div className="rating">
-                      <input type="radio" id="star5" name="rating" value="5" />
-                      <label htmlFor="star5"></label>
-                      <input type="radio" id="star4" name="rating" value="4" />
-                      <label htmlFor="star4"></label>
-                      <input type="radio" id="star3" name="rating" value="3" />
-                      <label htmlFor="star3"></label>
-                      <input type="radio" id="star2" name="rating" value="2" />
-                      <label htmlFor="star2"></label>
-                      <input type="radio" id="star1" name="rating" value="1" />
-                      <label htmlFor="star1"></label>
-                    </div>
-                    <span>(3.5) Review</span>
-                  </div>
-                </div>
-              </div>
+                  ))}
+                </Slider>
+              ) : (
+                <div>Chưa có bình luận về sản phẩm !</div>
+              )}
+            </div>
 
-              <div className="col-xl-4">
-                <div className="review-card">
-                  <div className="review-card__content">
-                    <img
-                      src={assets.user}
-                      alt=""
-                      className="review-card__avatar"
-                    />
-                    <div className="review-card__info">
-                      <h4 className="review-card__title">Jakir Hussen</h4>
-                      <p className="review-card__desc">
-                        Great product, I love this Coffee Beans{" "}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="review-card__rating">
-                    <div className="rating">
-                      <input type="radio" id="star5" name="rating" value="5" />
-                      <label htmlFor="star5"></label>
-                      <input type="radio" id="star4" name="rating" value="4" />
-                      <label htmlFor="star4"></label>
-                      <input type="radio" id="star3" name="rating" value="3" />
-                      <label htmlFor="star3"></label>
-                      <input type="radio" id="star2" name="rating" value="2" />
-                      <label htmlFor="star2"></label>
-                      <input type="radio" id="star1" name="rating" value="1" />
-                      <label htmlFor="star1"></label>
-                    </div>
-                    <span>(3.5) Review</span>
-                  </div>
-                </div>
+            <h2 className="prod-content__heading feel_product">
+              How do you feel about the product?
+            </h2>
+            <div className="row">
+              <div className="tab-comment">
+                <span className="tab-comment__ip">Comment</span>
+                <input
+                  placeholder="Type here..."
+                  className="comment_ip"
+                  name="text"
+                  type="text"
+                  onChange={(e) => setMessage(e.target.value)}
+                />
               </div>
+              <div className="tab-rating">
+                <span className="tab-comment__rating">Rating</span>
+                <ReactRating
+                  initialRating={5} // Giá trị đánh giá ban đầu
+                  emptySymbol={<FaStar color="#ccc" />} // Màu sắc của sao chưa chọn
+                  fullSymbol={<FaStar color="#ffd700" />} // Màu sắc của sao đã chọn
+                  fractions={2} // Cho phép hiển thị số thập phân
+                  onChange={(value) => setStart(value)} // Cập nhật giá trị khi người dùng chọn
+                />
+              </div>
+              <button className="btn-donate" onClick={sendMessage}>
+                Send message
+              </button>
             </div>
           </div>
         );
@@ -341,7 +284,19 @@ function TabProductDetail() {
     }
   };
 
-  if (loading) return <p>Đang tải danh mục...</p>;
+  if (loading)
+    return (
+      <div className="browse">
+        <div className="loader">
+          <div className="crystal"></div>
+          <div className="crystal"></div>
+          <div className="crystal"></div>
+          <div className="crystal"></div>
+          <div className="crystal"></div>
+          <div className="crystal"></div>
+        </div>
+      </div>
+    );
 
   return (
     <>

@@ -155,10 +155,9 @@ function Header() {
 
           <nav className={`nav ${isNavVisible ? "show" : "hide"}`} id="nav">
             <ul className="nav__list">
-              <li className="nav_item" onMouseEnter={handleMouseEnter}>
-                <Link to="/grocery/test" className="nav__link">
-                  Grocery
-                  <RiArrowDropDownLine className="navbar_dropdown" />
+              {/* <li className="nav_item" onMouseEnter={handleMouseEnter}>
+                <Link to="/voucher" className="nav__link">
+                  Voucher
                 </Link>
                 <div
                   className="dropdown"
@@ -174,26 +173,21 @@ function Header() {
                     perspiciatis? Asperiores?
                   </div>
                 </div>
+              </li> */}
+              <li className="nav_item" onMouseEnter={handleMouseEnter}>
+                <Link to="/featureProduct" className="nav__link">
+                  Featured Product
+                </Link>
               </li>
               <li className="nav_item" onMouseEnter={handleMouseEnter}>
-                <Link to="/grocery" className="nav__link">
-                  Beauty
-                  <RiArrowDropDownLine className="nav_dropdown" />
+                <Link to="/voucher" className="nav__link">
+                  Voucher
                 </Link>
-                <div
-                  className="dropdown"
-                  style={{
-                    "--arrow-position": `${arrowPosition}px`,
-                  }}
-                >
-                  <div className="dropdown__inner">
-                    Lorem3 ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequatur perferendis animi doloremque laudantium, illo
-                    excepturi tempora, ad, voluptatibus hic quis placeat culpa
-                    explicabo nostrum aspernatur reprehenderit ipsa ex
-                    perspiciatis? Asperiores?
-                  </div>
-                </div>
+              </li>
+              <li className="nav_item" onMouseEnter={handleMouseEnter}>
+                <Link to="/news" className="nav__link">
+                  News
+                </Link>
               </li>
             </ul>
           </nav>
@@ -210,53 +204,56 @@ function Header() {
               <input placeholder="Search" type="search" className="input" />
             </div>
 
-            <div className="top-act__group">
-              <Link to="/favourite">
-                <button className="top-act__btn">
-                  <FaHeart className="top-act__icon" />
-                  <span className="top-act__title">03</span>
-                </button>
-              </Link>
+            {token ? (
+              <>
+                <div className="top-act__group">
+                  <Link to="/favourite">
+                    <button className="top-act__btn">
+                      <FaHeart className="top-act__icon" />
+                      <span className="top-act__title">03</span>
+                    </button>
+                  </Link>
 
-              <div className="top-act__separate"></div>
-              <Link to={"/cart"}>
-                <button className="top-act__btn2">
-                  <FaCartShopping className="top-act__icon2" />
-                  <span className="top-act__title2">{total}</span>
-                </button>
-              </Link>
-            </div>
-            <div className="top-act__user">
-              {/* <div>{user ? `Hello, ${user}` : "Not logged in"}</div> */}
-              <img
-                src={user?.image || assets.avatar}
-                alt=""
-                className="top-act__avatar"
-                onClick={toggleDropdown}
-              />
-              {isOpen && (
-                <div className="dropdown-menu">
-                  <Link to="/profile" className="dropdown-item">
-                    <FaUser /> Profile
+                  <div className="top-act__separate"></div>
+                  <Link to={"/cart"}>
+                    <button className="top-act__btn2">
+                      <FaCartShopping className="top-act__icon2" />
+                      <span className="top-act__title2">{total}</span>
+                    </button>
                   </Link>
-                  <Link to="/settings" className="dropdown-item">
-                    <FaCog /> Settings
-                  </Link>
-                  <div className="dropdown-item" onClick={logout}>
-                    <FaSignOutAlt /> Log Out
-                  </div>
                 </div>
-              )}
-            </div>
-
-            {/* <div className="top-act__login">
-              <Link to="/sign-in">
-                <button className="btn btn-text">Sign in</button>
-              </Link>
-              <Link to="/sign-up">
-                <button className="btn btn-warning">Sign Up</button>
-              </Link>
-            </div> */}
+                <div className="top-act__user">
+                  <img
+                    src={user?.image || assets.avatar}
+                    alt=""
+                    className="top-act__avatar"
+                    onClick={toggleDropdown}
+                  />
+                  {isOpen && (
+                    <div className="dropdown-menu">
+                      <Link to="/profile" className="dropdown-item">
+                        <FaUser /> Profile
+                      </Link>
+                      <Link to="/settings" className="dropdown-item">
+                        <FaCog /> Settings
+                      </Link>
+                      <div className="dropdown-item" onClick={logout}>
+                        <FaSignOutAlt /> Log Out
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              <div className="top-act__login">
+                <Link to="/sign-in">
+                  <button className="btn btn-text">Sign in</button>
+                </Link>
+                <Link to="/sign-up">
+                  <button className="btn btn-warning">Sign Up</button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

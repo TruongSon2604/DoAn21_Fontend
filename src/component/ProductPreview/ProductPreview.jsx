@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { apiGet, apiPostWithToken } from "../../Service/apiService";
@@ -6,7 +5,7 @@ import { assets } from "../../assets/assets";
 import { FaCodeCompare, FaCartShopping } from "react-icons/fa6";
 import { FaShoppingBag, FaStar } from "react-icons/fa";
 import "./ProductPreview.scss";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
 
 const ProductPreview = () => {
   const { id } = useParams(); // Extract the id from the URL
@@ -52,15 +51,14 @@ const ProductPreview = () => {
       quantity: quantity,
     };
     const response = await apiPostWithToken("/addToCart", data, token);
-  
+
     if (response.success) {
       // console.log("Product added to cart successfully:", response.data);
-      toast('Product added to cart successfully!', {
-        icon: '👏',
+      toast("Product added to cart successfully!", {
+        icon: "👏",
       });
-      
     } else {
-      toast.error("This didn't work.")
+      toast.error("This didn't work.");
       console.error("Failed to add product to cart:", response.message);
     }
   };
@@ -71,13 +69,19 @@ const ProductPreview = () => {
 
   return (
     <div className="product-container">
-    <div><Toaster/></div>
+      <div>
+        <Toaster />
+      </div>
       <div className="row">
         <div className="col-xxl-5 col-lg-6">
           <div className="prod-preview">
             <div className="prod-preview__list">
               <div className="prod-preview__item">
-                <img src={`${API_URL_LOCAL}/${product[0].image}`} alt="" />
+                <img
+                  src={`${API_URL_LOCAL}/${product[0].image}`}
+                  style={{ maxWidth: "437px", maxHeight: "443px" }}
+                  alt=""
+                />
               </div>
             </div>
             <div className="prod-preview__thumbs">
@@ -118,6 +122,12 @@ const ProductPreview = () => {
                   {product[0].description}
                 </div>
                 {/* Quantity control buttons */}
+                <p
+                  className="prod-prop__des-item"
+                  style={{ color: "#53382c", marginTop: "15px" }}
+                >
+                  Quantity
+                </p>
                 <div className="prod-info__quantity">
                   <button
                     onClick={decreaseQuantity}
@@ -161,15 +171,27 @@ const ProductPreview = () => {
                 <div className="prod-info__card">
                   <div className="prod-info__row">
                     <span className="prod-info__price">
-                      {product[0].original_price} VNĐ
+                      {new Intl.NumberFormat("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      }).format(product[0].original_price)}
+                      {/* {product[0].original_price} VNĐ */}
                     </span>
                     <span className="prod-info__tax">
                       {product[0].discount_percent}%
                     </span>
                   </div>
-                  <p className="prod-info__total-price">{totalPrice} VNĐ</p>
+                  <p className="prod-info__total-price">
+                    {new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(totalPrice)}
+                  </p>
                   <div className="prod-info__row prod-info__row-action">
-                    <button className="btn btn-warning btn_addToCard" onClick={addToCart}>
+                    <button
+                      className="btn btn-warning btn_addToCard"
+                      onClick={addToCart}
+                    >
                       Add To Cart
                     </button>
                     <button className="prod-info__like-btn">

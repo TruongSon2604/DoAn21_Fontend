@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { FaFilter } from "react-icons/fa";
 import PaginationE from "../Pagination/PaginationE";
 import { apiGet } from "../../Service/apiService";
-function BrowseProduct() {
+function BrowseProductFeature({ products, setProducts }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   //
@@ -19,7 +19,7 @@ function BrowseProduct() {
   };
   //
 
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("access_token");
   const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
@@ -57,12 +57,7 @@ function BrowseProduct() {
   return (
     <section className="home__container">
       <div className="home__row">
-        <h2 className="home__heading">Total LavAzza 1320</h2>
         <div className="filter-wrap">
-          <button className="filter-btn" onClick={handleClick}>
-            Filter
-            <img src={assets.filter} alt="" className="filter-btn__icon" />
-          </button>
           <div className={`filter ${isActive ? "active" : ""}`}>
             <div className="container filter_container">
               <h3 className="filter__heading">
@@ -115,7 +110,7 @@ function BrowseProduct() {
       </div>
       <div className="row row-browse-product" style={{ rowGap: "30px" }}>
         {products.map((product) => (
-          <div className="col-lg-4 col-md-6 col-xl-3" key={product.id}>
+          <div className="col-lg-4 col-md-6 col-xl-4" key={product.id}>
             <Link to={`/preview-product/${product.id}`}>
               <article className="product-card">
                 <div className="product-card__img-wrap">
@@ -146,7 +141,7 @@ function BrowseProduct() {
                       style: "currency",
                       currency: "VND",
                     }).format(product.discounted_price)}
-                    {/* {product.discounted_price} VNĐ */}
+          
                   </span>
                   <img
                     src={assets.Star1}
@@ -197,4 +192,4 @@ function BrowseProduct() {
   );
 }
 
-export default BrowseProduct;
+export default BrowseProductFeature;

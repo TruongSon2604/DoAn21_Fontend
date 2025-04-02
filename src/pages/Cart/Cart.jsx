@@ -237,6 +237,7 @@ function Cart() {
                     products.map((product) => (
                       <article className="cart-item" key={product.id}>
                         <input
+                          className="cart-item__input"
                           type="checkbox"
                           checked={selectedProducts.includes(product.id)}
                           onChange={() => handleSelectProduct(product.id)}
@@ -277,7 +278,13 @@ function Cart() {
                           </div>
                           <div className="cart-item__content-right">
                             <p className="cart-item__total-price">
-                              {product.quantity * product.discounted_price} VNĐ
+                              {new Intl.NumberFormat("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              }).format(
+                                product.quantity * product.discounted_price
+                              )}
+                              {/* {product.quantity * product.discounted_price} VNĐ */}
                             </p>
                             <div className="cart-item__ctrl-right">
                               <button className="cart-item__input-btn cart-item__input-btn-save">
@@ -333,7 +340,13 @@ function Cart() {
 
                 <div className="cart-info__row">
                   <span>Price (Total)</span>
-                  <span className="cart-info__number">{total} VNĐ</span>
+                  <span className="cart-info__number">
+                    {" "}
+                    {new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(total)}
+                  </span>
                 </div>
 
                 {/* <div className="cart-info__row">
@@ -343,10 +356,10 @@ function Cart() {
 
                 <div className="cart-info__seperate"></div>
 
-                <div className="cart-info__row">
+                {/* <div className="cart-info__row">
                   <span>Estimated Total</span>
                   <span className="cart-info__number">{total} VNĐ</span>
-                </div>
+                </div> */}
 
                 <button className="continue_checkout" onClick={handleCheckout}>
                   Continue to checkout

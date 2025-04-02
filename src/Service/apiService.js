@@ -3,8 +3,6 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 // alert(API_URL);
 
-
-
 export const apiPost = async (url, data, headers = {}) => {
   try {
     const response = await axios.post(`${API_URL}${url}`, data, { headers });
@@ -13,7 +11,8 @@ export const apiPost = async (url, data, headers = {}) => {
     console.error("API Error: ", error);
     return {
       success: false,
-      message: error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
+      message:
+        error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
     };
   }
 };
@@ -26,14 +25,14 @@ export const apiGet = async (url, headers = {}) => {
     console.error("API Error: ", error);
     return {
       success: false,
-      message: error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
+      message:
+        error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
     };
   }
 };
 
 export const apiPostWithToken = async (url, data, token) => {
   try {
-
     const headers = {
       Authorization: `Bearer ${token}`,
     };
@@ -44,7 +43,10 @@ export const apiPostWithToken = async (url, data, token) => {
     console.error("API Error: ", error);
     return {
       success: false,
-      message: error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
+      message:
+        error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
+      status: error.response?.status,
+      error: error.response.data,
     };
   }
 };
@@ -61,12 +63,13 @@ export const apiGetWithToken = async (url, token) => {
     console.error("API Error: ", error);
     return {
       success: false,
-      message: error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
+      message:
+        error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
     };
   }
 };
 
-export const apiDeleteWithToken = async (url, data ,token) => {
+export const apiDeleteWithToken = async (url, data, token) => {
   try {
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -82,7 +85,8 @@ export const apiDeleteWithToken = async (url, data ,token) => {
     console.error("API Error: ", error);
     return {
       success: false,
-      message: error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
+      message:
+        error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
     };
   }
 };

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal, Table, Image } from "react-bootstrap";
 import { apiPostWithToken } from "../../Service/apiService";
+import { Link } from "react-router-dom";
 
-function ModalBuyedUser({ id }) {
+function ModalBuyedUser({ id, created_at }) {
   const [show, setShow] = useState(false);
   const [products, setProduct] = useState(null);
   const token = localStorage.getItem("access_token");
@@ -20,6 +21,7 @@ function ModalBuyedUser({ id }) {
       );
       if (response.data?.data) {
         setProduct(response.data.data);
+        console.log("rp1,", response.data.data);
       } else {
         setProduct(null);
       }
@@ -40,6 +42,7 @@ function ModalBuyedUser({ id }) {
           <Modal.Title>Chi tiết sản phẩm đã mua</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <span style={{ color: "red" }}>{created_at}</span>
           {products && products.length > 0 ? (
             <Table bordered responsive>
               <tbody>
@@ -47,11 +50,15 @@ function ModalBuyedUser({ id }) {
                   <React.Fragment key={index}>
                     <tr>
                       <td colSpan={2} className="text-center">
-                        <img src={`${API_URL_LOCAL}/${product.image}`} style={{width:'150px',height:'150px'}} alt="" />
+                        <img
+                          src={`${API_URL_LOCAL}/${product.image}`}
+                          style={{ width: "150px", height: "150px" }}
+                          alt=""
+                        />
                       </td>
                     </tr>
                     <tr>
-                      <td>
+                      <td style={{ width: "30%" }}>
                         <strong>Tên sản phẩm</strong>
                       </td>
                       <td>{product.name}</td>
@@ -73,7 +80,7 @@ function ModalBuyedUser({ id }) {
                         <strong>Giá gốc</strong>
                       </td>
                       <td>
-                        {parseInt(product.original_price).toLocaleString()} VND
+                        {parseInt(product.original_price).toLocaleString()} VNĐ
                       </td>
                     </tr>
                     <tr>
@@ -88,7 +95,7 @@ function ModalBuyedUser({ id }) {
                       </td>
                       <td>
                         {parseInt(product.discounted_price).toLocaleString()}{" "}
-                        VND
+                        VNĐ
                       </td>
                     </tr>
                     <tr>
@@ -97,8 +104,18 @@ function ModalBuyedUser({ id }) {
                       </td>
                       <td>
                         <strong>
-                          {parseInt(product.sub_total).toLocaleString()} VND
+                          {parseInt(product.sub_total).toLocaleString()} VNĐ
                         </strong>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        {product.id && (
+                          <Link to={`/preview-product/${product.id}`}>
+                            <button className="btn btn-info">Comment</button>
+                          </Link>
+                        )}
                       </td>
                     </tr>
                     <tr>

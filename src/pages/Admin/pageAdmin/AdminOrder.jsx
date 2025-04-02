@@ -132,9 +132,17 @@ export const AdminOrder = () => {
             styles.color = "black";
             styles.backgroundColor = "yellow";
             break;
-          case "paid":
+          case "completed":
             styles.color = "white";
             styles.backgroundColor = "green";
+            break;
+          case "in_progress":
+            styles.color = "black";
+            styles.backgroundColor = "orange";
+            break;
+          case "canceled":
+            styles.color = "white";
+            styles.backgroundColor = "red";
             break;
           default:
             styles.color = "black";
@@ -195,8 +203,8 @@ export const AdminOrder = () => {
 
         switch (status) {
           case "pending":
-            styles.color = "white";
-            styles.backgroundColor = "orange";
+            styles.color = "black";
+            styles.backgroundColor = "yellow";
             break;
           case "paid":
             styles.color = "white";
@@ -217,7 +225,12 @@ export const AdminOrder = () => {
       flex: 2,
       sortable: false,
       renderCell: (params) => {
-        return <ModalListOrderDetailOfUser id={params.row.id} />;
+        return (
+          <ModalListOrderDetailOfUser
+            setorders={setorders}
+            id={params.row.id}
+          />
+        );
       },
     },
   ];
@@ -265,7 +278,12 @@ export const AdminOrder = () => {
               onChange={(newValue) => setSelectedDate(newValue)}
               format="DD/MM/YYYY"
               slotProps={{ textField: { size: "small" } }}
-              disabled={filterType === "all"|| filterType === "paid"||filterType === "cancel"||filterType === "pending"}
+              disabled={
+                filterType === "all" ||
+                filterType === "paid" ||
+                filterType === "cancel" ||
+                filterType === "pending"
+              }
             />
           </div>
 

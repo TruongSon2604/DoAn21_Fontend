@@ -18,7 +18,10 @@ const Sidebar = () => {
             <i>🏠</i> Dashboard
           </li>
         </Link>
-        <Link to="/admin/product" onClick={() => setActiveItem("/admin/product")}>
+        <Link
+          to="/admin/product"
+          onClick={() => setActiveItem("/admin/product")}
+        >
           <li className={activeItem === "/admin/product" ? "active" : ""}>
             <i>📦</i> Sản phẩm
           </li>
@@ -28,9 +31,17 @@ const Sidebar = () => {
             <i>🛒</i> Đơn hàng
           </li>
         </Link>
-        <Link to="/admin/category" onClick={() => setActiveItem("/admin/category")}>
+        <Link
+          to="/admin/category"
+          onClick={() => setActiveItem("/admin/category")}
+        >
           <li className={activeItem === "/admin/category" ? "active" : ""}>
             <i>📋</i> Danh mục
+          </li>
+        </Link>
+        <Link to="/admin/coupon" onClick={() => setActiveItem("/admin/coupon")}>
+          <li className={activeItem === "/admin/coupon" ? "active" : ""}>
+            <i>🏷️</i> Phiếu giảm giá
           </li>
         </Link>
         <Link to="/admin/user" onClick={() => setActiveItem("/admin/user")}>
@@ -38,9 +49,9 @@ const Sidebar = () => {
             <i>👥</i> Người dùng
           </li>
         </Link>
-        <Link to="/admin/setting" onClick={() => setActiveItem("/admin/setting")}>
-          <li className={activeItem === "/admin/setting" ? "active" : ""}>
-            <i>⚙️</i> Cài đặt
+        <Link to="/admin/post" onClick={() => setActiveItem("/admin/post")}>
+          <li className={activeItem === "/admin/post" ? "active" : ""}>
+            <i>📰</i> Bài viết
           </li>
         </Link>
         <li className="logout">
