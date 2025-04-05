@@ -192,28 +192,6 @@ function Profile() {
                   </ul>
                 </div>
 
-                {/* profile menu */}
-                <div className="profile__menu">
-                  <h3 className="profile__menu-title">Manage Account</h3>
-                  <ul className="profile__menu-list">
-                    <li>
-                      <Link className="profile__menu-linkk">
-                        <FaUser /> Personal info
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="profile__menu-linkk">
-                        <FaAddressCard /> Addresses
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="profile__menu-linkk">
-                        <FaMailBulk />
-                        Communications & privacy
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
               </aside>
             </div>
             <div className="col-9">

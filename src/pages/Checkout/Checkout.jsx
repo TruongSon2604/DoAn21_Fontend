@@ -17,6 +17,12 @@ import { ProductContext } from "../../Providerrs/ProductContext";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import CheckPaymentStatus from "./CheckPaymentStatus";
+import {
+  MdLocationOn,
+  MdPayment,
+  MdLocalShipping,
+  MdVerified,
+} from "react-icons/md";
 
 function Checkout() {
   const [selectedValue, setSelectedValue] = useState("value-1");
@@ -32,6 +38,7 @@ function Checkout() {
   const [coupon2, setCoupon2] = useState(0);
   const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkPayment = async () => {
@@ -74,40 +81,87 @@ function Checkout() {
     setSelectedCouponId(selectedId);
   };
 
+  // useEffect(() => {
+
+  //   const getAddress = async () => {
+  //     const response = await apiGetWithToken("/getAddressByUser", token);
+  //     if (response.success) {
+  //       setAddress(response.data.data);
+  //     }
+  //   };
+
+  //   const getCoupon = async () => {
+  //     const response = await apiGetWithToken("/getUserWithCoupon", token);
+  //     // console.log("respon", response.data.data);
+  //     if (response.success) {
+  //       setCoupon(response.data.data);
+  //       console.log("day la coupon", coupon);
+  //     }
+  //   };
+
+  //   const getListProduct = async () => {
+  //     const response = await apiPostWithToken(
+  //       "/getProductByListId",
+  //       {
+  //         products_id: selectedProducts,
+  //       },
+  //       token
+  //     );
+  //     if (response.success) {
+  //       console.log("getListProduct", response.data.data[0]);
+  //       setListProduct(response.data.data[0]);
+  //       setTotal(response.data.data["total"]);
+  //     }
+  //   };
+  //   getListProduct();
+  //   getAddress();
+  //   getCoupon();
+  // }, []);
   useEffect(() => {
-    const getAddress = async () => {
-      const response = await apiGetWithToken("/getAddressByUser", token);
-      if (response.success) {
-        setAddress(response.data.data);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        // Get address data
+        const addressResponse = await apiGetWithToken(
+          "/getAddressByUser",
+          token
+        );
+        if (addressResponse.success) {
+          setAddress(addressResponse.data.data);
+          if (addressResponse.data.data.length > 0) {
+            setSelectedAddressId(addressResponse.data.data[0].id);
+          }
+        }
+
+        // Get coupon data
+        const couponResponse = await apiGetWithToken(
+          "/getUserWithCoupon",
+          token
+        );
+        if (couponResponse.success) {
+          setCoupon(couponResponse.data.data);
+        }
+
+        // Get product list
+        const productResponse = await apiPostWithToken(
+          "/getProductByListId",
+          {
+            products_id: selectedProducts,
+          },
+          token
+        );
+        if (productResponse.success) {
+          setListProduct(productResponse.data.data[0]);
+          setTotal(productResponse.data.data["total"]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    const getCoupon = async () => {
-      const response = await apiGetWithToken("/getUserWithCoupon", token);
-      // console.log("respon", response.data.data);
-      if (response.success) {
-        setCoupon(response.data.data);
-        console.log("day la coupon", coupon);
-      }
-    };
-
-    const getListProduct = async () => {
-      const response = await apiPostWithToken(
-        "/getProductByListId",
-        {
-          products_id: selectedProducts,
-        },
-        token
-      );
-      if (response.success) {
-        console.log("getListProduct", response.data.data[0]);
-        setListProduct(response.data.data[0]);
-        setTotal(response.data.data["total"]);
-      }
-    };
-    getListProduct();
-    getAddress();
-    getCoupon();
+    fetchData();
   }, []);
 
   const handleCheckout = async () => {
@@ -173,6 +227,20 @@ function Checkout() {
       alert("Đã xảy ra lỗi khi đặt hàng.");
     }
   };
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="checkout-page-wrapper">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Đang tải thông tin...</p>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -180,6 +248,35 @@ function Checkout() {
 
       <div className="container">
         <div className="checkout-container">
+          <div className="checkout-header">
+            <h1 className="checkout-title">Thanh toán</h1>
+            <div className="checkout-steps">
+              <div className="step active">
+                <div className="step-icon">
+                  <MdLocationOn />
+                </div>
+                <span>Địa chỉ</span>
+              </div>
+              <div className="step active">
+                <div className="step-icon">
+                  <MdPayment />
+                </div>
+                <span>Thanh toán</span>
+              </div>
+              <div className="step">
+                <div className="step-icon">
+                  <MdLocalShipping />
+                </div>
+                <span>Vận chuyển</span>
+              </div>
+              <div className="step">
+                <div className="step-icon">
+                  <MdVerified />
+                </div>
+                <span>Hoàn tất</span>
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-8">
               <div className="cart-info">
@@ -326,7 +423,7 @@ function Checkout() {
                         <div className="cart-item__content">
                           <div className="cart-item__content-left">
                             <h3 className="cart-item__title">{product.name}</h3>
-                            <p className="cart-item__price-wrap">
+                            <p className="cart-item__price-wrap" style={{ marginTop: "10px" }}>
                               {product.discounted_price} VNĐ
                             </p>
                             <div className="cart-item__ctrl">
@@ -337,9 +434,14 @@ function Checkout() {
                           </div>
                           <div className="cart-item__content-right">
                             <p className="cart-item__total-price">
-                              {product.price}
+                              {new Intl.NumberFormat("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              }).format(
+                                product.discounted_price * product.quantity
+                              )}
                             </p>
-                            <div className="cart-item__ctrl-right">
+                            {/* <div className="cart-item__ctrl-right">
                               <button className="cart-item__input-btn cart-item__input-btn-save">
                                 <img
                                   src={assets.save}
@@ -352,7 +454,7 @@ function Checkout() {
                                 <img src={assets.Delete} alt="" />
                                 Delete
                               </button>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </article>

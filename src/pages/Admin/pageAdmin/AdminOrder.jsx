@@ -65,7 +65,7 @@ export const AdminOrder = () => {
           case "pending":
             return order.status_payment == "pending";
           case "cancel":
-            return order.status_payment == "cancel";
+            return order.status == "canceled";
           default:
             return true;
         }

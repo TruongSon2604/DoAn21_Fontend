@@ -11,7 +11,11 @@ import { FaBars } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 import axios from "axios";
-import { apiGetWithToken, apiPostWithToken } from "../../Service/apiService";
+import {
+  apiGet,
+  apiGetWithToken,
+  apiPostWithToken,
+} from "../../Service/apiService";
 import { ProductContext } from "../../Providerrs/ProductContext";
 
 function Header() {
@@ -23,9 +27,32 @@ function Header() {
   const [user, setUser] = useState(null);
   const isMounted = useRef(true);
   const token = localStorage.getItem("access_token");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
   //
   const { products } = useContext(ProductContext);
   const [total, setTotal] = useState(null);
+
+  const handleSearch = async (event) => {
+    setSearchTerm(event.target.value);
+    if (event.target.value.length >= 3) {
+      // Khi người dùng nhập từ 3 ký tự trở lên
+      try {
+        const response = await apiGet(
+          `/products/search?query=${event.target.value}`
+        );
+        console.log("search", response.data.data);
+        if (response.success) {
+          setSuggestions(response.data.data); // Cập nhật kết quả tìm kiếm
+        }
+      } catch (error) {
+        console.error("Lỗi tìm kiếm:", error);
+      }
+    } else {
+      setSuggestions([]); // Nếu không có từ khóa tìm kiếm, xóa gợi ý
+    }
+  };
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -149,7 +176,7 @@ function Header() {
           <Link to="/" className="custom-link">
             <div className="logo">
               <img src={assets.icon} alt="" className="logo__img" />
-              <h1 className="logo__title">grocery</h1>
+              <h1 className="logo__title">CoffeeMart</h1>
             </div>
           </Link>
 
@@ -201,7 +228,36 @@ function Header() {
                   <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
                 </g>
               </svg>
-              <input placeholder="Search" type="search" className="input" />
+              <input
+                placeholder="Search"
+                type="search"
+                className="input"
+                value={searchTerm}
+                onChange={handleSearch}
+                // onChange={(e) => alert(e.target.value)}
+              />
+              {suggestions.length > 0 && (
+                <ul className="search-item">
+                  {suggestions.map((product) => (
+                    <Link
+                      to={`/preview-product/${product.id}`}
+                      key={product.id}
+                    >
+                      <li className="search-item__product">
+                        <img
+                          src={`${API_URL_LOCAL}/${product.image}`}
+                          alt={product.name}
+                          style={{ width: "30px" }}
+                          className="search-item__image"
+                        />
+                        <span className="search-item__name">
+                          {product.name}
+                        </span>
+                      </li>
+                    </Link>
+                  ))}
+                </ul>
+              )}
             </div>
 
             {token ? (

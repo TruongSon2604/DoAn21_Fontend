@@ -51,7 +51,7 @@ const BrowseCategory = () => {
                 className="cate-item__thumb"
               />
               <section className="cate-item__info">
-                <h3 className="cate-item__title">{category.name}</h3>
+                <h3 className="cate-item__title" style={{fontSize:'15px'}}>{category.name}</h3>
                 <p className="cate-item__desc">{category.description}</p>
               </section>
             </div>

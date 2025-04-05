@@ -10,17 +10,23 @@ import SlideShow from "../../component/SlideShow/SlideShow";
 import BrowseCategory from "../../component/BrowseCategory/BrowseCategory";
 import BrowseProduct from "../../component/BrowseProduct/BrowseProduct";
 import Breadcrumbs from "../../component/Breadcrumbs/Breadcrumbs";
+import VideoList from "../../component/VideoFeature/VideoList";
+import AboutUs from "../../component/AboutUs/AboutUs";
 const Home = () => {
   return (
     <>
       <Header />
       <div className="container">
-      {/* <Breadcrumbs/> */}
+        {/* <Breadcrumbs/> */}
         <SlideShow />
         {/* Browse Category  */}
         <BrowseCategory />
         {/* Browse Product  */}
         <BrowseProduct />
+        {/* <hr /> */}
+        
+        <VideoList />
+        <AboutUs/>
       </div>
       <Footer />
     </>

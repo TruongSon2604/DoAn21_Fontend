@@ -216,6 +216,26 @@
     @include minxinF.breakpoint(md) {
       display: none;
     }
+    position: relative; //moi
+  }
+  .search-item {
+    position: absolute;
+    top: 45px;
+    left: -10px;
+    min-width: 300px;
+    border-radius: 15px;
+    background-color: var(--top-act-group-bg-color);
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px red;
+  }
+  .search-item li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid gray !important;
+  }
+  .search-item li:last-child {
+    border-bottom: 0px;
   }
   &__btn {
     @extend %flexItemsCenter;
@@ -396,7 +416,6 @@ div.menu-column {
   height: 100%;
 }
 
-
 /* Header.scss */
 
 .top-act__user {
@@ -419,7 +438,7 @@ div.menu-column {
 /* Dropdown Menu Styles */
 .dropdown-menu {
   position: absolute;
-  top: 50px;  /* Position it below the avatar */
+  top: 50px; /* Position it below the avatar */
   right: 0;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -449,16 +468,16 @@ div.menu-column {
   margin-right: 8px;
 }
 //
-/* From Uiverse.io by alexruix */ 
+/* From Uiverse.io by alexruix */
 .group {
   display: flex;
   line-height: 28px;
   align-items: center;
   position: relative;
   width: 250px;
- }
- 
- .input {
+}
+
+.input {
   width: 100%;
   // width: 250px;
   height: 40px;
@@ -470,31 +489,32 @@ div.menu-column {
   outline: none;
   background-color: #bcbcbe;
   color: #0d0c22;
-  transition: .3s ease;
+  transition: 0.3s ease;
   display: inline-block;
- }
- 
- .input::placeholder {
+}
+
+.input::placeholder {
   color: #404041;
- }
- 
- .input:focus, input:hover {
+}
+
+.input:focus,
+input:hover {
   outline: none;
-  border-color: rgba(234,76,137,0.4);
+  border-color: rgba(234, 76, 137, 0.4);
   background-color: #fff;
   box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
- }
- 
- .icon {
+}
+
+.icon {
   position: absolute;
   left: 1rem;
   fill: #69699e;
   width: 1.5rem;
   height: 1.5rem;
- }
- 
- //
- .top-act__btn2 {
+}
+
+//
+.top-act__btn2 {
   position: relative; /* Để badge nằm đúng vị trí */
   background: none;
   border: none;
@@ -523,4 +543,7 @@ div.menu-column {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.search-item__product:hover .search-item__name {
+  color: #3b6ac0;
 }

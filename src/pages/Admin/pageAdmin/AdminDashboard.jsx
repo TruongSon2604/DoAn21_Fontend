@@ -1,7 +1,15 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import { FaShoppingCart, FaUsers, FaBox, FaDollarSign } from "react-icons/fa";
 import "./Dashboard.scss";
+import { assets } from "../../../assets/assets";
 
 const Dashboard = () => {
   const data = [
@@ -14,10 +22,22 @@ const Dashboard = () => {
   ];
 
   const stats = [
-    { icon: <FaShoppingCart className="icon" size={30} />, label: "Đơn hàng", value: 120 },
-    { icon: <FaDollarSign className="icon" size={30} />, label: "Doanh thu", value: "$45,000" },
-    { icon: <FaBox className="icon" size={30} />, label: "Sản phẩm", value: 320 },
-    { icon: <FaUsers className="icon" size={30} />, label: "Người dùng", value: 850 },
+    { icon: <img src={assets.DCart} alt="" />, label: "Đơn hàng", value: 120 },
+    {
+      icon: <img src={assets.DMoney} alt="" />,
+      label: "Doanh thu",
+      value: "$45,000",
+    },
+    {
+      icon: <img src={assets.DProduct} alt="" />,
+      label: "Sản phẩm",
+      value: 320,
+    },
+    {
+      icon: <img src={assets.Duser} alt="" />,
+      label: "Người dùng",
+      value: 850,
+    },
   ];
 
   return (
@@ -26,7 +46,7 @@ const Dashboard = () => {
       <div className="stats">
         {stats.map((item, index) => (
           <div key={index} className="card">
-            {item.icon}
+            <img src={assets.DCart} alt="" />
             <div>
               <p className="label">{item.label}</p>
               <p className="value">{item.value}</p>

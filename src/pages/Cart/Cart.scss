@@ -1,3 +1,20 @@
+$primary-color: #4a6cf7;
+// Variables
+$primary-color: #4a6cf7;
+$secondary-color: #2b3a8a;
+$accent-color: #f97316;
+$danger-color: #ef4444;
+$success-color: #22c55e;
+$light-bg: #f9fafb;
+$dark-text: #1f2937;
+$gray-text: #6b7280;
+$light-border: #e5e7eb;
+$card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$transition-normal: all 0.3s ease;
+$transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+$border-radius-sm: 6px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
 .cart-info
 {
     padding: 30px;
@@ -28,6 +45,8 @@
         font-size: 1.8rem;
         font-weight: 600;
         line-height: 144.444%;
+        color: $primary-color;  
+      
     }
     &__separate{
         margin: 30px 0;
@@ -113,11 +132,15 @@
     }
 
    &__total-price{
-    font-size: 2.2rem;
+    font-size:18px;
     font-weight: 700;
     font-style: normal;
+    color: $accent-color;
     text-align: end;
    }
+   
+
+
 
    &__ctrl-right{
     padding: 15px 0px;
@@ -195,6 +218,13 @@
 
 .cart-item {
   position: relative;
+  &__price-wrap {
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+
 }
 
 .add-to-cart-btn {
@@ -209,4 +239,22 @@
 
 .add-to-cart-btn:hover {
   background-color: #ffa500;
+}
+
+.cart-item__input-btn-delete
+{
+    background-color: rgb(225, 177, 177);
+    color: rgb(183, 62, 62);
+    border-radius: 5px;
+    text-align: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: darken(rgb(225, 177, 177), 10%);
+    }
+    &:active {
+        transform: scale(0.95);
+    }
 }

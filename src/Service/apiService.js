@@ -1,4 +1,6 @@
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const API_URL = import.meta.env.VITE_API_URL;
 // alert(API_URL);
@@ -40,7 +42,19 @@ export const apiPostWithToken = async (url, data, token) => {
     const response = await axios.post(`${API_URL}${url}`, data, { headers });
     return { success: true, data: response.data };
   } catch (error) {
+    // const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     console.error("API Error: ", error);
+    if (error.response?.status === 401) {
+      const MySwal = withReactContent(Swal);
+      const vl = await MySwal.fire({
+        icon: "warning",
+        title: "Bạn cần đăng nhập để tiếp tục !",
+        confirmButtonText: "OK",
+      });
+      if (vl.isConfirmed) {
+        window.location.href = "/sign-in";
+      }
+    }
     return {
       success: false,
       message:

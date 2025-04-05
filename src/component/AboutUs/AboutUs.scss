@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+// Variables
+$primary-color: #004d40;
+$accent-color: #4caf50;
+$text-dark: #333;
+$text-light: #666;
+$background-color: #f8f8f8;
+$box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+.about-us-container {
+  width: 100%;
+  padding: 80px 0;
+  background-color: $background-color;
+  font-family: 'Inter', sans-serif;
+}
+
+.about-us-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 50px;
+  
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.about-us-text {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.about-us-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: $primary-color;
+  margin-bottom: 24px;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
+}
+
+.about-us-intro {
+  font-size: 18px;
+  line-height: 1.5;
+  color: $text-light;
+  margin-bottom: 40px;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
+
+.about-us-main {
+  text-align: left;
+}
+
+.about-us-slogan {
+  font-size: 24px;
+  font-weight: 600;
+  color: $text-dark;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  
+  @media (max-width: 768px) {
+    font-size: 22px;
+  }
+}
+
+.highlight {
+  color: $accent-color;
+  font-weight: 700;
+}
+
+.about-us-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: $text-light;
+  margin-bottom: 20px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.about-us-images {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  
+  @media (max-width: 900px) {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.about-image {
+  border-radius: 12px;
+  box-shadow: $box-shadow;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.top-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.bottom-image {
+  width: 100%;
+  height: auto;
+}
+
+// For better responsiveness
+@media (max-width: 600px) {
+  .about-us-container {
+    padding: 60px 0;
+  }
+  
+  .about-us-title {
+    font-size: 28px;
+  }
+  
+  .about-us-slogan {
+    font-size: 20px;
+  }
+  
+  .about-us-description {
+    font-size: 15px;
+  }
+}

@@ -10,7 +10,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="logo">
-        Grocery Mart <img src={assets.IconPrimary} alt="" />
+      Coffee Mart <img src={assets.IconPrimary} alt="" />
       </div>
       <ul className="menu">
         <Link to="/admin" onClick={() => setActiveItem("/admin")}>

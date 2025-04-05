@@ -10,7 +10,7 @@ function Footer() {
           <div className="col-lg-4 col-md-12 col-sm-12 item-1 col-12">
             <div className="footer__logo">
               <img src={assets.icon} alt="" />
-              <h2>Grocerymart</h2>
+              <h2>CoffeeMart</h2>
             </div>
             <div className="footer__description">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.

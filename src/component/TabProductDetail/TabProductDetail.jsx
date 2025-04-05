@@ -196,7 +196,7 @@ function TabProductDetail() {
               What our customers are saying
             </h2>
             <div className="row">
-              {comments.length > 0 ? (
+              {comments.length >= 3 ? (
                 <Slider {...settings2}>
                   {comments.map((comment) => (
                     <div className="col-xl-4" key={comment.id}>
@@ -218,6 +218,7 @@ function TabProductDetail() {
                             <p className="review-card__desc">
                               {comment.content}
                             </p>
+
                             {comment.id == newCommentId && (
                               <span className="new-comment-label">
                                 Comment mới
@@ -225,23 +226,129 @@ function TabProductDetail() {
                             )}
                           </div>
                         </div>
-
                         <div className="review-card__rating">
                           <div className="rating">
                             <ReactRating
-                              initialRating={comment.rating} // Giá trị đánh giá ban đầu
-                              emptySymbol={<FaStar color="#ccc" />} // Màu sắc của sao chưa chọn
-                              fullSymbol={<FaStar color="#ffd700" />} // Màu sắc của sao đã chọn
-                              fractions={2} // Cho phép hiển thị số thập phân
-                              onChange={(value) => setRating(value)} // Cập nhật giá trị khi người dùng chọn
+                              initialRating={comment.rating}
+                              emptySymbol={<FaStar color="#ccc" />}
+                              fullSymbol={<FaStar color="#ffd700" />}
+                              fractions={2}
+                              onChange={(value) => setRating(value)}
                             />
                           </div>
                           <span>({comment.rating}) Review</span>
+                          <span style={{ marginLeft: "23px", color: "gray" }}>
+                            {(() => {
+                              const date = new Date(comment.created_at);
+                              const day = String(date.getDate()).padStart(
+                                2,
+                                "0"
+                              ); // Đảm bảo 2 chữ số
+                              const month = String(
+                                date.getMonth() + 1
+                              ).padStart(2, "0"); // Tháng tính từ 0 nên +1
+                              const year = date.getFullYear();
+                              const hours = String(date.getHours()).padStart(
+                                2,
+                                "0"
+                              );
+                              const minutes = String(
+                                date.getMinutes()
+                              ).padStart(2, "0");
+                              const seconds = String(
+                                date.getSeconds()
+                              ).padStart(2, "0");
+
+                              return `${day}/${month}/${year} at ${hours}:${minutes}`;
+                            })()}
+                          </span>
                         </div>
                       </div>
                     </div>
                   ))}
                 </Slider>
+              ) : comments.length > 0 ? (
+                <div className="col-xl-4">
+                  {comments.map((comment) => (
+                    <div
+                      className="review-card"
+                      key={comment.id}
+                      style={{ marginBottom: "15px" }}
+                    >
+                      <div className="review-card__content">
+                        <img
+                          src={
+                            comment.user.image.startsWith("http")
+                              ? comment.user.image
+                              : `${API_URL_LOCAL}/${comment.user.image}`
+                          }
+                          alt=""
+                          className="review-card__avatar"
+                        />
+                        <div className="review-card__info">
+                          <h4 className="review-card__title">
+                            {comment.user.name}
+                          </h4>
+                          <p className="review-card__desc">{comment.content}</p>
+                          {comment.id == newCommentId && (
+                            <span className="new-comment-label">
+                              Comment mới
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="review-card__rating">
+                        <div className="rating">
+                          <ReactRating
+                            initialRating={comment.rating}
+                            emptySymbol={<FaStar color="#ccc" />}
+                            fullSymbol={<FaStar color="#ffd700" />}
+                            fractions={2}
+                            onChange={(value) => setRating(value)}
+                          />
+                        </div>
+                        <span>({comment.rating}) Review</span>
+                        <span style={{ marginLeft: "30px", color: "gray" }}>
+                          {/* {new Date(comment.created_at)
+                            .toLocaleString("vi-VN", {
+                              timeZone: "Asia/Ho_Chi_Minh",
+                              year: "numeric",
+                              month: "2-digit",
+                              day: "2-digit",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              second: "2-digit",
+                              hour12: false,
+                            })
+                            .replace(",", "")} */}
+                          {(() => {
+                            const date = new Date(comment.created_at);
+                            const day = String(date.getDate()).padStart(2, "0"); // Đảm bảo 2 chữ số
+                            const month = String(date.getMonth() + 1).padStart(
+                              2,
+                              "0"
+                            ); // Tháng tính từ 0 nên +1
+                            const year = date.getFullYear();
+                            const hours = String(date.getHours()).padStart(
+                              2,
+                              "0"
+                            );
+                            const minutes = String(date.getMinutes()).padStart(
+                              2,
+                              "0"
+                            );
+                            const seconds = String(date.getSeconds()).padStart(
+                              2,
+                              "0"
+                            );
+
+                            return `${day}/${month}/${year} at ${hours}:${minutes}`;
+                          })()}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               ) : (
                 <div>Chưa có bình luận về sản phẩm !</div>
               )}

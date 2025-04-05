@@ -1,10 +1,12 @@
 $primary-color: #2c3e50;
 $hover-color: #1abc9c;
+// $hover-color:rgba(104, 114, 229, 1);
 $text-color: #ecf0f1;
 
 .sidebar {
   width: 250px;
   background: $primary-color;
+  // background: linear-gradient(180deg, #4d58e2 0%, #6368de 100%);
   color: $text-color;
   display: flex;
   flex-direction: column;
