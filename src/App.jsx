@@ -36,6 +36,8 @@ import { AdminPost } from "./pages/Admin/pageAdmin/AdminPost";
 // import Dashboard from "./pages/Admin/pageAdmin/AdminDashboard";
 import AdminDashboard from "./pages/Admin/pageAdmin/AdminDashboard";
 import { Dashboard } from "@mui/icons-material";
+import MyAddress from "./pages/Profile/MyAddress";
+import RecommendationPanel from "./pages/Admin/pageAdmin/RecommendationPanel";
 // import { Voucher } from "./pages/Voucher/Voucher";
 
 function App() {
@@ -60,6 +62,7 @@ function App() {
           <Route path="/list-voucher" element={<ListVoucher />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:id" element={<NewsPageDetails />} />
+          <Route path="/myAddress" element={<MyAddress />} />
           {/* /admin/ */}
           <Route path="/admin" element={<IndexAdmin />} />
           <Route path="/admin/product" element={<AdminProduct />} />
@@ -67,7 +70,10 @@ function App() {
           <Route path="/admin/order" element={<AdminOrder />} />
           <Route path="/admin/coupon" element={<AdminCoupon />} />
           <Route path="/admin/post" element={<AdminPost />} />
-          {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
+          <Route
+            path="/admin/generateAiRecommendations"
+            element={<RecommendationPanel />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

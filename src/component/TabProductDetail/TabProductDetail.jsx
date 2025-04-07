@@ -83,7 +83,7 @@ function TabProductDetail() {
       const response = await apiPostWithToken(`/comment`, dt, token);
 
       if (response.success) {
-        alert(response.data.data.id);
+        // alert(response.data.data.id);
         // console.log("day 1222 comment:", response.data.data.id);
         setNewCommentId(response.data.data.id);
         // alert(n)
@@ -94,12 +94,12 @@ function TabProductDetail() {
         });
         getCommentsByProductId();
       } else if (response.status === 422) {
-        if (response.error.errors?.product_id) {
+        // if (response.error.errors?.product_id) {
           Swal.fire({
             title: "Bạn chưa mua sản phẩm này nền chưa thể đánh giá!",
             icon: "warning",
           });
-        }
+        // }
       } else {
         alert(`Comment product ${id} failed: ${response.message}`);
       }

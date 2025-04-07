@@ -3,11 +3,41 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 const API_URL = import.meta.env.VITE_API_URL;
+const API_AI_URL = import.meta.env.VITE_AI_API_URL;
 // alert(API_URL);
 
 export const apiPost = async (url, data, headers = {}) => {
   try {
     const response = await axios.post(`${API_URL}${url}`, data, { headers });
+    return { success: true, data: response.data };
+  } catch (error) {
+    console.error("API Error: ", error);
+    return {
+      success: false,
+      message:
+        error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
+    };
+  }
+};
+export const apiPostWithToken2 = async (url, data, token) => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    const response = await axios.post(`${API_URL}${url}`, data, { headers });
+    return { success: true, data: response.data };
+  } catch (error) {
+    console.error("API Error: ", error);
+    return {
+      success: false,
+    };
+  }
+};
+
+export const apiGetAI = async (url, headers = {}) => {
+  try {
+    const response = await axios.get(`${API_AI_URL}${url}`, { headers });
     return { success: true, data: response.data };
   } catch (error) {
     console.error("API Error: ", error);
@@ -43,7 +73,7 @@ export const apiPostWithToken = async (url, data, token) => {
     return { success: true, data: response.data };
   } catch (error) {
     // const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-    console.error("API Error: ", error);
+    // console.error("API Error: ", error);
     if (error.response?.status === 401) {
       const MySwal = withReactContent(Swal);
       const vl = await MySwal.fire({
@@ -60,7 +90,7 @@ export const apiPostWithToken = async (url, data, token) => {
       message:
         error.response?.data?.message || "Đã có lỗi xảy ra. Vui lòng thử lại.",
       status: error.response?.status,
-      error: error.response.data,
+      // error: error.response.data,
     };
   }
 };

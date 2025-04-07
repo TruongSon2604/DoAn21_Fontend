@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.scss";
 import { assets } from "../../../assets/assets";
+import { FaRobot } from "react-icons/fa";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -10,12 +11,29 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="logo">
-      Coffee Mart <img src={assets.IconPrimary} alt="" />
+        Coffee Mart <img src={assets.IconPrimary} alt="" />
       </div>
       <ul className="menu">
         <Link to="/admin" onClick={() => setActiveItem("/admin")}>
           <li className={activeItem === "/admin" ? "active" : ""}>
             <i>🏠</i> Dashboard
+          </li>
+        </Link>
+        <Link
+          to="/admin/generateAiRecommendations"
+          onClick={() => setActiveItem("/admin/generateAiRecommendations")}
+          style={{ backgroundColor: "brown" }}
+        >
+          <li
+            className={
+              activeItem === "/admin/generateAiRecommendations" ? "active" : ""
+            }
+            style={{ backgroundColor: "brown", textAlign:'center', lineHeight:1.2 }}
+          >
+            <i>
+              <FaRobot />
+            </i>{" "}
+            GENERATE AI RECOMMENDATIONS
           </li>
         </Link>
         <Link

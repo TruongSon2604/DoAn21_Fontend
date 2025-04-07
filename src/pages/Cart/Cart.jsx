@@ -10,6 +10,7 @@ import { ProductContext } from "../../Providerrs/ProductContext";
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import TabProductDetail from "../../component/TabProductDetail/TabProductDetail";
 
 function Cart() {
   const { selectedProducts, setSelectedProducts, products, setProducts } =
@@ -123,6 +124,16 @@ function Cart() {
   };
 
   const handleIncrease = async (productId) => {
+    const product = products.find((product) => product.id === productId);
+    if (product.quantity >= product.stock_quantity) {
+      // Nếu số lượng muốn tăng đã bằng hoặc lớn hơn stock_quantity
+      Swal.fire({
+        icon: "error",
+        text: `The quantity exceeds the stock available (${product.stock_quantity} items)`,
+      });
+      return;
+    }
+
     const updatedProducts = products.map((product) =>
       product.id === productId
         ? { ...product, quantity: product.quantity + 1 }
@@ -254,7 +265,7 @@ function Cart() {
                               {product.discounted_price} VNĐ |{" "}
                               <span className="cart-item__status">
                                 {product.stock_quantity > 0
-                                  ? "In stock"
+                                  ? `In stock: ${product.stock_quantity}`
                                   : "Not in stock"}
                               </span>
                             </p>
@@ -266,7 +277,7 @@ function Cart() {
                                 >
                                   <img src={assets.Minus} alt="" />
                                 </button>
-                                <label>{product.quantity}</label>
+                                <label style={{marginTop:'4px'}}>{product.quantity}</label>
                                 <button
                                   className="cart-item__input-btn"
                                   onClick={() => handleIncrease(product.id)} // Tăng số lượng
@@ -384,7 +395,9 @@ function Cart() {
             </div>
           </div>
         </div>
+        <TabProductDetail/>
       </div>
+     
       <Footer />
     </>
   );

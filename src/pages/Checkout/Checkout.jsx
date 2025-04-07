@@ -22,6 +22,8 @@ import {
   MdPayment,
   MdLocalShipping,
   MdVerified,
+  MdKeyboardArrowDown,
+  MdKeyboardArrowUp,
 } from "react-icons/md";
 
 function Checkout() {
@@ -39,6 +41,7 @@ function Checkout() {
   const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [showAllAddresses, setShowAllAddresses] = useState(false);
 
   useEffect(() => {
     const checkPayment = async () => {
@@ -202,8 +205,20 @@ function Checkout() {
             icon: "success",
           });
           navigate("/profile");
+        } else if (response.status === 422) {
+          // alert("vao day");
+          // const quantityError = response.error.errors;
+          // // console.log("quantityError", quantityError);
+          // alert(quantityError);
+          // if (quantityError) {
+            Swal.fire({
+              title:
+                "Bạn đã mua vượt số lượng trong kho mất rồi. Xin kiểm tra lại!",
+              icon: "warning",
+            });
+          // }
         } else {
-          alert("Đặt hàng thất bại!");
+          alert(`Đặt hàng thất bại`);
         }
       } else {
         //
@@ -227,6 +242,13 @@ function Checkout() {
       alert("Đã xảy ra lỗi khi đặt hàng.");
     }
   };
+  const toggleShowAllAddresses = () => {
+    setShowAllAddresses(!showAllAddresses);
+  };
+
+  // Display only 3 addresses or all based on showAllAddresses state
+  const displayedAddresses = showAllAddresses ? address : address.slice(0, 3);
+
   if (loading) {
     return (
       <>
@@ -295,12 +317,12 @@ function Checkout() {
                       </p>
                     </div>
                     {/* <button className='user-address__add'>Add a new address</button> */}
-                    <ModalPreview />
+                    {/* <ModalPreview /> */}
                   </div>
 
                   <div className="user-address__list">
-                    {address &&
-                      address.map((ad) => (
+                    {displayedAddresses &&
+                      displayedAddresses.map((ad) => (
                         <article className="address-card" key={ad.id}>
                           <div className="address-card__left">
                             <div className="address-card__choose">
@@ -338,6 +360,29 @@ function Checkout() {
                           </div>
                         </article>
                       ))}
+
+                    {address.length > 3 && (
+                      <div className="see-more-addresses">
+                        <button
+                          className="see-more-btn"
+                          onClick={toggleShowAllAddresses}
+                        >
+                          {showAllAddresses ? (
+                            <>
+                              <span>Thu gọn</span>
+                              <MdKeyboardArrowUp />
+                            </>
+                          ) : (
+                            <>
+                              <span>
+                                Xem thêm địa chỉ ({address.length - 3})
+                              </span>
+                              <MdKeyboardArrowDown />
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -423,7 +468,10 @@ function Checkout() {
                         <div className="cart-item__content">
                           <div className="cart-item__content-left">
                             <h3 className="cart-item__title">{product.name}</h3>
-                            <p className="cart-item__price-wrap" style={{ marginTop: "10px" }}>
+                            <p
+                              className="cart-item__price-wrap"
+                              style={{ marginTop: "10px" }}
+                            >
                               {product.discounted_price} VNĐ
                             </p>
                             <div className="cart-item__ctrl">
@@ -487,7 +535,7 @@ function Checkout() {
               <div className="cart-info">
                 <div className="cart-info__row">
                   <span>Subtotal (items)</span>
-                  <span className="cart-info__number">
+                  <span className="cart-info__number ">
                     {ListProduct.length}
                   </span>
                 </div>
@@ -524,8 +572,11 @@ function Checkout() {
 
                 <div className="cart-info__row">
                   <span>Estimated Total</span>
-                  <span className="cart-info__number">
-                    {total - coupon2 + 25000} VNĐ
+                  <span className="cart-info__number  checkout-total">
+                    {new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(total - coupon2 + 25000)}
                   </span>
                 </div>
               </div>

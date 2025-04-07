@@ -5,8 +5,10 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { apiPostWithToken } from "../../Service/apiService";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
-function ModalPreview() {
+function ModalPreview({ handleReload }) {
   const [show, setShow] = useState(false);
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
@@ -101,12 +103,15 @@ function ModalPreview() {
       address_detail: document.getElementById("addressDetails").value,
     };
 
-    const response = await apiPostWithToken(
-      `/address`,
-      requestData,
-      token
-    );
+    const response = await apiPostWithToken(`/address`, requestData, token);
     if (response.success) {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Address added successfully!",
+        confirmButtonText: "OK",
+      });
+      handleReload();
       handleClose();
     } else {
       console.log(response.data);
@@ -115,8 +120,23 @@ function ModalPreview() {
 
   return (
     <>
-      <Button variant="warning" onClick={handleShow}>
-        Add a new address
+      <Button
+        onClick={handleShow}
+        className="btn-add-address"
+        style={{
+          marginBottom: "10px",
+          background:
+            "linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)",
+          color: "#fff",
+          textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
+          border: "none",
+          padding: "10px 20px",
+          fontWeight: "bold",
+          borderRadius: "8px",
+          transition: "0.3s ease",
+        }}
+      >
+        Add Address
       </Button>
 
       <Modal show={show} onHide={handleClose}>

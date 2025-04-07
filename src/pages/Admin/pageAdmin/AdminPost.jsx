@@ -132,7 +132,7 @@ export const AdminPost = () => {
           </Button>
           <CategoryUpdate selectedIds={selectedIds} setCategory={setCategory} />
           <PostAdd selectedIds={selectedIds} setCategory={setCategory} />
-          <div style={{ height: "90%", width: "100%" }}>
+          <div style={{ height: "90%", width: "100%" }} className="admin-table">
             <Paper sx={{ height: "90%", width: "100%" }}>
               <DataGrid
                 rowHeight={70}

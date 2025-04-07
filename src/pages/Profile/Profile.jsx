@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { FaUser } from "react-icons/fa";
 import { FaAddressCard } from "react-icons/fa6";
-import { FaMailBulk } from "react-icons/fa";
+import { FaMailBulk,FaAddressBook  } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { MdDiscount } from "react-icons/md";
 import "./Profile.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
@@ -180,13 +181,13 @@ function Profile() {
                         className="profile__menu-linkk"
                         to={"/list-voucher"}
                       >
-                        <FaAddressCard /> List voucher
+                        <MdDiscount /> List voucher
                       </Link>
                     </li>
                     <li>
-                      <Link className="profile__menu-linkk">
-                        <FaMailBulk />
-                        Communications & privacy
+                      <Link className="profile__menu-linkk" to={"/myaddress"}>
+                        <FaAddressBook />
+                        My Address
                       </Link>
                     </li>
                   </ul>

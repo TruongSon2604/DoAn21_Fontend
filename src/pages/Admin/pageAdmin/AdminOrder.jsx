@@ -287,7 +287,7 @@ export const AdminOrder = () => {
             />
           </div>
 
-          <div style={{ height: "90%", width: "100%" }}>
+          <div style={{ height: "90%", width: "100%" }} className="admin-table">
             <Paper sx={{ height: "90%", width: "100%" }}>
               <DataGrid
                 rowHeight={70}

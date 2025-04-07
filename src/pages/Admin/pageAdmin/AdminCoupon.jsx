@@ -131,7 +131,7 @@ export const AdminCoupon = () => {
           </Button>
           <CouponUpdate selectedIds={selectedIds} setCoupon={setCoupon} />
           <CouponAdd selectedIds={selectedIds} setCoupon={setCoupon} />
-          <div style={{ height: "90%", width: "100%" }}>
+          <div style={{ height: "90%", width: "100%" }} className="admin-table">
             <Paper sx={{ height: "90%", width: "100%" }}>
               <DataGrid
                 rowHeight={70}

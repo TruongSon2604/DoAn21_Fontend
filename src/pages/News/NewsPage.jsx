@@ -74,7 +74,7 @@ const NewsPage = () => {
       <Header />
       <div className="news-page">
         <div className="container news-page__container">
-          <h1 className="news-page__title">NEWS</h1>
+
           <div className="row">
             {post.map((news) => {
               // Chuyển đổi `created_at` sang giờ Việt Nam

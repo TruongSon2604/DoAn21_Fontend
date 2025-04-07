@@ -234,8 +234,9 @@ $border-radius-lg: 12px;
 }
 
 .address-card {
-  margin-top: 30px;
+  margin-top: 0px !important;
   display: flex;
+  padding: 5px 15px !important;
 
   &__left {
     flex: 1;
@@ -244,7 +245,7 @@ $border-radius-lg: 12px;
   }
 
   &__title {
-    font-size: 1.8rem;
+    font-size: 1.7rem !important;
     font-weight: 500;
     line-height: 144.444%;
   }
@@ -255,7 +256,7 @@ $border-radius-lg: 12px;
     line-height: 146.667%;
   }
   &__list {
-    margin-top: 20px;
+    margin-top: 5px !important;
     display: flex;
     gap: 20px;
     font-size: 1.4rem;
@@ -626,4 +627,70 @@ margin-top: 40px;
         transform: rotate(360deg);
       }
     }
+  }
+
+  .see-more-addresses {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  
+    .see-more-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: transparent;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      padding: 8px 15px;
+      font-size: 14px;
+      color: #3498db;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        background-color: #f5f9fc;
+        border-color: #3498db;
+      }
+  
+      svg {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .user-address {
+    margin-bottom: 30px;
+  
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  
+    &__title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #333;
+  
+      &.user-address__details {
+        margin-top: 30px;
+      }
+    }
+  
+    &__desc {
+      font-size: 14px;
+      color: #666;
+    }
+  
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  .checkout-total{
+    color: #fd7e14;
   }
