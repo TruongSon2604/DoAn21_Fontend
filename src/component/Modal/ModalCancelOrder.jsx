@@ -46,12 +46,21 @@ function ModalCancelOrder({ id }) {
         const token = localStorage.getItem("access_token");
         const response = await apiPostWithToken(`/cancelOrder`, value, token);
         if (response.success) {
-          Swal.fire({
-            title: "Huỷ đơn hàng thành công!",
-            icon: "success",
-          });
-          setShow(false);
-          window.location.reload();
+          alert(response.data.data);
+          if (response.data.data === 1) {
+            Swal.fire({
+              title: "Huỷ đơn hàng thành công!",
+              icon: "success",
+            });
+            setShow(false);
+            window.location.reload();
+          } else {
+            Swal.fire({
+              title:
+                "Bạn đã thanh toán đơn hàng này không thể hủy! Xin liên hệ với chúng tôi !",
+              icon: "error",
+            });
+          }
         } else {
           Swal.fire({
             title: "Huỷ đơn hàng thành thát bại!",

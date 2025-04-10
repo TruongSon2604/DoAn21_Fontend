@@ -25,6 +25,7 @@ import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
 } from "react-icons/md";
+import LoadingCheckout from "../../component/Loading/LoadingCheckout";
 
 function Checkout() {
   const [selectedValue, setSelectedValue] = useState("value-1");
@@ -42,6 +43,7 @@ function Checkout() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [showAllAddresses, setShowAllAddresses] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const checkPayment = async () => {
@@ -49,14 +51,35 @@ function Checkout() {
 
       if (!transactionId) return;
 
+      // try {
+      //   const response = await apiGet(`/payment2/status/${transactionId}`);
+
+      //   if (response.success && response.data.original.data.return_code === 1) {
+      //     clearInterval(interval);
+      //     localStorage.removeItem("transaction_id");
+      //     alert("Thanh toán thành công!");
+      //     navigate("/profile");
+      //   }
+      // } catch (error) {
+      //   console.error("Lỗi khi kiểm tra thanh toán:", error);
+      // }
       try {
         const response = await apiGet(`/payment2/status/${transactionId}`);
 
         if (response.success && response.data.original.data.return_code === 1) {
           clearInterval(interval);
           localStorage.removeItem("transaction_id");
-          alert("Thanh toán thành công!");
-          navigate("/profile");
+
+          const checkStatus = await Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Order Zalopay successfully!",
+            confirmButtonText: "OK",
+          });
+
+          if (checkStatus.isConfirmed) {
+            navigate("/profile");
+          }
         }
       } catch (error) {
         console.error("Lỗi khi kiểm tra thanh toán:", error);
@@ -190,7 +213,7 @@ function Checkout() {
         quantity: product.quantity,
       })),
     };
-
+    setIsLoading(true);
     try {
       if (selectedValue === "value-1") {
         console.log("id coupon", requestData.coupon_id);
@@ -206,16 +229,11 @@ function Checkout() {
           });
           navigate("/profile");
         } else if (response.status === 422) {
-          // alert("vao day");
-          // const quantityError = response.error.errors;
-          // // console.log("quantityError", quantityError);
-          // alert(quantityError);
-          // if (quantityError) {
-            Swal.fire({
-              title:
-                "Bạn đã mua vượt số lượng trong kho mất rồi. Xin kiểm tra lại!",
-              icon: "warning",
-            });
+          Swal.fire({
+            title:
+              "Bạn đã mua vượt số lượng trong kho mất rồi. Xin kiểm tra lại!",
+            icon: "warning",
+          });
           // }
         } else {
           alert(`Đặt hàng thất bại`);
@@ -240,6 +258,8 @@ function Checkout() {
     } catch (error) {
       console.error("Lỗi khi đặt hàng:", error);
       alert("Đã xảy ra lỗi khi đặt hàng.");
+    } finally {
+      setIsLoading(false);
     }
   };
   const toggleShowAllAddresses = () => {
@@ -266,12 +286,14 @@ function Checkout() {
 
   return (
     <>
+      {isLoading && <LoadingCheckout />}
       <Header />
 
       <div className="container">
         <div className="checkout-container">
           <div className="checkout-header">
             <h1 className="checkout-title">Thanh toán</h1>
+
             <div className="checkout-steps">
               <div className="step active">
                 <div className="step-icon">

@@ -11,6 +11,8 @@ import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import TabProductDetail from "../../component/TabProductDetail/TabProductDetail";
+import Loading from "../../component/Loading/Loading";
+import Loading2 from "../../component/Loading/Loading2";
 
 function Cart() {
   const { selectedProducts, setSelectedProducts, products, setProducts } =
@@ -232,6 +234,10 @@ function Cart() {
     });
   };
 
+  // if (loading || !products) {
+  //   return <Loading2 />;
+  // }
+
   return (
     <>
       <Header />
@@ -243,82 +249,181 @@ function Cart() {
           <div className="row">
             <div className="col-8">
               <div className="cart-info">
-                <div className="cart-info__list">
-                  {products &&
-                    products.map((product) => (
-                      <article className="cart-item" key={product.id}>
-                        <input
-                          className="cart-item__input"
-                          type="checkbox"
-                          checked={selectedProducts.includes(product.id)}
-                          onChange={() => handleSelectProduct(product.id)}
-                        />
+                {loading ? (
+                  <Loading2 />
+                ) : (
+                  // <div className="cart-info__list">
+                  //   {products &&
+                  //     products.map((product) => (
+                  //       <article className="cart-item" key={product.id}>
+                  //         <input
+                  //           className="cart-item__input"
+                  //           type="checkbox"
+                  //           checked={selectedProducts.includes(product.id)}
+                  //           onChange={() => handleSelectProduct(product.id)}
+                  //         />
+                  //         <img
+                  //           src={`${API_URL_LOCAL}/${product.image}`}
+                  //           className="cart-item__thumb"
+                  //           alt=""
+                  //         />
+                  //         <div className="cart-item__content">
+                  //           <div className="cart-item__content-left">
+                  //             <h3 className="cart-item__title">
+                  //               {product.name}
+                  //             </h3>
+                  //             <p className="cart-item__price-wrap">
+                  //               {product.discounted_price} VNĐ |{" "}
+                  //               <span className="cart-item__status">
+                  //                 {product.stock_quantity > 0
+                  //                   ? `In stock: ${product.stock_quantity}`
+                  //                   : "Not in stock"}
+                  //               </span>
+                  //             </p>
+                  //             <div className="cart-item__ctrl">
+                  //               <div className="quantity">
+                  //                 <button
+                  //                   className="cart-item__input-btn"
+                  //                   onClick={() => handleDecrease(product.id)} // Giảm số lượng
+                  //                 >
+                  //                   <img src={assets.Minus} alt="" />
+                  //                 </button>
+                  //                 <label style={{ marginTop: "4px" }}>
+                  //                   {product.quantity}
+                  //                 </label>
+                  //                 <button
+                  //                   className="cart-item__input-btn"
+                  //                   onClick={() => handleIncrease(product.id)} // Tăng số lượng
+                  //                 >
+                  //                   <img src={assets.Plus} alt="" />
+                  //                 </button>
+                  //               </div>
+                  //             </div>
+                  //           </div>
+                  //           <div className="cart-item__content-right">
+                  //             <p className="cart-item__total-price">
+                  //               {new Intl.NumberFormat("vi-VN", {
+                  //                 style: "currency",
+                  //                 currency: "VND",
+                  //               }).format(
+                  //                 product.quantity * product.discounted_price
+                  //               )}
+                  //               {/* {product.quantity * product.discounted_price} VNĐ */}
+                  //             </p>
+                  //             <div className="cart-item__ctrl-right">
+                  //               <button className="cart-item__input-btn cart-item__input-btn-save">
+                  //                 <img
+                  //                   src={assets.save}
+                  //                   alt=""
+                  //                   className="cart-btn__save"
+                  //                 />
+                  //                 Save
+                  //               </button>
+                  //               <button
+                  //                 className="cart-item__input-btn cart-item__input-btn-delete"
+                  //                 onClick={() => removeFromCart(product.id)}
+                  //               >
+                  //                 <img src={assets.Delete} alt="" />
+                  //                 Delete
+                  //               </button>
+                  //             </div>
+                  //           </div>
+                  //         </div>
+                  //       </article>
+                  //     ))}
+                  // </div>
+                  <div className="cart-info__list">
+                    {!products ? (
+                      <Loading2 /> // hoặc loading spinner nếu bạn muốn
+                    ) : products.length === 0 ? (
+                      <div className="no-item">
                         <img
-                          src={`${API_URL_LOCAL}/${product.image}`}
-                          className="cart-item__thumb"
+                          src={assets.notfound}
+                          style={{width:'150px',height:'150px',}}
                           alt=""
                         />
-                        <div className="cart-item__content">
-                          <div className="cart-item__content-left">
-                            <h3 className="cart-item__title">{product.name}</h3>
-                            <p className="cart-item__price-wrap">
-                              {product.discounted_price} VNĐ |{" "}
-                              <span className="cart-item__status">
-                                {product.stock_quantity > 0
-                                  ? `In stock: ${product.stock_quantity}`
-                                  : "Not in stock"}
-                              </span>
-                            </p>
-                            <div className="cart-item__ctrl">
-                              <div className="quantity">
-                                <button
-                                  className="cart-item__input-btn"
-                                  onClick={() => handleDecrease(product.id)} // Giảm số lượng
-                                >
-                                  <img src={assets.Minus} alt="" />
+                        <p style={{marginTop:'80px' ,marginLeft:'25px'}}>Không có sản phẩm nào trong giỏ hàng</p>
+                      </div>
+                    ) : (
+                      products.map((product) => (
+                        <article className="cart-item" key={product.id}>
+                          <input
+                            className="cart-item__input"
+                            type="checkbox"
+                            checked={selectedProducts.includes(product.id)}
+                            onChange={() => handleSelectProduct(product.id)}
+                          />
+                          <img
+                            src={`${API_URL_LOCAL}/${product.image}`}
+                            className="cart-item__thumb"
+                            alt=""
+                          />
+                          <div className="cart-item__content">
+                            <div className="cart-item__content-left">
+                              <h3 className="cart-item__title">
+                                {product.name}
+                              </h3>
+                              <p className="cart-item__price-wrap">
+                                {product.discounted_price} VNĐ |{" "}
+                                <span className="cart-item__status">
+                                  {product.stock_quantity > 0
+                                    ? `In stock: ${product.stock_quantity}`
+                                    : "Not in stock"}
+                                </span>
+                              </p>
+                              <div className="cart-item__ctrl">
+                                <div className="quantity">
+                                  <button
+                                    className="cart-item__input-btn"
+                                    onClick={() => handleDecrease(product.id)}
+                                  >
+                                    <img src={assets.Minus} alt="" />
+                                  </button>
+                                  <label style={{ marginTop: "4px" }}>
+                                    {product.quantity}
+                                  </label>
+                                  <button
+                                    className="cart-item__input-btn"
+                                    onClick={() => handleIncrease(product.id)}
+                                  >
+                                    <img src={assets.Plus} alt="" />
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="cart-item__content-right">
+                              <p className="cart-item__total-price">
+                                {new Intl.NumberFormat("vi-VN", {
+                                  style: "currency",
+                                  currency: "VND",
+                                }).format(
+                                  product.quantity * product.discounted_price
+                                )}
+                              </p>
+                              <div className="cart-item__ctrl-right">
+                                <button className="cart-item__input-btn cart-item__input-btn-save">
+                                  <img
+                                    src={assets.save}
+                                    alt=""
+                                    className="cart-btn__save"
+                                  />
+                                  Save
                                 </button>
-                                <label style={{marginTop:'4px'}}>{product.quantity}</label>
                                 <button
-                                  className="cart-item__input-btn"
-                                  onClick={() => handleIncrease(product.id)} // Tăng số lượng
+                                  className="cart-item__input-btn cart-item__input-btn-delete"
+                                  onClick={() => removeFromCart(product.id)}
                                 >
-                                  <img src={assets.Plus} alt="" />
+                                  <img src={assets.Delete} alt="" />
+                                  Delete
                                 </button>
                               </div>
                             </div>
                           </div>
-                          <div className="cart-item__content-right">
-                            <p className="cart-item__total-price">
-                              {new Intl.NumberFormat("vi-VN", {
-                                style: "currency",
-                                currency: "VND",
-                              }).format(
-                                product.quantity * product.discounted_price
-                              )}
-                              {/* {product.quantity * product.discounted_price} VNĐ */}
-                            </p>
-                            <div className="cart-item__ctrl-right">
-                              <button className="cart-item__input-btn cart-item__input-btn-save">
-                                <img
-                                  src={assets.save}
-                                  alt=""
-                                  className="cart-btn__save"
-                                />
-                                Save
-                              </button>
-                              <button
-                                className="cart-item__input-btn cart-item__input-btn-delete"
-                                onClick={() => removeFromCart(product.id)}
-                              >
-                                <img src={assets.Delete} alt="" />
-                                Delete
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </article>
-                    ))}
-                </div>
+                        </article>
+                      ))
+                    )}
+                  </div>
+                )}
 
                 <div className="cart-info__bottom">
                   <div className="row">
@@ -395,9 +500,9 @@ function Cart() {
             </div>
           </div>
         </div>
-        <TabProductDetail/>
+        <TabProductDetail />
       </div>
-     
+
       <Footer />
     </>
   );

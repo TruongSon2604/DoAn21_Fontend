@@ -44,7 +44,7 @@ import DMoney from "./DMoney.png";
 import DProduct from "./DProduct.png";
 import Duser from "./Duser.png";
 import People from "./people.jpg";
-
+import notfound from "./notfound.png";
 export const assets = {
   icon,
   iconDown,
@@ -91,5 +91,6 @@ export const assets = {
   DMoney,
   Duser,
   DProduct,
-  People
+  People,
+  notfound
 };

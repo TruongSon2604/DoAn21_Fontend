@@ -157,7 +157,8 @@ function SignIn() {
                 {loading ? "Process login..." : "Sign In"}
               </button>
               <Link
-                to="http://127.0.0.1:8000/auth/google/redirect"
+                // to="http://127.0.0.1:8000/auth/google/redirect"
+                to="https://coffeengonmoingay.click/auth/google/redirect"
                 className="auth__btn-google"
               >
                 <img src={assets.iconGoogle} className="btn__icon" alt="" />

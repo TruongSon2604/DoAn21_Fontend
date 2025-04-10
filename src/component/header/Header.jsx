@@ -263,12 +263,12 @@ function Header() {
             {token ? (
               <>
                 <div className="top-act__group">
-                  <Link to="/favourite">
+                  {/* <Link to="/favourite">
                     <button className="top-act__btn">
                       <FaHeart className="top-act__icon" />
                       <span className="top-act__title">03</span>
                     </button>
-                  </Link>
+                  </Link> */}
 
                   <div className="top-act__separate"></div>
                   <Link to={"/cart"}>

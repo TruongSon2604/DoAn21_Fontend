@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { FaFilter } from "react-icons/fa";
 import PaginationE from "../Pagination/PaginationE";
 import { apiGet } from "../../Service/apiService";
+import LoadingCheckout from "../Loading/LoadingCheckout";
+import Loading from "../Loading/Loading";
 function BrowseProduct() {
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
@@ -42,16 +44,7 @@ function BrowseProduct() {
 
   if (loading)
     return (
-      <div className="browse">
-        <div className="loader">
-          <div className="crystal"></div>
-          <div className="crystal"></div>
-          <div className="crystal"></div>
-          <div className="crystal"></div>
-          <div className="crystal"></div>
-          <div className="crystal"></div>
-        </div>
-      </div>
+      <Loading/>
     );
 
   return (
