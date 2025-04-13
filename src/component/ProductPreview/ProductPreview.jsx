@@ -85,7 +85,18 @@ const ProductPreview = () => {
               </div>
             </div>
             <div className="prod-preview__thumbs">
-              <img
+              <p
+                style={{
+                  marginTop: "40px",
+                  background: "linear-gradient(90deg, #ff6a00, #ee0979)", // Tùy chỉnh màu ở đây
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  fontWeight: "bold",
+                }}
+              >
+                Sản phẩm thuộc sở hữu của Coffee Mart
+              </p>
+              {/* <img
                 src={assets.ItemCafe1}
                 alt=""
                 className="prod-preview__thumbs-img prod-preview__thumbs-img__current"
@@ -104,7 +115,7 @@ const ProductPreview = () => {
                 src={assets.ItemCafe1}
                 alt=""
                 className="prod-preview__thumbs-img"
-              />
+              /> */}
             </div>
           </div>
         </div>

@@ -38,6 +38,12 @@ function SignIn() {
         "Content-Type": "application/json",
       }
     );
+    if (!success) {
+      Swal.fire({
+        icon: "question",
+        text: "Tài khoản hoặc mật khẩu không đúng!",
+      });
+    }
 
     console.log("login", data.user.role);
     if (data.user.role == 1 && success) {
@@ -157,8 +163,8 @@ function SignIn() {
                 {loading ? "Process login..." : "Sign In"}
               </button>
               <Link
-                // to="http://127.0.0.1:8000/auth/google/redirect"
-                to="https://coffeengonmoingay.click/auth/google/redirect"
+                to="http://127.0.0.1:8000/auth/google/redirect"
+                // to="https://coffeengonmoingay.click/auth/google/redirect"
                 className="auth__btn-google"
               >
                 <img src={assets.iconGoogle} className="btn__icon" alt="" />

@@ -500,7 +500,7 @@ function Cart() {
             </div>
           </div>
         </div>
-        <TabProductDetail />
+        {/* <TabProductDetail /> */}
       </div>
 
       <Footer />

@@ -20,6 +20,8 @@ function MyAddress() {
   const [orders, setOrders] = useState([]);
   const token = localStorage.getItem("access_token");
   const paginationModel = { page: 0, pageSize: 5 };
+  const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
+  const user = JSON.parse(localStorage.getItem("user"));
   const getProduct = async () => {
     const response = await apiGetWithToken("/getAddressByUser", token);
     setOrders(response.data.data);
@@ -104,12 +106,19 @@ function MyAddress() {
                 <div className="profile__user">
                   <img
                     className="profile__user-avatar"
-                    src={assets.avatar}
-                    alt=""
+                    src={
+                      user.image.startsWith("http")
+                        ? user.image
+                        : `${API_URL_LOCAL}/${user.image}`
+                    }
+                    alt="avatar"
                   />
-                  <h1 className="profile__user-name">TRƯƠNG NGOC SƠN</h1>
+                  <h1 className="profile__user-name">{user.name}</h1>
                   <p className="profile__user-desc">
-                    Registered: 17th May 2022
+                    Registered:{" "}
+                    {new Date(user.created_at).toLocaleDateString("vi-VN", {
+                      timeZone: "Asia/Ho_Chi_Minh",
+                    })}
                   </p>
                 </div>
 

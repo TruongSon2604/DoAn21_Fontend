@@ -224,14 +224,13 @@ function Checkout() {
         );
         if (response.success) {
           Swal.fire({
-            title: "Đặt hàng thành công!",
+            title: "Order placed successfully!",
             icon: "success",
           });
           navigate("/profile");
         } else if (response.status === 422) {
           Swal.fire({
-            title:
-              "Bạn đã mua vượt số lượng trong kho mất rồi. Xin kiểm tra lại!",
+            title: "You have exceeded the available stock. Please check again!",
             icon: "warning",
           });
           // }
@@ -276,7 +275,7 @@ function Checkout() {
         <div className="checkout-page-wrapper">
           <div className="loading-container">
             <div className="loading-spinner"></div>
-            <p>Đang tải thông tin...</p>
+            <p>Loading information...</p>
           </div>
         </div>
         <Footer />
@@ -292,32 +291,32 @@ function Checkout() {
       <div className="container">
         <div className="checkout-container">
           <div className="checkout-header">
-            <h1 className="checkout-title">Thanh toán</h1>
+            <h1 className="checkout-title">Checkout</h1>
 
             <div className="checkout-steps">
               <div className="step active">
                 <div className="step-icon">
                   <MdLocationOn />
                 </div>
-                <span>Địa chỉ</span>
+                <span>Address</span>
               </div>
               <div className="step active">
                 <div className="step-icon">
                   <MdPayment />
                 </div>
-                <span>Thanh toán</span>
+                <span>Payment</span>
               </div>
               <div className="step">
                 <div className="step-icon">
                   <MdLocalShipping />
                 </div>
-                <span>Vận chuyển</span>
+                <span>Shipping</span>
               </div>
               <div className="step">
                 <div className="step-icon">
                   <MdVerified />
                 </div>
-                <span>Hoàn tất</span>
+                <span>Complete</span>
               </div>
             </div>
           </div>
@@ -423,7 +422,7 @@ function Checkout() {
                       <p className="user-payment__title">
                         {" "}
                         <FaHandHoldingUsd size={25} color="blue" />
-                        Thanh toán khi nhận hàng
+                        Cash on Delivery (COD)
                       </p>
                     </label>
 
@@ -437,8 +436,7 @@ function Checkout() {
                         onChange={(e) => setSelectedValue(e.target.value)}
                       />
                       <p className="user-payment__title">
-                        <SiZalo size={30} color="blue" /> Thanh toán bằng
-                        zalopay
+                        <SiZalo size={30} color="blue" /> Payment via ZaloPay
                       </p>
                     </label>
                   </div>

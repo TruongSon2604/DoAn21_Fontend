@@ -7,30 +7,30 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 function SlideShow() {
   var settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
     speed: 700,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
   };
 
   return (
     <div className="slideshow">
       <div className="slideshow__inner">
-      <Slider {...settings}>
-      <div className="slideshow__item">
+        <Slider {...settings}>
+          <div className="slideshow__item">
             <img src={assets.slide} alt="" className="slideshow__img" />
-        </div>
-        <div className="slideshow__item">
+          </div>
+          <div className="slideshow__item">
             <img src={assets.carousel1} alt="" className="slideshow__img" />
-        </div>
-        <div className="slideshow__item">
+          </div>
+          <div className="slideshow__item">
             <img src={assets.carousel2} alt="" className="slideshow__img" />
-        </div>
-        </Slider> 
+          </div>
+        </Slider>
       </div>
     </div>
   );

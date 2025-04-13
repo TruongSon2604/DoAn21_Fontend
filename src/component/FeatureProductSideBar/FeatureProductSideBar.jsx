@@ -59,7 +59,7 @@ const FeatureProductSideBar = ({ products, setProducts }) => {
 
   return (
     <div className="feature-sidebar">
-      <h4 className="sidebar-title">Danh mục sản phẩm</h4>
+      <h4 className="sidebar-title">Product Categories</h4>
       {categories.map((category) => (
         <div className="sidebar-category" key={category.id}>
           <label>
@@ -76,7 +76,7 @@ const FeatureProductSideBar = ({ products, setProducts }) => {
         </div>
       ))}
 
-      <h4 className="sidebar-title price">Khoảng giá</h4>
+      <h4 className="sidebar-title price">Price Range</h4>
       <div className="sidebar-price">
         <label>
           <input
@@ -85,7 +85,7 @@ const FeatureProductSideBar = ({ products, setProducts }) => {
             value={1}
             onChange={handlePriceChange}
           />
-          Dưới 100k
+          Under 100k
         </label>
       </div>
       <div className="sidebar-price">
@@ -96,7 +96,7 @@ const FeatureProductSideBar = ({ products, setProducts }) => {
             value={2}
             onChange={handlePriceChange}
           />
-          Từ 100k - 500k
+          From 100k - 500k
         </label>
       </div>
       <div className="sidebar-price">
@@ -107,7 +107,7 @@ const FeatureProductSideBar = ({ products, setProducts }) => {
             value={3}
             onChange={handlePriceChange}
           />
-          Trên 500k
+          Above 500k
         </label>
       </div>
       <div className="coverbtn">

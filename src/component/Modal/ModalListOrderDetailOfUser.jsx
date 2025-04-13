@@ -129,7 +129,7 @@ function ModalListOrderDetailOfUser({ id, setorders }) {
                 </p>
                 <p style={{ minWidth: "350px", padding: "10px" }}>
                   <strong style={{ color: "red", fontWeight: "700" }}>
-                    Địa chỉ:
+                    Address:
                   </strong>{" "}
                   {products[0].address_detail},{products[0].district},
                   {products[0].ward},{products[0].provice}.

@@ -1,6 +1,6 @@
 import React from "react";
 
-// import "./Home.css";
+import "./Home.scss";
 import Header from "../../component/header/Header";
 import Footer from "../../component/footer/Footer";
 
@@ -12,21 +12,25 @@ import BrowseProduct from "../../component/BrowseProduct/BrowseProduct";
 import Breadcrumbs from "../../component/Breadcrumbs/Breadcrumbs";
 import VideoList from "../../component/VideoFeature/VideoList";
 import AboutUs from "../../component/AboutUs/AboutUs";
+import FlashSale from "../../component/FlashSale/FlashSale";
 const Home = () => {
   return (
     <>
       <Header />
       <div className="container">
         {/* <Breadcrumbs/> */}
+
         <SlideShow />
         {/* Browse Category  */}
         <BrowseCategory />
+        <FlashSale />
+
         {/* Browse Product  */}
         <BrowseProduct />
         {/* <hr /> */}
-        
+
         <VideoList />
-        <AboutUs/>
+        <AboutUs />
       </div>
       <Footer />
     </>

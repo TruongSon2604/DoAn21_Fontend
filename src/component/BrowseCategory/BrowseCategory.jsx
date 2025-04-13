@@ -39,9 +39,31 @@ const BrowseCategory = () => {
     );
 
   return (
-    <div className="home__container">
-      <h2 className="home__heading">Browse Categories</h2>
-      <div className="home__cate  row row-cols-lg-3 row-cols-sm-2">
+    <div className="container" style={{ marginTop: "50px" }}>
+      <h2 className="home__heading" style={{ marginLeft: "15px" }}>
+        🧭 Browse Categories
+      </h2>
+      <div className="row">
+        {categories.map((category) => (
+          <div className="col-md-3" key={category.id}>
+            <div className="cate-item">
+              <img
+                src={`${API_URL_LOCAL}/${category.image}`}
+                alt=""
+                className="cate-item__thumb"
+                style={{ width: "40%" }}
+              />
+              <section className="cate-item__info">
+                <h3 className="cate-item__title" style={{ fontSize: "15px" }}>
+                  {category.name}
+                </h3>
+                <p className="cate-item__desc">{category.description}</p>
+              </section>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* <div className="home__cate  row row-cols-lg-3 row-cols-sm-2">
         {categories.map((category) => (
           <div className="col" key={category.id}>
             <div className="cate-item">
@@ -51,13 +73,15 @@ const BrowseCategory = () => {
                 className="cate-item__thumb"
               />
               <section className="cate-item__info">
-                <h3 className="cate-item__title" style={{fontSize:'15px'}}>{category.name}</h3>
+                <h3 className="cate-item__title" style={{ fontSize: "15px" }}>
+                  {category.name}
+                </h3>
                 <p className="cate-item__desc">{category.description}</p>
               </section>
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

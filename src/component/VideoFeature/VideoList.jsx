@@ -143,7 +143,7 @@ const VideoList = () => {
 
   return (
     <>
-      <div className="separate"></div>
+      {/* <div className="separate"></div> */}
       <div className="video-list-container">
         <h2 className="video-list-title" style={{ fontSize: "30px" }}>
           DISCOVER COFFEE

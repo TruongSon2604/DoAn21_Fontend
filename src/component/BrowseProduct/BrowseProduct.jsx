@@ -42,20 +42,20 @@ function BrowseProduct() {
     fetchCategories(currentPage);
   }, [currentPage]);
 
-  if (loading)
-    return (
-      <Loading/>
-    );
+  // if (loading) return <Loading />;
 
   return (
-    <section className="home__container">
-      <div className="home__row">
-        <h2 className="home__heading">Total LavAzza 1320</h2>
+    <section className="container">
+      <div className="home__row  mb0">
+        <h2 className="home__heading" style={{ marginLeft: "15px", marginBottom:'0px'}}>
+          🌟 Just For You
+        </h2>
+        {/* <h2 className="home__heading" style={{ marginLeft:'25px'}}>🧭 Browse Categories</h2> */}
         <div className="filter-wrap">
-          <button className="filter-btn" onClick={handleClick}>
+          {/* <button className="filter-btn" onClick={handleClick}>
             Filter
             <img src={assets.filter} alt="" className="filter-btn__icon" />
-          </button>
+          </button> */}
           <div className={`filter ${isActive ? "active" : ""}`}>
             <div className="container filter_container">
               <h3 className="filter__heading">
@@ -106,6 +106,37 @@ function BrowseProduct() {
           </div>
         </div>
       </div>
+      {/* Phân trang */}
+      <div className="paginate_product">
+        <button
+          className="btn btn-success"
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          &laquo; Trước
+        </button>
+
+        {Array.from({ length: lastPage }, (_, index) => index + 1).map(
+          (page) => (
+            <button
+              className="paginate_product-item"
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              disabled={page === currentPage}
+            >
+              {page}
+            </button>
+          )
+        )}
+
+        <button
+          className="btn btn-success"
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, lastPage))}
+          disabled={currentPage === lastPage}
+        >
+          Sau &raquo;
+        </button>
+      </div>
       <div className="row row-browse-product" style={{ rowGap: "30px" }}>
         {products.map((product) => (
           <div className="col-lg-4 col-md-6 col-xl-3" key={product.id}>
@@ -118,13 +149,13 @@ function BrowseProduct() {
                     alt=""
                   />
                   {/* <img src={`${API_URL_LOCAL}/${product[0].image}`}  /> */}
-                  <button className="like-btn" onClick={heartClick}>
-                    <img
-                      src={isHeart ? assets.Heart_pink : assets.iconHeart}
-                      alt=""
-                      className="like-btn__icon"
-                    />
-                  </button>
+                  {product.discount_percent != 0 ? (
+                    <div className="discount-badge-product">
+                      {product.discount_percent}%
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
                 <h3 className="product-card__title">{product.name}</h3>
                 <div className="product-card__status">
@@ -152,39 +183,6 @@ function BrowseProduct() {
             </Link>
           </div>
         ))}
-        {/* Phân trang */}
-        <div className="paginate_product">
-          <button
-            className="btn btn-success"
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          >
-            &laquo; Trước
-          </button>
-
-          {Array.from({ length: lastPage }, (_, index) => index + 1).map(
-            (page) => (
-              <button
-                className="paginate_product-item"
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                disabled={page === currentPage}
-              >
-                {page}
-              </button>
-            )
-          )}
-
-          <button
-            className="btn btn-success"
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, lastPage))
-            }
-            disabled={currentPage === lastPage}
-          >
-            Sau &raquo;
-          </button>
-        </div>
       </div>
     </section>
   );

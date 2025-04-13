@@ -95,10 +95,11 @@ function TabProductDetail() {
         getCommentsByProductId();
       } else if (response.status === 422) {
         // if (response.error.errors?.product_id) {
-          Swal.fire({
-            title: "Bạn chưa mua sản phẩm này nền chưa thể đánh giá!",
-            icon: "warning",
-          });
+        Swal.fire({
+          title:
+            "You haven't purchased this product yet, so you can't leave a review!",
+          icon: "warning",
+        });
         // }
       } else {
         alert(`Comment product ${id} failed: ${response.message}`);
@@ -350,7 +351,7 @@ function TabProductDetail() {
                   ))}
                 </div>
               ) : (
-                <div>Chưa có bình luận về sản phẩm !</div>
+                <div>No reviews for this product yet!</div>
               )}
             </div>
 
@@ -372,9 +373,13 @@ function TabProductDetail() {
                 <span className="tab-comment__rating">Rating</span>
                 <ReactRating
                   initialRating={5} // Giá trị đánh giá ban đầu
-                  emptySymbol={<FaStar color="#ccc" />} // Màu sắc của sao chưa chọn
-                  fullSymbol={<FaStar color="#ffd700" />} // Màu sắc của sao đã chọn
-                  fractions={2} // Cho phép hiển thị số thập phân
+                  emptySymbol={
+                    <FaStar color="#ccc" style={{ fontSize: "30px" }} />
+                  } // Màu sắc của sao chưa chọn và kích thước
+                  fullSymbol={
+                    <FaStar color="#ffd700" style={{ fontSize: "30px" }} />
+                  } // Màu sắc của sao đã chọn và kích thước
+                  fractions={1} // Cho phép hiển thị số thập phân
                   onChange={(value) => setStart(value)} // Cập nhật giá trị khi người dùng chọn
                 />
               </div>

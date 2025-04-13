@@ -12,11 +12,9 @@ function Footer() {
               <img src={assets.icon} alt="" />
               <h2>CoffeeMart</h2>
             </div>
-            <div className="footer__description">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur dolorum possimus dolores, ipsum repudiandae
-              perferendis esse enim deserunt! Est illo fuga atque error quidem
-              sint odio quos voluptatibus minus mollitia!
+            <div className="footer__description about-us-description">
+              CoffeeMart is a cozy and vibrant coffee shop that offers a warm
+              atmosphere perfect for relaxing or catching up with friends.
             </div>
             <span className="footer__span">
               Receive product news and updates
