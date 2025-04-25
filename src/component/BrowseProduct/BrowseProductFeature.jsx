@@ -1,3 +1,4 @@
+
 // import React, { useEffect, useState } from "react";
 // import "./BroseProductFeature.scss";
 // import { assets } from "../../assets/assets";
@@ -30,7 +31,7 @@
 //   //   setLoading(false);
 //   // };
 
-//   const fetchProduct = async (page) => {
+//   const fetchCategories = async (page) => {
 //     setLoading(true); // Set loading = true trước khi gọi API
 
 //     try {
@@ -51,7 +52,7 @@
 //   };
 
 //   useEffect(() => {
-//     fetchProduct(currentPage);
+//     fetchCategories(currentPage);
 //   }, [currentPage]);
 
 //   if (loading)
