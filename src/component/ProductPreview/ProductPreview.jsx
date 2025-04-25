@@ -126,7 +126,10 @@ const ProductPreview = () => {
               <div className="col-xxl-6 col-xl-5">
                 <div className="prod-prop">
                   <FaStar color="orange" />
-                  <h4 className="prod-prop__title">(3.5) 1100 reviews</h4>
+                  <h4 className="prod-prop__title" style={{ marginLeft: "-15px" }}>
+                  ({Math.round(product[0].average_rating * 10) / 10}) {product[0].total_comments} {" "}
+                    reviews
+                  </h4>
                 </div>
                 <div className="prod-prop__des">
                   <p className="prod-prop__des-item">Description</p>

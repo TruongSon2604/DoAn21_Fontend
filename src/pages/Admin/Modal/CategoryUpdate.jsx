@@ -8,6 +8,8 @@ import { MdOutlineModeEdit } from "react-icons/md";
 
 const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
 const API_URL = import.meta.env.VITE_API_URL;
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 function CategoryUpdate({ selectedIds, setCategory }) {
   const [show, setShow] = useState(false);
   const [productData, setProductData] = useState({
@@ -62,7 +64,13 @@ function CategoryUpdate({ selectedIds, setCategory }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      alert("Cập nhật danh mục thành công!");
+      // alert("Cập nhật danh mục thành công!");
+      Swal.fire({
+        icon: "success",
+        title: "Cập nhật danh mục thành công",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       const getCategory = async () => {
         const response = await apiGet("/categories");
         setCategory(response.data.data);

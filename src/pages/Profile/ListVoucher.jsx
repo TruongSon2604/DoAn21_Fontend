@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { FaUser } from "react-icons/fa";
 import { FaAddressCard } from "react-icons/fa6";
-import { FaMailBulk,FaAddressBook } from "react-icons/fa";
+import { FaMailBulk, FaAddressBook } from "react-icons/fa";
 import { MdDiscount } from "react-icons/md";
 import { IoIosMail } from "react-icons/io";
 import { FaPhone } from "react-icons/fa";
@@ -36,10 +36,46 @@ function ListVoucher() {
     { field: "code", headerName: "Voucher Name", width: 250, flex: 1 },
     { field: "start_date", headerName: "Start Date", width: 70, flex: 1 },
     { field: "end_date", headerName: "End Date", width: 250, flex: 1 },
+
     { field: "discount_type", headerName: "Discount Type", width: 70, flex: 1 },
     {
       field: "discount_value",
       headerName: "Discount Value",
+      width: 250,
+      flex: 1,
+    },
+    {
+      field: "status_voucher",
+      headerName: "Status Voucher",
+      renderCell: (params) => {
+        const endDate = params.row.end_date; // Giả sử end_date có trong params.row
+        const currentDate = new Date();
+        const expiryDate = new Date(endDate); // Giả sử `end_date` là chuỗi ngày
+
+        let styles = {
+          color: "black",
+          backgroundColor: "transparent",
+          padding: "5px",
+          borderRadius: "5px",
+        };
+
+        // Kiểm tra nếu ngày hết hạn
+        if (expiryDate < currentDate) {
+          styles.color = "white";
+          styles.backgroundColor = "red"; // Màu đỏ cho hết hạn
+          return <span style={styles}>Expired</span>;
+        } else {
+          styles.color = "white";
+          styles.backgroundColor = "green"; // Màu xanh cho còn hạn
+          return <span style={styles}>Valid</span>;
+        }
+      },
+      width: 200,
+      flex: 1,
+    },
+    {
+      field: "end_date",
+      headerName: "End Date",
       width: 250,
       flex: 1,
     },
@@ -172,7 +208,7 @@ function ListVoucher() {
               <aside className="profile__sidebar">
                 {/* profile user */}
                 <div className="profile__user">
-                <img
+                  <img
                     className="profile__user-avatar"
                     src={
                       user.image.startsWith("http")

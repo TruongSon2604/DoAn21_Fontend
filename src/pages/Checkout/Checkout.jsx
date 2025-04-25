@@ -324,7 +324,7 @@ function Checkout() {
             <div className="col-8">
               <div className="cart-info">
                 <h1 className="cart-info__heading">
-                  1. Shipping, arrives between Mon, May 16—Tue, May 24
+                  1. Shipping
                 </h1>
                 {/* checkout address */}
                 <div className="cart-info__separate cart-info__bold"></div>
@@ -332,7 +332,7 @@ function Checkout() {
                 <div className="user-address">
                   <div className="user-address__top">
                     <div>
-                      <h2 className="user-address__title">Shipping address</h2>
+                      <h2 className="user-address__title">Shipping address <Link className="btn btn-info" style={{marginLeft:'30px'}} to="/myAddress">Add Address</Link></h2>
                       <p className="user-address__desc">
                         Where should we deliver your order?
                       </p>

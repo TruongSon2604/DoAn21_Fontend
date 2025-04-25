@@ -8,6 +8,9 @@ import { IoIosAddCircle } from "react-icons/io";
 
 const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
 const API_URL = import.meta.env.VITE_API_URL;
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 function CategoryAdd({ selectedIds, setProducts }) {
   const [show, setShow] = useState(false);
   const [productData, setProductData] = useState({
@@ -55,7 +58,13 @@ function CategoryAdd({ selectedIds, setProducts }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      alert("Thêm danh mục thành công!");
+      // alert("Thêm danh mục thành công!");
+      Swal.fire({
+        icon: "success",
+        title: "Thêm danh mục thành công",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       setProductData({
         id: "",
         image: "",
@@ -64,12 +73,13 @@ function CategoryAdd({ selectedIds, setProducts }) {
       });
       setSelectedImage(null);
       setPreviewImage(null);
-      const getCategory = async () => {
-        const response = await apiGet("/categories");
+      // const getCategory = async () => {
+      //   const response = await apiGet("/categories");
 
-        setProducts(response.data.data);
-      };
-      getCategory();
+      //   setProducts(response.data.data);
+      // };
+      // getCategory();
+      window.location.reload();
       handleClose();
     } catch (error) {
       console.error("Lỗi thêm danh mục:", error);

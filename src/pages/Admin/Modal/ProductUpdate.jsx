@@ -5,6 +5,8 @@ import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { apiGet } from "../../../Service/apiService";
 import { MdOutlineModeEdit } from "react-icons/md";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
 const API_URL = import.meta.env.VITE_API_URL;
@@ -85,7 +87,13 @@ function ProductUpdate({ selectedIds, setProducts }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      alert("Cập nhật sản phẩm thành công!");
+      // alert("Cập nhật sản phẩm thành công!");
+      Swal.fire({
+        icon: "success",
+        title: "Cập nhật sản phẩm thành công",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       const getProduct = async () => {
         const response = await apiGet("/product");
         setProducts(response.data.data);

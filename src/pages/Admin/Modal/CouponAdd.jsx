@@ -5,6 +5,8 @@ import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { apiGet, apiGetWithToken } from "../../../Service/apiService";
 import { IoIosAddCircle } from "react-icons/io";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
 const API_URL = import.meta.env.VITE_API_URL;
@@ -56,7 +58,14 @@ function CouponAdd({ selectedIds, setCoupon }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      alert("Thêm phiếu giảm giá thành công!");
+      // alert("Thêm phiếu giảm giá thành công!");
+      Swal.fire({
+        icon: "success",
+        title: "Thêm phiếu giảm giá thành công!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
       setCouponData({
         id: "",
         code: "",

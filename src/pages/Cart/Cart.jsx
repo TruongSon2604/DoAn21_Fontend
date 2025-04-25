@@ -334,7 +334,7 @@ function Cart() {
                   // </div>
                   <div className="cart-info__list">
                     {!products ? (
-                      <Loading2 /> // hoặc loading spinner nếu bạn muốn
+                      <Loading2 />
                     ) : products.length === 0 ? (
                       <div className="no-item">
                         <img

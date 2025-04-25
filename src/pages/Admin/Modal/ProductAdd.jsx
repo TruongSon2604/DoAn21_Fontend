@@ -8,6 +8,8 @@ import { IoIosAddCircle } from "react-icons/io";
 
 const API_URL_LOCAL = import.meta.env.VITE_API_URL_LOCAL;
 const API_URL = import.meta.env.VITE_API_URL;
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 function ProductAdd({ selectedIds, setProducts }) {
   const [show, setShow] = useState(false);
   const [productData, setProductData] = useState({
@@ -67,7 +69,14 @@ function ProductAdd({ selectedIds, setProducts }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      alert("Thêm sản phẩm thành công!");
+      // alert("Thêm sản phẩm thành công!");
+      Swal.fire({
+        icon: "success",
+        title: "Thêm sản phẩm thành công",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+        
       const getProduct = async () => {
         const response = await apiGet("/product");
         setProducts(response.data.data);

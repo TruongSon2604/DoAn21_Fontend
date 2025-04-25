@@ -181,6 +181,7 @@ $glow-color: rgba(33, 150, 243, 0.6);
     font-weight: bold;
     animation: fadeInZoom 0.3s ease;
     box-shadow: 0 0 10px rgba($success-color, 0.5);
+    z-index: 1000;
   }
 
   &__progress-container {
