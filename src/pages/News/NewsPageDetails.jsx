@@ -49,25 +49,26 @@ const NewsPageDetails = () => {
         <div className="container news-page__container">
           <div className="row">
             <h1 className="news-detail__tittle">
-              {/* TRÀ ỔI HỒNG KIM QUẤT - TƯƠI MÁT VỊ NHIỆT ĐỚI */}
               {news?.tittle}
             </h1>
             <span className="news-detail__date">📅 {vietnamTime}</span>
-            <p className="news-detail__desc">
+            {/* <p className="news-detail__desc">
               ✨ Tháng 3 này, Highlands Coffee tự hào giới thiệu Trà Ổi Hồng Kim
               Quất - một bản giao hưởng nhiệt đới mới toanh. Thức uống này mang
               đến cảm giác tươi mới, sảng khoái với hương hoa ổi hồng ngọt ngào
               và vị chua, hương cam quýt đặc trưng của kim quất. Đây là sự kết
               hợp hoàn hảo giữa vị ngọt thanh của ổi hồng và vị chua nhẹ của kim
               quất, tạo nên một hương vị độc đáo và khó quên.
-            </p>
+            </p> */}
             <img
               src={`${API_URL_LOCAL}/${news?.imageSecondary}`}
               alt=""
               className="news-detail__img"
             />
-            {/* <img src={assets.social_news} alt="" className="news-detail__img" /> */}
-            <p className="news-detail__desc">{news?.description}</p>
+            <div
+              className="news-detail__desc"
+              dangerouslySetInnerHTML={{ __html: news?.description }}
+            ></div>
             {/* <div className="news-detail__tags">
               Tags: Highlands Coffee,Trà ổi hồng kim quất,Tươi mát vị nhiệt
               đới,Trà Trái Cây Nhiệt Đới

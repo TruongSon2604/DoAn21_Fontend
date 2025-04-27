@@ -34,7 +34,7 @@ function ModalBuyedUser({ id, created_at }) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Xem chi tiết
+        View Detail
       </Button>
 
       <Modal show={show} onHide={handleClose} centered size="lg">

@@ -74,7 +74,6 @@ const NewsPage = () => {
       <Header />
       <div className="news-page">
         <div className="container news-page__container">
-
           <div className="row">
             {post.map((news) => {
               // Chuyển đổi `created_at` sang giờ Việt Nam
@@ -101,6 +100,11 @@ const NewsPage = () => {
                         src={`${API_URL_LOCAL}/${news.imagePrimary}`}
                         alt={news.tittle}
                         className="news-page__img"
+                        style={{
+                          width: "100%",
+                          height: "250px",
+                          objectFit: "cover",
+                        }}
                       />
                       <div className="news-card__cover">
                         <p className="news-card__title">{news.tittle}</p>

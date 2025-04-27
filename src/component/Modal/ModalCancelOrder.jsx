@@ -26,14 +26,14 @@ function ModalCancelOrder({ id }) {
 
   const handleSave = async () => {
     const result = await MySwal.fire({
-      title: "Bạn có chắc chắn muốn huỷ đơn?",
+      title: "Do you want to cancel order?",
       showCancelButton: true,
-      confirmButtonText: "Hủy đơn",
-      cancelButtonText: "Đóng",
+      confirmButtonText: "Cancel",
+      cancelButtonText: "Close",
     });
     if (result.isConfirmed) {
       if (!selectedReason) {
-        alert("Vui lòng chọn lý do hủy.");
+        alert("Please choose reason cancel.");
         return;
       }
 
@@ -81,18 +81,18 @@ function ModalCancelOrder({ id }) {
         onClick={handleShow}
         style={{ marginLeft: 10, marginTop: -8, height: 28 }}
       >
-        Huỷ đơn
+        Cancel Order
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Hủy đơn hàng</Modal.Title>
+          <Modal.Title>Cancel Order</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label style={{ fontSize: "13px" }}>
-                Lý do hủy đơn hàng
+                Reason for Order Cancellation
               </Form.Label>
               <Form.Control
                 as="select"
@@ -100,7 +100,7 @@ function ModalCancelOrder({ id }) {
                 onChange={(e) => setSelectedReason(e.target.value)}
                 style={{ fontSize: "16px" }}
               >
-                <option value="">Chọn lý do...</option>
+                <option value="">Select a reason...</option>
                 {reasons.map((reason, index) => (
                   <option
                     key={index}
@@ -116,14 +116,14 @@ function ModalCancelOrder({ id }) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Đóng
+            Close
           </Button>
           <Button
             variant="danger"
             onClick={handleSave}
             disabled={!selectedReason}
           >
-            Xác nhận hủy
+            Confirm Cancellation
           </Button>
         </Modal.Footer>
       </Modal>

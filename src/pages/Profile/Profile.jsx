@@ -368,10 +368,45 @@ function Profile() {
       headerName: "Discount Amount",
       width: 200,
       flex: 2,
+      renderCell: (params) => (
+        <span>
+          {Number(params.value).toLocaleString("vi-VN")} <sup>₫</sup>
+        </span>
+      ),
     },
-    { field: "final_amount", headerName: "Final Amount", width: 250, flex: 2 },
-    { field: "total_amount", headerName: "Total Amount", width: 200, flex: 2 },
-    { field: "shipping_fee", headerName: "Shipping Fee", width: 200, flex: 2 },
+    {
+      field: "final_amount",
+      headerName: "Final Amount",
+      width: 250,
+      flex: 2,
+      renderCell: (params) => (
+        <span>
+          {Number(params.value).toLocaleString("vi-VN")} <sup>₫</sup>
+        </span>
+      ),
+    },
+    {
+      field: "total_amount",
+      headerName: "Total Amount",
+      width: 200,
+      flex: 2,
+      renderCell: (params) => (
+        <span>
+          {Number(params.value).toLocaleString("vi-VN")} <sup>₫</sup>
+        </span>
+      ),
+    },
+    {
+      field: "shipping_fee",
+      headerName: "Shipping Fee",
+      width: 200,
+      flex: 2,
+      renderCell: (params) => (
+        <span>
+          {Number(params.value).toLocaleString("vi-VN")} <sup>₫</sup>
+        </span>
+      ),
+    },
     {
       field: "status_payment",
       headerName: "Status Payment",
@@ -409,13 +444,34 @@ function Profile() {
         <ModalBuyedUser id={params.row.id} created_at={params.row.ngaydat} />
       ),
     },
+    // {
+    //   field: "cancel",
+    //   headerName: "Cancel Order",
+    //   width: 150,
+    //   flex: 2,
+    //   sortable: false,
+    //   renderCell: (params) => <ModalCancelOrder id={params.row.id} />,
+    // },
     {
       field: "cancel",
       headerName: "Cancel Order",
       width: 150,
       flex: 2,
       sortable: false,
-      renderCell: (params) => <ModalCancelOrder id={params.row.id} />,
+      renderCell: (params) => {
+        const isDisabled =
+          params.row.status === "completed" || params.row.status === "canceled";
+
+        return isDisabled ? (
+          <span
+            style={{ color: "#aaa", cursor: "not-allowed", fontSize: "10px" }}
+          >
+            Not cancel
+          </span>
+        ) : (
+          <ModalCancelOrder id={params.row.id} />
+        );
+      },
     },
   ];
 

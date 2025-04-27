@@ -14,6 +14,7 @@ import CategoryUpdate from "../Modal/CategoryUpdate";
 import CategoryAdd from "../Modal/CategoryAdd";
 import { IoTrashBin } from "react-icons/io5";
 import PostAdd from "../Modal/PostAdd";
+import PostUpdate from "../Modal/PostUpdate";
 
 // import ProductUpdate from "./Modal/ProductUpdate";
 
@@ -130,7 +131,7 @@ export const AdminPost = () => {
             />
             Xóa đã chọn
           </Button>
-          <CategoryUpdate selectedIds={selectedIds} setCategory={setCategory} />
+          <PostUpdate selectedIds={selectedIds} setCategory={setCategory} />
           <PostAdd selectedIds={selectedIds} setCategory={setCategory} />
           <div style={{ height: "90%", width: "100%" }} className="admin-table">
             <Paper sx={{ height: "90%", width: "100%" }}>

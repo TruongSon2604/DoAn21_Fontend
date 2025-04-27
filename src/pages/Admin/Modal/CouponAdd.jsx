@@ -15,7 +15,7 @@ function CouponAdd({ selectedIds, setCoupon }) {
   const [couponData, setCouponData] = useState({
     id: "",
     code: "",
-    discount_type: "",
+    discount_type: "percentage",
     discount_value: "",
     start_date: "",
     end_date: "",
@@ -39,6 +39,7 @@ function CouponAdd({ selectedIds, setCoupon }) {
 
   const handleSave = async () => {
     const token = localStorage.getItem("access_token_admin");
+    alert(couponData.discount_type);
     const formData = new FormData();
     formData.append("code", couponData.code);
     formData.append("discount_type", couponData.discount_type);
@@ -69,7 +70,7 @@ function CouponAdd({ selectedIds, setCoupon }) {
       setCouponData({
         id: "",
         code: "",
-        discount_type: "pertage",
+        discount_type: "percentage",
         discount_value: "",
         start_date: "",
         end_date: "",

@@ -19,23 +19,7 @@ const Sidebar = () => {
             <i>🏠</i> Dashboard
           </li>
         </Link>
-        <Link
-          to="/admin/generateAiRecommendations"
-          onClick={() => setActiveItem("/admin/generateAiRecommendations")}
-          style={{ backgroundColor: "brown" }}
-        >
-          <li
-            className={
-              activeItem === "/admin/generateAiRecommendations" ? "active" : ""
-            }
-            style={{ backgroundColor: "brown", textAlign:'center', lineHeight:1.2 }}
-          >
-            <i>
-              <FaRobot />
-            </i>{" "}
-            GENERATE AI RECOMMENDATIONS
-          </li>
-        </Link>
+       
         <Link
           to="/admin/product"
           onClick={() => setActiveItem("/admin/product")}
@@ -62,19 +46,37 @@ const Sidebar = () => {
             <i>🏷️</i> Phiếu giảm giá
           </li>
         </Link>
-        <Link to="/admin/user" onClick={() => setActiveItem("/admin/user")}>
+        {/* <Link to="/admin/user" onClick={() => setActiveItem("/admin/user")}>
           <li className={activeItem === "/admin/user" ? "active" : ""}>
             <i>👥</i> Người dùng
           </li>
-        </Link>
+        </Link> */}
         <Link to="/admin/post" onClick={() => setActiveItem("/admin/post")}>
           <li className={activeItem === "/admin/post" ? "active" : ""}>
             <i>📰</i> Bài viết
           </li>
         </Link>
-        <li className="logout">
+
+        <Link
+          to="/admin/generateAiRecommendations"
+          onClick={() => setActiveItem("/admin/generateAiRecommendations")}
+          style={{ backgroundColor: "brown" }}
+        >
+          <li
+            className={
+              activeItem === "/admin/generateAiRecommendations" ? "active" : ""
+            }
+            style={{ backgroundColor: "brown", textAlign:'center', lineHeight:1.2 }}
+          >
+            <i>
+              <FaRobot />
+            </i>{" "}
+            GENERATE AI RECOMMENDATIONS
+          </li>
+        </Link>
+        {/* <li className="logout">
           <i>🚪</i> Đăng xuất
-        </li>
+        </li> */}
       </ul>
     </aside>
   );

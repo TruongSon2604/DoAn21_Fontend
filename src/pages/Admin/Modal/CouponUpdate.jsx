@@ -26,7 +26,6 @@ function CouponUpdate({ selectedIds, setCoupon }) {
   const handleClose = () => setShow(false);
 
   const handleShow = async () => {
-    alert("vao dya ");
     if (selectedIds.length !== 1) {
       alert("Vui lòng chọn đúng 1 phiếu giảm giá để cập nhật!");
       return;

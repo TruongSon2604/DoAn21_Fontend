@@ -152,6 +152,8 @@ function ModalListOrderDetailOfUser({ id, setorders }) {
                   </strong>{" "}
                   {parseInt(products[0].final_amount).toLocaleString()} VND
                 </p>
+
+                
               </tr>
               <br />
               <Table bordered responsive>
