@@ -27,6 +27,8 @@ import {
 } from "react-icons/md";
 import LoadingCheckout from "../../component/Loading/LoadingCheckout";
 
+import { useSearchParams } from "react-router-dom";
+
 function Checkout() {
   const [selectedValue, setSelectedValue] = useState("value-1");
   const { selectedProducts, setSelectedProducts } = useContext(ProductContext);
@@ -51,18 +53,6 @@ function Checkout() {
 
       if (!transactionId) return;
 
-      // try {
-      //   const response = await apiGet(`/payment2/status/${transactionId}`);
-
-      //   if (response.success && response.data.original.data.return_code === 1) {
-      //     clearInterval(interval);
-      //     localStorage.removeItem("transaction_id");
-      //     alert("Thanh toán thành công!");
-      //     navigate("/profile");
-      //   }
-      // } catch (error) {
-      //   console.error("Lỗi khi kiểm tra thanh toán:", error);
-      // }
       try {
         const response = await apiGet(`/payment2/status/${transactionId}`);
 
@@ -86,9 +76,45 @@ function Checkout() {
       }
     };
 
-    const interval = setInterval(checkPayment, 3000);
+    //vnpay
 
-    return () => clearInterval(interval); // Xóa interval khi component unmount
+    const checkPaymentVnpay = async () => {
+      const transaction_vnpay_id = localStorage.getItem("transaction_vnpay_id");
+
+      if (!transaction_vnpay_id) return;
+
+      try {
+        const response = await apiGet(
+          `/vnpay/checkPaymentStatus/${transaction_vnpay_id}`
+        );
+
+        if (response.success && response.data.status === "success") {
+          clearInterval(interval);
+          localStorage.removeItem("transaction_vnpay_id");
+
+          const checkStatus = await Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Order Vnapy successfully!",
+            confirmButtonText: "OK",
+          });
+
+          if (checkStatus.isConfirmed) {
+            navigate("/profile");
+          }
+        }
+      } catch (error) {
+        console.error("Lỗi khi kiểm tra thanh toán:", error);
+      }
+    };
+
+    const interval = setInterval(checkPayment, 3000);
+    const intervalVnpay = setInterval(checkPaymentVnpay, 3000);
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(intervalVnpay);
+    };
   }, []);
 
   const handleCouponChange = (e) => {
@@ -193,10 +219,6 @@ function Checkout() {
   const handleCheckout = async () => {
     const selectedAddress =
       address.find((ad) => ad.id === selectedAddressId) || null;
-    // const selectedCoupon = coupon.find(
-    //   (cp) => Number(cp.id) === selectedCouponId
-    // );
-
     if (selectedAddress == null) {
       Swal.fire({
         title: "Please Select Address",
@@ -237,7 +259,7 @@ function Checkout() {
         } else {
           alert(`Đặt hàng thất bại`);
         }
-      } else {
+      } else if (selectedValue === "value-2") {
         //
         const rp = await apiPostWithToken(`/payment2`, requestData, token);
         if (rp.success) {
@@ -246,6 +268,21 @@ function Checkout() {
           if (orderUrl) {
             console.log("Transaction ID:", transactionId);
             localStorage.setItem("transaction_id", transactionId);
+            window.open(orderUrl, "_blank");
+          } else {
+            console.error("Không tìm thấy order_url");
+          }
+        } else {
+          console.error("Lỗi khi gọi API:", rp.message);
+        }
+      } else if (selectedValue === "value-3") {
+        const rp = await apiPostWithToken(`/vnpay/payment`, requestData, token);
+        if (rp.success) {
+          const orderUrl = rp.data?.data;
+          const transaction_vnpay_id = rp.data?.transaction_id;
+          if (orderUrl) {
+            console.log("Transaction VNpay ID:", transaction_vnpay_id);
+            localStorage.setItem("transaction_vnpay_id", transaction_vnpay_id);
             window.open(orderUrl, "_blank");
           } else {
             console.error("Không tìm thấy order_url");
@@ -323,16 +360,23 @@ function Checkout() {
           <div className="row">
             <div className="col-8">
               <div className="cart-info">
-                <h1 className="cart-info__heading">
-                  1. Shipping
-                </h1>
+                <h1 className="cart-info__heading">1. Shipping</h1>
                 {/* checkout address */}
                 <div className="cart-info__separate cart-info__bold"></div>
 
                 <div className="user-address">
                   <div className="user-address__top">
                     <div>
-                      <h2 className="user-address__title">Shipping address <Link className="btn btn-info" style={{marginLeft:'30px'}} to="/myAddress">Add Address</Link></h2>
+                      <h2 className="user-address__title">
+                        Shipping address{" "}
+                        <Link
+                          className="btn btn-info"
+                          style={{ marginLeft: "30px" }}
+                          to="/myAddress"
+                        >
+                          Add Address
+                        </Link>
+                      </h2>
                       <p className="user-address__desc">
                         Where should we deliver your order?
                       </p>
@@ -437,6 +481,26 @@ function Checkout() {
                       />
                       <p className="user-payment__title">
                         <SiZalo size={30} color="blue" /> Payment via ZaloPay
+                      </p>
+                    </label>
+
+                    <label className="radio-input__label">
+                      <input
+                        type="radio"
+                        id="value-3"
+                        name="value-radio"
+                        value="value-3"
+                        checked={selectedValue === "value-3"}
+                        onChange={(e) => {
+                          setSelectedValue(e.target.value);
+                        }}
+                      />
+                      <p className="user-payment__title">
+                        <img
+                          src={assets.vnpayicon}
+                          style={{ width: "30px", height: "30px" }}
+                        />{" "}
+                        Payment via Vnpay
                       </p>
                     </label>
                   </div>

@@ -45,6 +45,7 @@ import DProduct from "./DProduct.png";
 import Duser from "./Duser.png";
 import People from "./people.jpg";
 import notfound from "./notfound.png";
+import vnpayicon from "./vnpayicon.png";
 export const assets = {
   icon,
   iconDown,
@@ -92,5 +93,6 @@ export const assets = {
   Duser,
   DProduct,
   People,
-  notfound
+  notfound,
+  vnpayicon,
 };

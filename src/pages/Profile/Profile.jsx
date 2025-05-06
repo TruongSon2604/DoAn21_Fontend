@@ -329,7 +329,16 @@ function Profile() {
 
   const columns = [
     { field: "id", headerName: "ID", width: 70, flex: 1 },
-    { field: "created_at", headerName: "Order Created", width: 250, flex: 3 },
+    {
+      field: "created_at",
+      headerName: "Order Created",
+      width: 250,
+      flex: 3,
+      renderCell: (params) => {
+        const date = new Date(params.value);
+        return date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
+      },
+    },
     {
       field: "status",
       headerName: "Status Order",
