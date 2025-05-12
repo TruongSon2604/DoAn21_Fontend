@@ -17,6 +17,7 @@ import { apiGetWithToken } from "../../Service/apiService";
 import { Button } from "react-bootstrap";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModalBuyedUser from "../../component/Modal/ModalBuyedUser";
+import { FaLock } from "react-icons/fa";
 
 function ListVoucher() {
   const [orders, setOrders] = useState([]);
@@ -247,6 +248,15 @@ function ListVoucher() {
                       <Link className="profile__menu-linkk" to={"/myaddress"}>
                         <FaAddressBook />
                         My Address
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="profile__menu-linkk"
+                        to={"/change-password"}
+                      >
+                        <FaLock />
+                        Change Password
                       </Link>
                     </li>
                   </ul>

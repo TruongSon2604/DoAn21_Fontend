@@ -19,7 +19,7 @@ const Sidebar = () => {
             <i>🏠</i> Dashboard
           </li>
         </Link>
-       
+
         <Link
           to="/admin/product"
           onClick={() => setActiveItem("/admin/product")}
@@ -28,6 +28,18 @@ const Sidebar = () => {
             <i>📦</i> Sản phẩm
           </li>
         </Link>
+
+        <Link
+          to="/admin/product-discount"
+          onClick={() => setActiveItem("/admin/product-discount")}
+        >
+          <li
+            className={activeItem === "/admin/product-discount" ? "active" : ""}
+          >
+            <i>💸</i> Khuyến mãi
+          </li>
+        </Link>
+
         <Link to="/admin/order" onClick={() => setActiveItem("/admin/order")}>
           <li className={activeItem === "/admin/order" ? "active" : ""}>
             <i>🛒</i> Đơn hàng
@@ -66,7 +78,11 @@ const Sidebar = () => {
             className={
               activeItem === "/admin/generateAiRecommendations" ? "active" : ""
             }
-            style={{ backgroundColor: "brown", textAlign:'center', lineHeight:1.2 }}
+            style={{
+              backgroundColor: "brown",
+              textAlign: "center",
+              lineHeight: 1.2,
+            }}
           >
             <i>
               <FaRobot />

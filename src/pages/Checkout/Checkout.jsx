@@ -95,7 +95,7 @@ function Checkout() {
           const checkStatus = await Swal.fire({
             icon: "success",
             title: "Success",
-            text: "Order Vnapy successfully!",
+            text: "Order Vnpay successfully!",
             confirmButtonText: "OK",
           });
 

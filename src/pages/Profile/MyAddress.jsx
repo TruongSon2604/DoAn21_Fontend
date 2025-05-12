@@ -15,6 +15,7 @@ import { Button } from "react-bootstrap";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { FaLock } from "react-icons/fa";
 
 function MyAddress() {
   const [orders, setOrders] = useState([]);
@@ -143,6 +144,15 @@ function MyAddress() {
                       <Link className="profile__menu-linkk" to={"/myaddress"}>
                         <FaAddressBook />
                         My Address
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="profile__menu-linkk"
+                        to={"/change-password"}
+                      >
+                        <FaLock />
+                        Change Password
                       </Link>
                     </li>
                   </ul>

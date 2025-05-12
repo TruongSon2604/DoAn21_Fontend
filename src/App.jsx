@@ -38,6 +38,8 @@ import AdminDashboard from "./pages/Admin/pageAdmin/AdminDashboard";
 import { Dashboard } from "@mui/icons-material";
 import MyAddress from "./pages/Profile/MyAddress";
 import RecommendationPanel from "./pages/Admin/pageAdmin/RecommendationPanel";
+import { AdminProductDiscount } from "./pages/Admin/pageAdmin/AdminProductDiscount";
+import ChangePassword from "./pages/Profile/ChangePassword";
 // import { Voucher } from "./pages/Voucher/Voucher";
 
 function App() {
@@ -63,9 +65,14 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:id" element={<NewsPageDetails />} />
           <Route path="/myAddress" element={<MyAddress />} />
+          <Route path="/change-password" element={<ChangePassword />} />
           {/* /admin/ */}
           <Route path="/admin" element={<IndexAdmin />} />
           <Route path="/admin/product" element={<AdminProduct />} />
+          <Route
+            path="/admin/product-discount"
+            element={<AdminProductDiscount />}
+          />
           <Route path="/admin/category" element={<AdminCategory />} />
           <Route path="/admin/order" element={<AdminOrder />} />
           <Route path="/admin/coupon" element={<AdminCoupon />} />

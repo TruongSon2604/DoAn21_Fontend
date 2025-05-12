@@ -106,7 +106,7 @@ function CouponUpdate({ selectedIds, setCoupon }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Thêm phiếu giảm giá</Modal.Title>
+          <Modal.Title>Cập nhật phiếu giảm giá</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
