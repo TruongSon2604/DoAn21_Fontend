@@ -152,58 +152,65 @@ function ChangePassword() {
             <div className="col-9">
               <div className="profile__info">
                 <h2 className="profile__info-heading">Change Password</h2>
-                <form onSubmit={handleSubmit}>
-                  <div className="form-group mb-2">
-                    <label>Email:</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      disabled
-                      className="form-control mb-2"
-                    />
+                {user.google_id ? (
+                  <div className="alert alert-info">
+                    <strong>Note:</strong> You signed in with Google. Please
+                    manage your password via Google Account settings.
                   </div>
+                ) : (
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-group mb-2">
+                      <label>Email:</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        disabled
+                        className="form-control mb-2"
+                      />
+                    </div>
 
-                  <div className="form-group mb-2">
-                    <label>Temporary Password:</label>
-                    <input
-                      type="password"
-                      name="temporary_password"
-                      value={formData.temporary_password}
-                      onChange={handleChange}
-                      required
-                      className="form-control mb-2"
-                    />
-                  </div>
+                    <div className="form-group mb-2">
+                      <label>Temporary Password:</label>
+                      <input
+                        type="password"
+                        name="temporary_password"
+                        value={formData.temporary_password}
+                        onChange={handleChange}
+                        required
+                        className="form-control mb-2"
+                      />
+                    </div>
 
-                  <div className="form-group mb-2">
-                    <label>New Password:</label>
-                    <input
-                      type="password"
-                      name="new_password"
-                      value={formData.new_password}
-                      onChange={handleChange}
-                      required
-                      className="form-control"
-                    />
-                  </div>
+                    <div className="form-group mb-2">
+                      <label>New Password:</label>
+                      <input
+                        type="password"
+                        name="new_password"
+                        value={formData.new_password}
+                        onChange={handleChange}
+                        required
+                        className="form-control"
+                      />
+                    </div>
 
-                  <div className="form-group mb-4">
-                    <label>Confirm New Password:</label>
-                    <input
-                      type="password"
-                      name="new_password_confirmation"
-                      value={formData.new_password_confirmation}
-                      onChange={handleChange}
-                      required
-                      className="form-control"
-                    />
-                  </div>
+                    <div className="form-group mb-4">
+                      <label>Confirm New Password:</label>
+                      <input
+                        type="password"
+                        name="new_password_confirmation"
+                        value={formData.new_password_confirmation}
+                        onChange={handleChange}
+                        required
+                        className="form-control"
+                      />
+                    </div>
 
-                  <button type="submit" className="btn btn-primary">
-                    Change Password
-                  </button>
-                </form>
+                    <button type="submit" className="btn btn-primary">
+                      Change Password
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>

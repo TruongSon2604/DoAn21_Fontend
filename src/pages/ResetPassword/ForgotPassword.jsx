@@ -25,7 +25,7 @@ function ForgotPassword() {
       setLoading(false); // Dừng loading sau khi có kết quả
 
       if (response.success) {
-        setMessage("We have e-mailed your password reset link");
+        setMessage("We have e-mailed your password");
       } else {
         setError("Something went wrong.");
       }

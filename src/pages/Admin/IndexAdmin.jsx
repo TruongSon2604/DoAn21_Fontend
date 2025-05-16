@@ -16,6 +16,8 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import { ComposedChart } from "recharts";
+
 import { assets } from "../../assets/assets";
 import { apiGet } from "../../Service/apiService";
 import "./IndexAdmin.scss";
@@ -362,7 +364,7 @@ export const IndexAdmin = () => {
 
             <div className="chart-card category-chart">
               <h2>Thống kê theo danh mục</h2>
-              <ResponsiveContainer width="100%" height={300}>
+              {/* <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
                     data={transformedData}
@@ -385,6 +387,21 @@ export const IndexAdmin = () => {
                   </Pie>
                   <Tooltip />
                 </PieChart>
+              </ResponsiveContainer> */}
+
+              <ResponsiveContainer width="100%" height={300}>
+                <ComposedChart data={transformedData}>
+                  <CartesianGrid stroke="#f5f5f5" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="total_products" barSize={20} fill="#413ea0" />
+                  <Line
+                    type="monotone"
+                    dataKey="total_products"
+                    stroke="#ff7300"
+                  />
+                </ComposedChart>
               </ResponsiveContainer>
             </div>
           </div>
