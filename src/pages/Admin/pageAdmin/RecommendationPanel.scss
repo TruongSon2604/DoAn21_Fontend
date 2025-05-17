@@ -184,10 +184,13 @@
           padding: 15px;
   
           .product-name {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
+            line-height: 1.2;
             font-weight: 600;
             color: #2c3e50;
             margin-bottom: 5px;
+            width: 170px;
+            height: 80px;
           }
   
           .product-category {

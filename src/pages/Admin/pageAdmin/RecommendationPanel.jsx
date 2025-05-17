@@ -246,7 +246,9 @@ const RecommendationPanel = () => {
                     )}
                   </div>
                   <div className="product-info">
-                    <h3 className="product-name">{product.name}</h3>
+                    {/* <h3 className="product-name" style={{height:'95px',width:'350px'}}>{product.name}</h3>
+                     */}
+                     <p className="product-name">{product.name}</p>
                     <div className="product-category">{product.category}</div>
 
                     <div className="product-stats">
@@ -273,14 +275,14 @@ const RecommendationPanel = () => {
                     </div>
 
                     <div className="product-actions">
-                      <button
+                      {/* <button
                         className="btn btn-primary"
                         onClick={() => handleAddToOrder(product.id)}
                       >
                         Thêm vào đơn hàng
-                      </button>
+                      </button> */}
                       <button
-                        className="btn btn-outline"
+                        className="btn btn-primary mb"
                         onClick={() => handleViewDetails(product.id)}
                       >
                         Chi tiết
