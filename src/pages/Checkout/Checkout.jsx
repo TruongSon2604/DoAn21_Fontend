@@ -46,6 +46,7 @@ function Checkout() {
   const [loading, setLoading] = useState(true);
   const [showAllAddresses, setShowAllAddresses] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedCoupon1, setSelectedCoupon1] = useState(null);
 
   useEffect(() => {
     const checkPayment = async () => {
@@ -120,6 +121,8 @@ function Checkout() {
   const handleCouponChange = (e) => {
     const selectedId = Number(e.target.value);
     const selectedCoupon = coupon.find((cp) => cp.coupon_id === selectedId);
+    // selectedCoupon1 = selectedCoupon;
+    setSelectedCoupon1(selectedCoupon);
     const discountValue = selectedCoupon ? selectedCoupon.discount_value : 0;
     const discountType = selectedCoupon ? selectedCoupon.discount_type : 0;
     let coupon22 = 0;
@@ -129,7 +132,6 @@ function Checkout() {
       coupon22 = discountValue;
     }
     setCoupon2(coupon22);
-    // alert(selectedId);
     setSelectedCouponId(selectedId);
   };
 
@@ -534,6 +536,36 @@ function Checkout() {
                       </option>
                     ))}
                 </select>
+                <div>
+                  {selectedCoupon1 && (
+                    <span className="cart-info__number">
+                      {/* {selectedCoupon1.code} */}
+                      <br />
+                      {selectedCoupon1.discount_type === "percentage" ? (
+                        <>
+                          Bạn đã được giảm giá: {selectedCoupon1.discount_value}{" "}
+                          %
+                          <span className="cart-info__number">
+                            {coupon2 === 0
+                              ? " (0)"
+                              : ` (${new Intl.NumberFormat("vi-VN", {
+                                  style: "currency",
+                                  currency: "VND",
+                                }).format(coupon2)})`}
+                          </span>
+                        </>
+                      ) : selectedCoupon1.discount_type === "fixed" ? (
+                        <>
+                          Bạn đã được giảm giá:{" "}
+                          {Number(
+                            selectedCoupon1.discount_value
+                          ).toLocaleString("vi-VN")}{" "}
+                          vnđ
+                        </>
+                      ) : null}
+                    </span>
+                  )}
+                </div>
 
                 <h2 className="user-address__title user-address__details">
                   Items details

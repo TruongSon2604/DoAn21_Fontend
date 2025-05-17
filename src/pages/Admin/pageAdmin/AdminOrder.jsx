@@ -225,6 +225,11 @@ export const AdminOrder = () => {
       flex: 2,
       sortable: false,
       renderCell: (params) => {
+        if (params.row.status === "canceled") {
+          return (
+            <span style={{ color: "gray", fontStyle: "italic" }}>Đã hủy</span>
+          );
+        }
         return (
           <ModalListOrderDetailOfUser
             setorders={setorders}
